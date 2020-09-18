@@ -1,0 +1,10 @@
+release/account.o
+release/addaccount.o
+release/database.o
+release/logindb.o
+release/main.o
+release/mainwindow.o
+release/menu.o
+release/moc_addaccount.o
+release/moc_mainwindow.o
+release/moc_menu.o
