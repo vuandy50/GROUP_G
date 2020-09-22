@@ -19,10 +19,7 @@ public:
 
 private slots:
     void addtoDB(account a);
-    void clearScreen();
-    void finalCheck();
-    bool checkEmpty();
-    bool checkDuplicate();
+    bool checker();
     void on_Save_clicked();
     void on_cancel_clicked();
 

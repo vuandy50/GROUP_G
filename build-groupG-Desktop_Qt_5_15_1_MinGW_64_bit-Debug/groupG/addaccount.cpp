@@ -13,79 +13,120 @@ addAccount::~addAccount()
 {
     delete ui;
 }
-void addAccount::clearScreen()
+bool addAccount::checker()
 {
-    ui->check1->clear();
-    ui->check2->clear();
-    ui->check3->clear();
-    ui->check4->clear();
-    ui->check5->clear();
-    ui->check6->clear();
-    ui->error->clear();
-
-}
-bool addAccount::checkEmpty()
-{
-    if(ui->fname->text().isEmpty())
-    {
-        ui->check1->setText("*");
-    }
-    if(ui->lname->text().isEmpty())
-    {
-        ui->check2->setText("*");
-    }
-    if(ui->email->text().isEmpty())
-    {
-        ui->check3->setText("*");
-    }
-    if(ui->username->text().isEmpty())
-    {
-        ui->check4->setText("*");
-    }
-    if(ui->password->text().isEmpty())
-    {
-        ui->check5->setText("*");
-    }
-    if(ui->confirm->text().isEmpty())
-    {
-        ui->check6->setText("*");
-    }
     if(ui->fname->text().isEmpty()||
-       ui->lname->text().isEmpty()||
-       ui->email->text().isEmpty()||
-       ui->username->text().isEmpty()||
-       ui->password->text().isEmpty()||
-       ui->confirm->text().isEmpty()||
-       ui->password->text() != ui->confirm->text())
-    {
-         ui->error->setText("FILL IN ALL WITH *");
-         return true;
-    }
-    return false;
+        ui->lname->text().isEmpty()||
+        ui->email->text().isEmpty()||
+        ui->username->text().isEmpty()||
+        ui->password->text().isEmpty()||
+        ui->confirm->text().isEmpty()||
+        ui->password->text() != ui->confirm->text())
+     {
+          ui->error->setText("FILL IN ALL WITH *");
 
-}
-bool addAccount::checkDuplicate()
-{
-    if(accounts->checkEmail(ui->email->text()))
+          if(ui->fname->text().isEmpty())
+          {
+              ui->check1->setText("*");
+          }
+          else
+          {
+              ui->check1->setText("");
+          }
+
+          if(ui->lname->text().isEmpty())
+          {
+              ui->check2->setText("*");
+          }
+          else
+          {
+              ui->check2->setText("");
+          }
+
+          if(ui->email->text().isEmpty())
+          {
+              ui->check3->setText("*");
+          }
+          else
+          {
+              if(accounts->checkEmail(ui->email->text()))
+              {
+                  ui->check3->setText("**IN USE**");
+              }
+              else if(!(newAccount->checkEmail(ui->email->text())))
+              {
+                      ui->check3->setText("**INVALID**");
+              }
+              else
+              {
+                   ui->check3->setText("");
+              }
+          }
+
+          if(ui->username->text().isEmpty())
+          {
+              ui->check4->setText("*");
+          }
+          else
+          {
+              if(accounts->checkUsername(ui->username->text()))
+              {
+                  ui->check4->setText("**IN USE**");
+              }
+              else
+              {
+                  ui->check4->setText("");
+              }
+
+          }
+
+          if(ui->password->text().isEmpty())
+          {
+              ui->check5->setText("*");
+          }
+          else
+          {
+              ui->check5->setText("");
+          }
+
+          if(ui->confirm->text().isEmpty())
+          {
+              ui->check6->setText("*");
+          }
+          else
+          {
+              ui->check6->setText("");
+          }
+
+          if (!(ui->password->text().isEmpty()) && !(ui->confirm->text().isEmpty()) && (ui->password->text() != ui->confirm->text()))
+          {
+              ui->check6->setText("**MISMATCH**");
+          }
+
+          return true;
+     }
+   else
     {
-        ui->check3->setText("**IN USE**");
+        ui->error->setText("");
+        return false;
     }
-    if(accounts->checkUsername(ui->username->text()))
-    {
-        ui->check4->setText("**IN USE**");
-    }
-    if(accounts->checkUsername(ui->username->text())||accounts->checkEmail(ui->email->text()))
-    {
-        return true;
-    }
-    return false;
+
+
 }
 void addAccount::addtoDB(account a)
 {
     QSqlQuery *qry = new QSqlQuery(db);
 
-    qry->prepare("INSERT INTO accounts"
-                  "VALUES (?, ?, ?, ?, ?, ?, ?, ?");
+    qry->prepare("INSERT INTO accounts ("
+                 "Fname,"
+                 "Lname,"
+                 "Email,"
+                 "Username,"
+                 "Password,"
+                 "Day,"
+                 "Month,"
+                 "Year)"
+                  "VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 
     qry->addBindValue(a.getFname());
     qry->addBindValue(a.getLname());
@@ -105,34 +146,12 @@ void addAccount::addtoDB(account a)
         qDebug("NO");
     }
 }
-void addAccount::finalCheck()
-{
 
-    if(checkEmpty()){}
-    qDebug("3");
-    if(checkDuplicate()){}
-    qDebug("4");
-    /*
-    if(!(ui->email->text().isEmpty()) && !(newAccount->checkEmail(ui->email->text())))
-    {
-        qDebug("5");
-        ui->check3->setText("**INVALID**");
-    }
-    qDebug("6");
-    if (!(ui->password->text().isEmpty()) && !(ui->confirm->text().isEmpty()) && (ui->password->text() != ui->confirm->text()))
-    {
-        qDebug("7");
-        ui->check6->setText("**MISMATCH**");
-    }
-    */
-}
 void addAccount::on_Save_clicked()
 {
-    clearScreen();
-    //finalCheck();
     newAccount = new account();
 
-    if(newAccount->checkEmail(ui->email->text()) && (ui->password->text() == ui->confirm->text()) && !(checkEmpty()) && !(checkDuplicate()))
+    if(!(checker()) && newAccount->checkEmail(ui->email->text()) && (ui->password->text() == ui->confirm->text()))
     {
         newAccount->setFname(ui->fname->text());
         newAccount->setLname(ui->lname->text());
@@ -140,7 +159,7 @@ void addAccount::on_Save_clicked()
         newAccount->setUsername(ui->username->text());
         newAccount->setPassword(ui->password->text());
         newAccount->setDob(ui->dob->dateTime());
-        //addtoDB(*newAccount);
+        addtoDB(*newAccount);
         close();
     }
 }

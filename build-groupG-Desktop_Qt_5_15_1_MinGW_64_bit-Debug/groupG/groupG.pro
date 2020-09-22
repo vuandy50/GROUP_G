@@ -13,18 +13,22 @@ SOURCES += \
     account.cpp \
     addaccount.cpp \
     database.cpp \
+    hikesdb.cpp \
     logindb.cpp \
     main.cpp \
     mainwindow.cpp \
-    menu.cpp
+    menu.cpp \
+    sql.cpp
 
 HEADERS += \
     account.h \
     addaccount.h \
     database.h \
+    hikesdb.h \
     logindb.h \
     mainwindow.h \
-    menu.h
+    menu.h \
+    sql.h
 
 FORMS += \
     addaccount.ui \
@@ -35,3 +39,11 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+DISTFILES += \
+    account.csv \
+    groupG.pro.user \
+    groupG.pro.user.5a829f8 \
+    groupG.pro.user.7346f64 \
+    help.sqlite \
+    hikes.csv

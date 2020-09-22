@@ -1,6 +1,14 @@
 #include "hikesdb.h"
 
-void hikesdb::populate() {
+void hikesdb::populate()
+{
+    QString fname;
+    QString lname;
+    QString email;
+    QString username;
+    QString password;
+    QDate dob;
+    //location *newLocation;
     QSqlQuery *qry = new QSqlQuery(db);
 
     qry->prepare("SELECT * FROM accounts");
@@ -15,9 +23,8 @@ void hikesdb::populate() {
             username = qry->value(3).toString();
             password = qry->value(4).toString();
             dob = QDate(qry->value(7).toInt(),qry->value(6).toInt(),qry->value(5).toInt());
-            newAccount = new account(fname,lname,email,username,password,dob);
-
-            data.push_back(*newAccount);
+            //newLocation = new location(fname,lname,email,username,password,dob);
+            //data.push_back(*newLocation);
         }
     }
     else
