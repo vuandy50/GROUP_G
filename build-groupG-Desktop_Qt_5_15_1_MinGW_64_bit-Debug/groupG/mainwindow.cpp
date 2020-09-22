@@ -47,8 +47,11 @@ void MainWindow::on_login_clicked()
         //Display error message to User
         ui->emesg->setText("Invaild username and/or password");
     }
-
-
+    // Michael Added; switch to menu.ui, if username and password are correct.
+    else {
+        menu = new class menu();
+        menu->show();
+    }
 }
 
 void MainWindow::on_pushButton_clicked()
