@@ -15,13 +15,9 @@ addAccount::~addAccount()
 }
 bool addAccount::checker()
 {
-    if(ui->fname->text().isEmpty()||
-        ui->lname->text().isEmpty()||
-        ui->email->text().isEmpty()||
-        ui->username->text().isEmpty()||
-        ui->password->text().isEmpty()||
-        ui->confirm->text().isEmpty()||
-        ui->password->text() != ui->confirm->text())
+    if(ui->fname->text().isEmpty()|| ui->lname->text().isEmpty()|| ui->email->text().isEmpty()||
+       ui->username->text().isEmpty()||ui->password->text().isEmpty()||ui->confirm->text().isEmpty()||
+       ui->password->text() != ui->confirm->text())
      {
           ui->error->setText("FILL IN ALL WITH *");
 
@@ -62,7 +58,6 @@ bool addAccount::checker()
                    ui->check3->setText("");
               }
           }
-
           if(ui->username->text().isEmpty())
           {
               ui->check4->setText("*");
@@ -79,7 +74,6 @@ bool addAccount::checker()
               }
 
           }
-
           if(ui->password->text().isEmpty())
           {
               ui->check5->setText("*");
@@ -110,8 +104,6 @@ bool addAccount::checker()
         ui->error->setText("");
         return false;
     }
-
-
 }
 void addAccount::addtoDB(account a)
 {
