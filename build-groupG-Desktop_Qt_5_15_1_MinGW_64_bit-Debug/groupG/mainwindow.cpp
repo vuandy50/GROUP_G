@@ -22,7 +22,6 @@ MainWindow::~MainWindow()
 void MainWindow::on_login_clicked()
 {
     login->loadAccounts();
-    ui->emesg->setText("");         //clear error message
     int i = 0;
     while(i < login->getSize())
     {
@@ -45,7 +44,8 @@ void MainWindow::on_login_clicked()
         ui->password->clear();      //clear password
 
         //Display error message to User
-        ui->emesg->setText("Invaild username and/or password");
+        ui->change->setText("Forgot Username/Password?");
+        ui->change->setEnabled(TRUE);
     }
     // Michael Added; switch to menu.ui, if username and password are correct.
     else {
@@ -59,4 +59,11 @@ void MainWindow::on_pushButton_clicked()
 
     add = new addAccount();
     add->show();
+}
+
+
+void MainWindow::on_change_clicked()
+{
+    forget = new forgot_UandP();
+    forget->show();
 }

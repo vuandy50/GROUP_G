@@ -13,6 +13,7 @@ SOURCES += \
     account.cpp \
     addaccount.cpp \
     database.cpp \
+    forgot_uandp.cpp \
     hikesdb.cpp \
     logindb.cpp \
     main.cpp \
@@ -24,6 +25,7 @@ HEADERS += \
     account.h \
     addaccount.h \
     database.h \
+    forgot_uandp.h \
     hikesdb.h \
     logindb.h \
     mainwindow.h \
@@ -32,6 +34,7 @@ HEADERS += \
 
 FORMS += \
     addaccount.ui \
+    forgot_uandp.ui \
     mainwindow.ui \
     menu.ui
 

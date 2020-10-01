@@ -7,6 +7,7 @@
 #include "addaccount.h"
 #include "ui_addaccount.h"
 #include "logindb.h"
+#include "forgot_uandp.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -25,11 +26,14 @@ private slots:
 
     void on_pushButton_clicked();
 
+    void on_change_clicked();
+
 private:
     Ui::MainWindow *ui;
     DB myDB;
     menu *menu;
     addAccount *add;
+    forgot_UandP *forget;
     loginDB *login;
 };
 #endif // MAINWINDOW_H
