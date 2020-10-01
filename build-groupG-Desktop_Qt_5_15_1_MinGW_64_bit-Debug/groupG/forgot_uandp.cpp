@@ -103,7 +103,17 @@ void forgot_UandP::on_save_clicked()
         {
             if(ui->password->text() == ui->confirm_2->text())
             {
-                //Save stuff
+                QSqlQuery *qry = new QSqlQuery(db);
+
+                qry->prepare("UPDATE accounts SET Password = '"+ui->password->text()+"' WHERE Email = '"+recoverAcc->getEmail()+"';");
+                if(qry->exec())
+                {
+                    qDebug("WORKS");
+                }
+                else
+                {
+                    qDebug("NOOOOO");
+                }
                 close();
             }
             else
@@ -125,10 +135,25 @@ void forgot_UandP::on_save_clicked()
             }
             if(i == getAccounts->getSize())
             {
-                //Save Stuff
+                QSqlQuery *qry = new QSqlQuery(db);
+
+                qry->prepare("UPDATE accounts SET Username = '"+ui->username->text()+"', Password = '"+ui->password->text()+"' WHERE Email = '"+recoverAcc->getEmail()+"';");
+                if(qry->exec())
+                {
+                    qDebug("WORKS");
+                }
+                else
+                {
+                    qDebug("NOOOOO");
+                }
                 close();
             }
         }
     }
 
+}
+
+void forgot_UandP::on_cancel_clicked()
+{
+    close();
 }

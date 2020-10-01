@@ -22,6 +22,8 @@ private slots:
     void on_confirm_clicked();
     void on_save_clicked();
 
+    void on_cancel_clicked();
+
 private:
     Ui::forgot_UandP *ui;
     account *recoverAcc;
