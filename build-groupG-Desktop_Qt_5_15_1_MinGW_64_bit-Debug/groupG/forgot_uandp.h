@@ -15,9 +15,12 @@ class forgot_UandP : public QDialog
 public:
     explicit forgot_UandP(QWidget *parent = nullptr);
     ~forgot_UandP();
+    void switchMenu(account *acc);
+    bool checker();
 
 private slots:
     void on_confirm_clicked();
+    void on_save_clicked();
 
 private:
     Ui::forgot_UandP *ui;
