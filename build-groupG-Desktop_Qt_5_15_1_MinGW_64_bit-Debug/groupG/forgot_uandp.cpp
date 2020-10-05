@@ -137,7 +137,14 @@ void forgot_UandP::on_save_clicked()
             {
                 QSqlQuery *qry = new QSqlQuery(db);
 
-                qry->prepare("UPDATE accounts SET Username = '"+ui->username->text()+"', Password = '"+ui->password->text()+"' WHERE Email = '"+recoverAcc->getEmail()+"';");
+                //qry->prepare("UPDATE accounts SET Username = '"+ui->username->text()+"', Password = '"+ui->password->text()+"' WHERE Email = '"+recoverAcc->getEmail()+"';");
+
+                // Michael here; bindValues are more secure than parsing a string
+                qry->prepare("UPDATE accounts SET Username =:username, Password =:password WHERE Email =:email");
+                qry->bindValue(":username", ui->username->text());
+                qry->bindValue(":password", ui->password->text());
+                qry->bindValue(":email", recoverAcc->getEmail());
+
                 if(qry->exec())
                 {
                     qDebug("WORKS");

@@ -20,7 +20,7 @@
       <x>20</x>
       <y>20</y>
       <width>111</width>
-      <height>31</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="font">
@@ -121,6 +121,19 @@ selection-background-color:#282828
     </property>
     <property name="text">
      <string>Sort By:</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="buttonAccount">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>510</y>
+      <width>121</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Account Settings</string>
     </property>
    </widget>
   </widget>

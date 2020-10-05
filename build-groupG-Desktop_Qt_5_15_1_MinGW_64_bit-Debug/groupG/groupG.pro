@@ -11,10 +11,11 @@ CONFIG += c++11
 
 SOURCES += \
     account.cpp \
+    accountSettings.cpp \
     addaccount.cpp \
     database.cpp \
+    deleteAccount.cpp \
     forgot_uandp.cpp \
-    hikesdb.cpp \
     logindb.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -23,17 +24,20 @@ SOURCES += \
 
 HEADERS += \
     account.h \
+    accountSettings.h \
     addaccount.h \
     database.h \
+    deleteAccount.h \
     forgot_uandp.h \
-    hikesdb.h \
     logindb.h \
     mainwindow.h \
     menu.h \
     sql.h
 
 FORMS += \
+    accountSettings.ui \
     addaccount.ui \
+    deleteAccount.ui \
     forgot_uandp.ui \
     mainwindow.ui \
     menu.ui
