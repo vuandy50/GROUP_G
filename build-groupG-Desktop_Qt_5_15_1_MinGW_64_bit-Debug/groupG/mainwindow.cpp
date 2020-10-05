@@ -33,7 +33,11 @@ void MainWindow::on_login_clicked()
         {
             close();                    // close login screen
             menu = new class menu();    // create new menu
+            menu->setAccount(login->getVector()[i]);
             menu->show();               // show new menu
+
+            // terminates early.
+            close();
         }
         i++;
     }
@@ -46,11 +50,6 @@ void MainWindow::on_login_clicked()
         //Display error message to User
         ui->change->setText("Forgot Username/Password?");
         ui->change->setEnabled(TRUE);
-    }
-    // Michael Added; switch to menu.ui, if username and password are correct.
-    else {
-        menu = new class menu();
-        menu->show();
     }
 }
 

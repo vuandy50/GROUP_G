@@ -15,6 +15,18 @@ menu::~menu()
     delete ui;
 }
 
+/*
+ * 10/4/2020 - Michael Moon
+ * Adding user-based funcitonality to menu; specifically for saved hikes
+ * and later, to edit and delete account when logged in.
+ *
+ */
+void menu::setAccount(account newItem) {
+    newAccount = newItem;
+    setting = new accountSettings();
+    setting->setAccount(newAccount);
+}
+
 /* 9/21/2020 - Michael Moon
  * Populates the array list_ with values retrieved from database
  * help.sqlite;hikes. Located in
@@ -159,7 +171,21 @@ void menu::sort(bool &toSwap, char qual) {
         ++rowCount;
     }
 }
+/*
+void menu::renewAccount() {
+    QSqlQuery *qry = new QSqlQuery(db);
 
+    qry->first();
+    qry->prepare("SELECT * FROM accounts WHERE Email =:email");
+    qry->bindValue(":email", newAccount.getEmail());
+
+    newAccount.setFname(qry->value(0).toString());
+    newAccount.setLname(qry->value(1).toString());
+    newAccount.setUsername(qry->value(4).toString());
+    newAccount.setPassword(qry->value(5).toString());
+    newAccount.setDob(qry->value(8).toInt(), qry->value(7).toInt(), qry->value(6).toInt());
+}
+*/
 /*
  * 9/21/2020 - Michael Moon
  * The following:
@@ -194,4 +220,11 @@ void menu::on_buttonDifficulty_clicked()
     orderDistance = true;
 
     sort(orderDifficulty, '2');
+}
+
+void menu::on_buttonAccount_clicked()
+{
+    setting->show();
+    setting->setWindowState(Qt::WindowState::WindowActive);
+    //renewAccount();
 }

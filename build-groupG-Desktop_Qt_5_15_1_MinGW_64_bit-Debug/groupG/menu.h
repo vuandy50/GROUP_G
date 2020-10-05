@@ -6,6 +6,8 @@
 #include <QtGui>
 
 #include "database.h"
+#include "account.h"
+#include "accountSettings.h"
 
 namespace Ui {
 class menu;
@@ -79,14 +81,21 @@ class menu : public QMainWindow
 public:
     explicit menu(QWidget *parent = nullptr);
     ~menu();
+
+    void setAccount(account);
 private slots:
     void on_buttonName_clicked();
     void on_buttonDistance_clicked();
     void on_buttonDifficulty_clicked();
 
+    void on_buttonAccount_clicked();
+
 private:
     Ui::menu *ui;
     QSqlDatabase db;
+    account newAccount;
+
+    accountSettings *setting;
 
     QVector<location> list_;
 
@@ -102,6 +111,9 @@ private:
     // else, descending order. the char determines which variable to switch by.
     // Also prints the contents to a list area.
     void sort(bool&, char);
+
+    // helper function; reads in from database; used after account settings.
+    void renewAccount();
 };
 
 #endif // MENU_H

@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Recover Account</string>
   </property>
   <widget class="QLabel" name="label_2">
    <property name="geometry">
@@ -170,7 +170,7 @@
    </property>
    <property name="geometry">
     <rect>
-     <x>80</x>
+     <x>90</x>
      <y>70</y>
      <width>141</width>
      <height>20</height>
@@ -199,7 +199,7 @@
    </property>
    <property name="geometry">
     <rect>
-     <x>80</x>
+     <x>90</x>
      <y>110</y>
      <width>141</width>
      <height>20</height>
@@ -257,7 +257,7 @@
    </property>
    <property name="geometry">
     <rect>
-     <x>80</x>
+     <x>90</x>
      <y>150</y>
      <width>141</width>
      <height>20</height>
