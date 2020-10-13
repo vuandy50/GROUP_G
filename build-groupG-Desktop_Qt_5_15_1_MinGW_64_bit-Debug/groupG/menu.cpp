@@ -25,6 +25,8 @@ void menu::setAccount(account newItem) {
     newAccount = newItem;
     setting = new accountSettings();
     setting->setAccount(newAccount);
+
+    single = new singleView();
 }
 
 /* 9/21/2020 - Michael Moon
@@ -36,12 +38,12 @@ void menu::setAccount(account newItem) {
 */
 void menu::populate() {
     QSqlQuery *qry = new QSqlQuery(db);
-
+    /*
     QString name;
     QString park;
     int open;
     int close;
-    int distance;
+    double distance;
     int difficulty;
     QString address;
     QString city;
@@ -50,6 +52,7 @@ void menu::populate() {
     QString walkOrBike;
     QString trailType;
     location newLocation;
+    */
 
     // Readies the SQL reader.
     qry->prepare("SELECT * FROM hikes ORDER BY Name ASC");
@@ -60,11 +63,12 @@ void menu::populate() {
         // Populating vector.
         while(qry->next())
         {
+            /*
             name = qry->value(0).toString();
             park = qry->value(1).toString();
             open = qry->value(2).toInt();
             close = qry->value(3).toInt();
-            distance = qry->value(4).toInt();
+            distance = qry->value(4).toDouble();
             difficulty = qry->value(5).toInt();
             address = qry->value(6).toString();
             city = qry->value(7).toString();
@@ -77,6 +81,7 @@ void menu::populate() {
             newLocation.setAll(name, park, open, close, distance, difficulty,
                                        address, city, zipcode, phone, walkOrBike, trailType);
             list_.push_back(newLocation);
+            */
         }
         // Sort and print.
         sort(orderName, 0);
@@ -160,7 +165,7 @@ void menu::sort(bool &toSwap, char qual) {
 
         name->setText(qry.value(0).toString());
         park->setText(qry.value(1).toString());
-        distance->setText(QStringLiteral("%1").arg(qry.value(2).toInt()));
+        distance->setText(QString::number(qry.value(2).toDouble(), 'f', 3));
         difficulty->setText(QStringLiteral("%1").arg(qry.value(3).toInt()));
 
         ui->table->setItem(rowCount, 0, name);
@@ -227,4 +232,13 @@ void menu::on_buttonAccount_clicked()
     setting->show();
     setting->setWindowState(Qt::WindowState::WindowActive);
     //renewAccount();
+}
+
+void menu::on_table_cellClicked(int row, int column)
+{
+    QString currName = ui->table->item(row, 0)->text();
+    qDebug() << currName;
+    single->setName(currName);
+    single->show();
+    single->setWindowState(Qt::WindowState::WindowActive);
 }
