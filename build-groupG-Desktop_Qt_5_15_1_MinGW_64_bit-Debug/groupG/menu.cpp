@@ -168,6 +168,11 @@ void menu::sort(bool &toSwap, char qual) {
         distance->setText(QString::number(qry.value(2).toDouble(), 'f', 3));
         difficulty->setText(QStringLiteral("%1").arg(qry.value(3).toInt()));
 
+        name->setFlags(name->flags() ^ Qt::ItemIsEditable);
+        park->setFlags(park->flags() ^ Qt::ItemIsEditable);
+        distance->setFlags(distance->flags() ^ Qt::ItemIsEditable);
+        difficulty->setFlags(difficulty->flags() ^ Qt::ItemIsEditable);
+
         ui->table->setItem(rowCount, 0, name);
         ui->table->setItem(rowCount, 1, park);
         ui->table->setItem(rowCount, 2, distance);
@@ -237,7 +242,6 @@ void menu::on_buttonAccount_clicked()
 void menu::on_table_cellClicked(int row, int column)
 {
     QString currName = ui->table->item(row, 0)->text();
-    qDebug() << currName;
     single->setName(currName);
     single->show();
     single->setWindowState(Qt::WindowState::WindowActive);
