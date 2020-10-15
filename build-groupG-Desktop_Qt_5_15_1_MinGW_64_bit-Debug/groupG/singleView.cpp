@@ -16,6 +16,7 @@ singleView::~singleView()
 
 void singleView::setName(QString n) {
     name = n;
+    this->setWindowTitle(name);
     displayAll();
 }
 
@@ -26,9 +27,7 @@ void singleView::displayAll() {
     qry->bindValue(":name", name);
 
     // If works, continue, else, see what went wrong
-    if (qry->exec()) {
-        qDebug("YES");
-    }
+    if (qry->exec()) {}
     else {
         qDebug() << qry->lastError().text();
     }
@@ -52,10 +51,19 @@ void singleView::displayAll() {
     ui->park->setText(qry->value(1).toString());
     ui->phone->setText(qry->value(9).toString());
 
-    ui->pic->setPixmap(QPixmap(QDir::homePath() + "resources\\" + qry->value(14).toString()));
 
     ui->trail->setText(qry->value(11).toString());
     ui->wob->setText(qry->value(10).toString());
+
+    QPixmap pict;
+    ui->pic->setAlignment(Qt::AlignCenter);
+    qDebug() << QDir::currentPath();
+    if(!pict.load(QDir::currentPath() + "/resources/" + qry->value(14).toString())){
+        qDebug() << ("Whoops.");
+    }
+    pict = pict.scaled(ui->pic->size(),Qt::KeepAspectRatio);
+
+    ui->pic->setPixmap(pict);
 }
 
 void singleView::on_cancel_clicked()
