@@ -108,7 +108,6 @@ bool addAccount::checker()
 void addAccount::addtoDB(account a)
 {
     QSqlQuery *qry = new QSqlQuery(db);
-
     qry->prepare("INSERT INTO accounts ("
                  "Fname,"
                  "Lname,"

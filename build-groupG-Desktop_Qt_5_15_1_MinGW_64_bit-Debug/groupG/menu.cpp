@@ -7,6 +7,7 @@ menu::menu(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->refreshButton->hide();
+    ui->savedLabel->hide();
 
     populate();
 }
@@ -259,6 +260,17 @@ void menu::displaySaved(bool &toSwap, char qual) {
  *
  * All reset row count, other qualifiers, and sort the list again.
 */
+
+/*
+ * 10/15/2020 - Michael Moon
+ * The following:
+ * on_buttonName_clicked
+ * on_buttonDistance_clicked
+ * on_buttonDifficulty_clicked
+ * on_savedHikesButton_clicked
+ *
+ * Were modified to take in the case if Display Saved Hikes occurs.
+*/
 void menu::on_buttonName_clicked()
 {
     if(toggleSave) {
@@ -314,7 +326,6 @@ void menu::on_buttonAccount_clicked()
 {
     setting->show();
     setting->setWindowState(Qt::WindowState::WindowActive);
-    //renewAccount();
 }
 
 void menu::on_table_cellClicked(int row, int column)
@@ -331,6 +342,7 @@ void menu::on_savedHikesButton_clicked()
     if(toggleSave) {
         ui->savedHikesButton->setText("Go Back");
         ui->table->setRowCount(0);
+        ui->savedLabel->show();
 
         orderName = true;
         orderDistance = true;
@@ -340,6 +352,7 @@ void menu::on_savedHikesButton_clicked()
     } else {
         ui->savedHikesButton->setText("Saved Hikes");
         ui->table->setRowCount(0);
+        ui->savedLabel->hide();
 
         orderName = true;
         orderDistance = true;

@@ -15,7 +15,7 @@ singleView::~singleView()
     delete ui;
 }
 
-
+// Extended initializer.
 void singleView::setNameEmail(QString n, QString e) {
     name = n;
     email = e;
@@ -69,19 +69,6 @@ void singleView::displayAll() {
 
     ui->pic->setPixmap(pict);
 
-
-    // Set default check state by checking if saved_hikes.useremail == currEmail, and saved_hikes.
-    /*
-     *  SELECT hikes.Name, hikes.Park, hikes.Distance, hikes.Difficulty, accounts.Email
-        FROM hikes
-            INNER JOIN saved_hikes
-            ON hikes.Name = saved_hikes.Trailname
-            AND saved_hikes.Useremail = "temp@gmail.com"
-        LEFT OUTER JOIN accounts
-            ON saved_hikes.Useremail = accounts.Email
-
-       useful for displaying all hikes too.
-    */
     checkBoxInit();
 }
 
@@ -136,13 +123,14 @@ void singleView::on_saveCheckBox_stateChanged(int arg1) {
     }
 }
 
+// When window closes, update database, as opposed to updating every time the checkbox is clicked.
 void singleView::closeEvent(QCloseEvent *event)
 {
     updateDB();
     event->accept();
 }
 
-// One kink; when deleting from Saved Hikes, list does not update because the update list in menu.cpp is triggered through a button.
+// One kink; when deleting from Saved Hikes, list does not update because the update list is in menu.cpp AND is triggered through a button.
 void singleView::updateDB() {
     if(postCheck) {
         QSqlQuery *qry = new QSqlQuery(db);
