@@ -31,6 +31,7 @@ void accountSettings::setDefault() {
     ui->lname->setPlaceholderText(currAccount.getLname());
     ui->username->setPlaceholderText(currAccount.getUsername());
     ui->dob->setDate(currAccount.getDob());
+    ui->check6->setText(" ");
 }
 
 void accountSettings::resetUI() {
@@ -52,7 +53,6 @@ bool accountSettings::checker() {
      } else if(ui->password->text().isEmpty()) {
         ui->check6->setText("**EMPTY**");
     } else {
-        ui->error->setText("");
         flag = false;
     }
 
@@ -75,9 +75,7 @@ void accountSettings::updateDB() {
 
 
     // If works, continue, else, see what went wrong
-    if (qry->exec()) {
-        qDebug("YES");
-    }
+    if (qry->exec()) {}
     else {
         qDebug() << qry->lastError().text();
     }

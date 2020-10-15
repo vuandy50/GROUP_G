@@ -8,7 +8,7 @@
 #include "database.h"
 #include "account.h"
 #include "accountSettings.h"
-
+#include "singleview.h"
 namespace Ui {
 class menu;
 }
@@ -29,7 +29,7 @@ struct location{
     QString park_;
     int open_;
     int close_;
-    int distance_;
+    double distance_;
     int difficulty_;
     QString address_;
     QString city_;
@@ -45,14 +45,14 @@ struct location{
 
     //  Overloaded constructor.
     location(QString name, QString park, int open, int close,
-             int distance, int difficulty, QString address, QString city, int zipcode,
+             double distance, int difficulty, QString address, QString city, int zipcode,
              QString phone, QString walkOrBike, QString trailType) : name_(name), park_(park),
         open_(open), close_(close), distance_(distance), difficulty_(difficulty), address_(address),
         city_(city), zipcode_(zipcode), phone_(phone), walkOrBike_(walkOrBike), trailType_(trailType) {}
 
     // Massive setter.
     void setAll(QString name, QString park, int open, int close,
-                int distance, int difficulty, QString address, QString city, int zipcode,
+                double distance, int difficulty, QString address, QString city, int zipcode,
                 QString phone, QString walkOrBike, QString trailType) {
         name_ = name;
         park_ = park;
@@ -90,19 +90,25 @@ private slots:
 
     void on_buttonAccount_clicked();
 
+    void on_table_cellClicked(int row, int column);
+
+    void on_savedHikesButton_clicked();
+
+    void on_refreshButton_clicked();
+
 private:
     Ui::menu *ui;
     QSqlDatabase db;
     account newAccount;
 
     accountSettings *setting;
-
+    singleView *single;
     QVector<location> list_;
 
     bool orderName;
     bool orderDistance;
     bool orderDifficulty;
-
+    bool toggleSave;
     // One time read in from database help.sqlite;hikes
     // Note, database has been opened by the previous processes by Andy.
     void populate();
@@ -114,6 +120,8 @@ private:
 
     // helper function; reads in from database; used after account settings.
     void renewAccount();
+
+    void displaySaved(bool&, char);
 };
 
 #endif // MENU_H

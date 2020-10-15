@@ -20,6 +20,7 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     menu.cpp \
+    singleView.cpp \
     sql.cpp
 
 HEADERS += \
@@ -32,6 +33,7 @@ HEADERS += \
     logindb.h \
     mainwindow.h \
     menu.h \
+    singleView.h \
     sql.h
 
 FORMS += \
@@ -40,7 +42,8 @@ FORMS += \
     deleteAccount.ui \
     forgot_uandp.ui \
     mainwindow.ui \
-    menu.ui
+    menu.ui \
+    singleview.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
