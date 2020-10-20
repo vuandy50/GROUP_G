@@ -8,6 +8,7 @@
 #include "ui_addaccount.h"
 #include "logindb.h"
 #include "forgot_uandp.h"
+#include "adminwindow.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -35,5 +36,6 @@ private:
     addAccount *add;
     forgot_UandP *forget;
     loginDB *login;
+    adminWindow *admin;
 };
 #endif // MAINWINDOW_H

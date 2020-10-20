@@ -23,23 +23,32 @@ void MainWindow::on_login_clicked()
 {
     login->loadAccounts();
     int i = 0;
-    while(i < login->getSize())
+    if (ui->username->text() == "admin" && ui->password->text() == "admin")
     {
-        QString username = login->getVector()[i].getUsername();
-        QString password =login->getVector()[i].getPassword();
-
-        //CHECK VALID USERNAME AND PASSWORD
-        if(ui->username->text() == username && ui->password->text() == password)
-        {
-            close();                    // close login screen
-            menu = new class menu();    // create new menu
-            menu->setAccount(login->getVector()[i]);
-            menu->show();               // show new menu
-
-            // terminates early.
             close();
+            admin = new adminWindow();
+            admin->show();
+    }
+    else
+    {
+        while(i < login->getSize())
+        {
+            QString username = login->getVector()[i].getUsername();
+            QString password =login->getVector()[i].getPassword();
+
+            //CHECK VALID USERNAME AND PASSWORD
+            if(ui->username->text() == username && ui->password->text() == password)
+            {
+                close();                    // close login screen
+                menu = new class menu();    // create new menu
+                menu->setAccount(login->getVector()[i]);
+                menu->show();               // show new menu
+
+                // terminates early.
+                close();
+            }
+            i++;
         }
-        i++;
     }
     //INVALID USERNAME AND PASSWORD
     if (i == login->getSize())

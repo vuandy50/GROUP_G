@@ -13,6 +13,7 @@ SOURCES += \
     account.cpp \
     accountSettings.cpp \
     addaccount.cpp \
+    adminwindow.cpp \
     database.cpp \
     deleteAccount.cpp \
     forgot_uandp.cpp \
@@ -27,6 +28,7 @@ HEADERS += \
     account.h \
     accountSettings.h \
     addaccount.h \
+    adminwindow.h \
     database.h \
     deleteAccount.h \
     forgot_uandp.h \
@@ -39,6 +41,7 @@ HEADERS += \
 FORMS += \
     accountSettings.ui \
     addaccount.ui \
+    adminwindow.ui \
     deleteAccount.ui \
     forgot_uandp.ui \
     mainwindow.ui \
