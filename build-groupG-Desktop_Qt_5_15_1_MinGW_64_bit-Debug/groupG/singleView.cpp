@@ -6,8 +6,8 @@ singleView::singleView(QWidget *parent) :
     ui(new Ui::singleView)
 {
     ui->setupUi(this);
-    bool preCheck = false;
-    bool postCheck = false;
+    preCheck = false;
+    postCheck = false;
 }
 
 singleView::~singleView()

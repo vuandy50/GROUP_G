@@ -6,6 +6,7 @@ adminWindow::adminWindow(QWidget *parent) :
     ui(new Ui::adminWindow)
 {
     ui->setupUi(this);
+    primaryKey = "-1";
     setTable();
 }
 
@@ -26,6 +27,7 @@ void adminWindow:: setTable()
 }
 void adminWindow::on_search_clicked()
 {
+    ui->error->setText("");
     QSqlQuery *qry = new QSqlQuery(db);
     QSqlQueryModel *modal = new QSqlQueryModel();
 
@@ -48,5 +50,98 @@ void adminWindow::on_search_clicked()
 
 void adminWindow::on_refresh_clicked()
 {
+    ui->error->setText("");
     setTable();
+}
+void adminWindow::on_table_clicked(const QModelIndex &index)
+{
+    primaryKey = ui->table->model()->data(index.siblingAtColumn(0),0).toString();
+
+}
+bool adminWindow::check()
+{
+    if(primaryKey == "-1")
+    {
+        return false;
+    }
+    else
+    {
+        return true;
+    }
+}
+void adminWindow::on_delete_2_clicked()
+{
+    if(check())
+    {
+        ui->error->setText("");
+        delHike = new deleteHike();
+        delHike->exec();
+
+        if(delHike->getDelHike())
+        {
+            /*
+            QSqlQuery *qry = new QSqlQuery(db);
+            qry->prepare("DELETE FROM hikes WHERE Name = '"+primaryKey+"';");
+            qry->exec();
+            */
+            ui->error->setText("Delete SUCESSFUL! Please Refresh Table");
+        }
+        else
+        {
+            primaryKey = "-1";
+            ui->error->setText("Delete UNSUCESSFUL!");
+        }
+
+    }
+    else
+    {
+        ui->error->setText("Please Select a Hike Before Deleting!");
+    }
+
+}
+
+void adminWindow::on_edit_clicked()
+{
+    if(check())
+    {
+        ui->error->setText("");
+        editHike = new editHikes(nullptr,primaryKey);
+        editHike->exec();
+
+        if(editHike->is_there_an_edit())
+        {
+            trailEdit = editHike->editTrail();
+
+            QSqlQuery *qry = new QSqlQuery(db);
+            qry->prepare("UPDATE hikes SET Name = '"+trailEdit.getName()+"', "
+                                        "Park = '"+trailEdit.getPark()+"', "
+                                        "OpenTime = '"+trailEdit.getOpen()+"', "
+                                        "CloseTime = '"+trailEdit.getClose()+"', "
+                                        "Distance = '"+trailEdit.getDistance()+"', "
+                                        "Difficulty = '"+trailEdit.getDiff()+"', "
+                                        "Address = '"+trailEdit.getAddress()+"', "
+                                        "City = '"+trailEdit.getCity()+"', "
+                                        "[Zip Code] = '"+trailEdit.getZip()+"', "
+                                        "PhoneNum = '"+trailEdit.getPhone()+"', "
+                                        "[Walking/Biking] = '"+trailEdit.getWB()+"' "
+                                        "Type = '"+trailEdit.getType()+"' "
+                                        "WHERE Name = '"+primaryKey+"';");
+
+            qry->exec();
+
+
+            ui->error->setText("Edit SUCESSFUL! Please Refresh Table");
+        }
+        else
+        {
+            primaryKey = "-1";
+            ui->error->setText("Edit UNSUCESSFUL!");
+        }
+
+    }
+    else
+    {
+        ui->error->setText("Please Select a Hike Before Editing!");
+    }
+
 }

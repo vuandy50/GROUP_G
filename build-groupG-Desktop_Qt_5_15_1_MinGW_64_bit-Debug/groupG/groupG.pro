@@ -16,7 +16,10 @@ SOURCES += \
     adminwindow.cpp \
     database.cpp \
     deleteAccount.cpp \
+    deletehike.cpp \
+    edithikes.cpp \
     forgot_uandp.cpp \
+    hike.cpp \
     logindb.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -31,7 +34,10 @@ HEADERS += \
     adminwindow.h \
     database.h \
     deleteAccount.h \
+    deletehike.h \
+    edithikes.h \
     forgot_uandp.h \
+    hike.h \
     logindb.h \
     mainwindow.h \
     menu.h \
@@ -43,6 +49,8 @@ FORMS += \
     addaccount.ui \
     adminwindow.ui \
     deleteAccount.ui \
+    deletehike.ui \
+    edithikes.ui \
     forgot_uandp.ui \
     mainwindow.ui \
     menu.ui \

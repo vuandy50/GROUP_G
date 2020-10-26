@@ -37,60 +37,36 @@ void menu::setAccount(account newItem) {
  *
  *
 */
-void menu::populate() {
-    QSqlQuery *qry = new QSqlQuery(db);
+void menu::populate()
+{
     /*
-    QString name;
-    QString park;
-    int open;
-    int close;
-    double distance;
-    int difficulty;
-    QString address;
-    QString city;
-    int zipcode;
-    QString phone;
-    QString walkOrBike;
-    QString trailType;
-    location newLocation;
-    */
+    QSqlQuery *qry = new QSqlQuery(db);
 
-    // Readies the SQL reader.
     qry->prepare("SELECT * FROM hikes ORDER BY Name ASC");
 
     // exe if the prepared sql statement is valid.
     if(qry->exec())
     {
-        // Populating vector.
+
         while(qry->next())
         {
-            /*
-            name = qry->value(0).toString();
-            park = qry->value(1).toString();
-            open = qry->value(2).toInt();
-            close = qry->value(3).toInt();
-            distance = qry->value(4).toDouble();
-            difficulty = qry->value(5).toInt();
-            address = qry->value(6).toString();
-            city = qry->value(7).toString();
-            zipcode = qry->value(8).toInt();
-            phone = qry->value(9).toString();
-            walkOrBike = qry->value(10).toString();
-            trailType = qry->value(11).toString();
 
-            // Much cheaper method of populating the vector.
-            newLocation.setAll(name, park, open, close, distance, difficulty,
-                                       address, city, zipcode, phone, walkOrBike, trailType);
-            list_.push_back(newLocation);
-            */
         }
-        // Sort and print.
         sort(orderName, 0);
     }
     else
     {
         qDebug() << ("Error: qry failed.");
     }
+    */
+    QSqlQuery *qry = new QSqlQuery(db);
+    QSqlQueryModel *modal = new QSqlQueryModel();
+
+    qry->prepare("SELECT Name, Park, Distance, Difficulty FROM hikes ORDER BY Name ASC");
+
+    qry->exec();
+    modal->setQuery(*qry);
+    ui->table->setModel(modal);
 }
 
 /* 9/21/2020 - Michael Moon
@@ -108,22 +84,26 @@ void menu::populate() {
 */
 void menu::sort(bool &toSwap, char qual) {
 
-    QSqlQuery qry(db);
+    QSqlQuery *qry = new QSqlQuery(db);
     QString queryName = "SELECT Name, Park, Distance, Difficulty FROM hikes ORDER BY Name ASC";
+    QSqlQueryModel *modal = new QSqlQueryModel();
 
     //=======================
     // STAGE 1
     // ======================
 
     // If the switch is true, ascending order, else, false.
-    if(toSwap) {
+    if(toSwap)
+    {
         toSwap = false;
         if(qual == '1') {
             queryName = "SELECT Name, Park, Distance, Difficulty FROM hikes ORDER BY Distance ASC";
         } else if(qual == '2') {
             queryName = "SELECT Name, Park, Distance, Difficulty FROM hikes ORDER BY Difficulty ASC";
         }
-    } else {
+    }
+    else
+    {
         toSwap = true;
         if(qual == '0') {
             queryName = "SELECT Name, Park, Distance, Difficulty FROM hikes ORDER BY Name DESC";
@@ -140,6 +120,7 @@ void menu::sort(bool &toSwap, char qual) {
 
 
     // Prints out; note, does NOT record information.
+ /*
     if(!qry.exec(queryName)) {
         qDebug() << "Query Failed.";
         return;
@@ -150,7 +131,6 @@ void menu::sort(bool &toSwap, char qual) {
 
     labels << "Name" << "Park" << "Distance" << "Difficulty";
     ui->table->setHorizontalHeaderLabels(labels);
-
 
     //=======================
     // STAGE 3
@@ -181,26 +161,35 @@ void menu::sort(bool &toSwap, char qual) {
 
         ++rowCount;
     }
+    */
+    qry->prepare(queryName);
+
+    qry->exec();
+    modal->setQuery(*qry);
+    ui->table->setModel(modal);
 }
 
 void menu::displaySaved(bool &toSwap, char qual) {
+
     QSqlQuery *qry = new QSqlQuery(db);
-    QString queryName = "ORDER BY Name ASC";
+    QSqlQueryModel *modal = new QSqlQueryModel();
+    QString queryName = "ORDER BY Name ASC;";
+
     if(toSwap) {
         toSwap = false;
         if(qual == '1') {
-            queryName = "ORDER BY Distance ASC";
+            queryName = "ORDER BY Distance ASC;";
         } else if(qual == '2') {
-            queryName = "ORDER BY Difficulty ASC";
+            queryName = "ORDER BY Difficulty ASC;";
         }
     } else {
         toSwap = true;
         if(qual == '0') {
-            queryName = "ORDER BY Name DESC";
+            queryName = "ORDER BY Name DESC;";
         } else if(qual == '1') {
-            queryName = "ORDER BY Distance DESC";
+            queryName = "ORDER BY Distance DESC;";
         } else if(qual == '2') {
-            queryName = "ORDER BY Difficulty DESC";
+            queryName = "ORDER BY Difficulty DESC;";
         }
     }
     qry->prepare("SELECT hikes.Name, hikes.Park, hikes.Distance, hikes.Difficulty "
@@ -212,7 +201,10 @@ void menu::displaySaved(bool &toSwap, char qual) {
                  "ON saved_hikes.Useremail = accounts.Email " + queryName);
 
     qry->bindValue(":email", newAccount.getEmail());
-
+    qry->exec();
+    modal->setQuery(*qry);
+    ui->table->setModel(modal);
+    /*
     if (qry->exec()) {}
     else {
         qDebug() << qry->lastError().text();
@@ -249,6 +241,7 @@ void menu::displaySaved(bool &toSwap, char qual) {
 
         ++rowCount;
     }
+    */
 }
 
 /*
@@ -273,53 +266,59 @@ void menu::displaySaved(bool &toSwap, char qual) {
 */
 void menu::on_buttonName_clicked()
 {
+
     if(toggleSave) {
-        ui->table->setRowCount(0);
+       // ui->table->setRowCount(0);  //From last QTableWidget --> now QTableView
 
         orderDistance = true;
         orderDifficulty = true;
         displaySaved(orderName, '0');
     } else {
-        ui->table->setRowCount(0);
+       // ui->table->setRowCount(0); //From last QTableWidget --> now QTableView
 
         orderDistance = true;
         orderDifficulty = true;
         sort(orderName, '0');
     }
+
 }
 
 void menu::on_buttonDistance_clicked()
 {
+
     if(toggleSave) {
-        ui->table->setRowCount(0);
+       // ui->table->setRowCount(0); //From last QTableWidget --> now QTableView
         orderName = true;
         orderDifficulty = true;
 
         displaySaved(orderDistance, '1');
     } else {
-        ui->table->setRowCount(0);
+       // ui->table->setRowCount(0); //From last QTableWidget --> now QTableView
         orderName = true;
         orderDifficulty = true;
 
         sort(orderDistance, '1');
     }
+
 }
 
 void menu::on_buttonDifficulty_clicked()
 {
+
     if(toggleSave) {
-        ui->table->setRowCount(0);
+        //ui->table->setRowCount(0); //From last QTableWidget --> now QTableView
         orderName = true;
         orderDistance = true;
 
         displaySaved(orderDifficulty, '2');
     } else {
-        ui->table->setRowCount(0);
+       // ui->table->setRowCount(0); //From last QTableWidget --> now QTableView
         orderName = true;
         orderDistance = true;
 
         sort(orderDifficulty, '2');
     }
+
 }
 
 void menu::on_buttonAccount_clicked()
@@ -327,21 +326,24 @@ void menu::on_buttonAccount_clicked()
     setting->show();
     setting->setWindowState(Qt::WindowState::WindowActive);
 }
-
+/*
 void menu::on_table_cellClicked(int row, int column)
 {
+
     QString currName = ui->table->item(row, 0)->text();
     single->setNameEmail(currName, newAccount.getEmail());
     single->show();
     single->setWindowState(Qt::WindowState::WindowActive);
-}
 
+}
+*/
 void menu::on_savedHikesButton_clicked()
 {
+
     toggleSave = (toggleSave ? false : true);
     if(toggleSave) {
         ui->savedHikesButton->setText("Go Back");
-        ui->table->setRowCount(0);
+        //ui->table->setRowCount(0);   //From last QTableWidget --> now QTableView
         ui->savedLabel->show();
 
         orderName = true;
@@ -351,7 +353,7 @@ void menu::on_savedHikesButton_clicked()
         ui->refreshButton->show();
     } else {
         ui->savedHikesButton->setText("Saved Hikes");
-        ui->table->setRowCount(0);
+        //ui->table->setRowCount(0);   //From last QTableWidget --> now QTableView
         ui->savedLabel->hide();
 
         orderName = true;
@@ -361,16 +363,26 @@ void menu::on_savedHikesButton_clicked()
 
         ui->refreshButton->hide();
     }
+
 }
 
 void menu::on_refreshButton_clicked()
 {
     if(toggleSave) {
-        ui->table->setRowCount(0);
+        //ui->table->setRowCount(0);   //From last QTableWidget --> now QTableView
 
         orderName = true;
         orderDistance = true;
         orderDifficulty = true;
         displaySaved(orderName, '0');
     }
+}
+
+
+void menu::on_table_clicked(const QModelIndex &index)
+{
+    QString currName = ui->table->model()->data(index.siblingAtColumn(0),0).toString();
+    single->setNameEmail(currName, newAccount.getEmail());
+    single->show();
+    single->setWindowState(Qt::WindowState::WindowActive);
 }

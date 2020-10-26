@@ -90,11 +90,11 @@ private slots:
 
     void on_buttonAccount_clicked();
 
-    void on_table_cellClicked(int row, int column);
-
     void on_savedHikesButton_clicked();
 
     void on_refreshButton_clicked();
+
+    void on_table_clicked(const QModelIndex &index);
 
 private:
     Ui::menu *ui;
