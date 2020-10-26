@@ -8,11 +8,11 @@ public:
     hike();
     hike(QString name, QString park, int open, int close,
          QString distance, QString difficulty, QString address, QString city, QString zipcode,
-         QString phone, QString walkOrBike, QString trailType);
+         QString phone, QString walkOrBike, QString trailType,QString ascent,QString elevation );
     hike operator = (hike const & obj);
     void setHike(QString name, QString park, int open, int close,
                  QString distance, QString difficulty, QString address, QString city, QString zipcode,
-                 QString phone, QString walkOrBike, QString trailType);
+                 QString phone, QString walkOrBike, QString trailType,QString ascent,QString elevation );
 
     QString getName() {return name_;}
     QString getPark() {return park_;}
@@ -26,6 +26,8 @@ public:
     QString getPhone() {return phone_;}
     QString getWB() {return walkOrBike_;}
     QString getType() {return trailType_;}
+    QString getAsc(){return ascent_;}
+    QString getElev(){return elevation_;}
 
     void setName(QString n);
     void setPark(QString p);
@@ -39,6 +41,8 @@ public:
     void setPhone(QString p);
     void setWB(QString w);
     void setType(QString t);
+    void setAsc(QString a);
+    void setElev(QString e);
 
 private:
     QString name_;
@@ -53,6 +57,8 @@ private:
     QString phone_;
     QString walkOrBike_;
     QString trailType_;
+    QString ascent_;
+    QString elevation_;
 };
 
 #endif // HIKE_H

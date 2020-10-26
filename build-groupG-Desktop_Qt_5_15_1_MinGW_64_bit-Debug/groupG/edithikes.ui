@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>367</width>
-    <height>395</height>
+    <width>364</width>
+    <height>453</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -126,7 +126,7 @@
    <property name="geometry">
     <rect>
      <x>180</x>
-     <y>360</y>
+     <y>420</y>
      <width>75</width>
      <height>23</height>
     </rect>
@@ -139,7 +139,7 @@
    <property name="geometry">
     <rect>
      <x>270</x>
-     <y>360</y>
+     <y>420</y>
      <width>75</width>
      <height>23</height>
     </rect>
@@ -409,6 +409,52 @@
    </property>
    <property name="alignment">
     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="ascent">
+   <property name="geometry">
+    <rect>
+     <x>260</x>
+     <y>360</y>
+     <width>81</width>
+     <height>20</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_12">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>360</y>
+     <width>41</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Ascent</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_13">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>390</y>
+     <width>51</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Elevation</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="elevation">
+   <property name="geometry">
+    <rect>
+     <x>260</x>
+     <y>390</y>
+     <width>81</width>
+     <height>20</height>
+    </rect>
    </property>
   </widget>
  </widget>

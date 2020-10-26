@@ -48,15 +48,15 @@ void editHikes::getHike()
     QString phone;
     QString walkOrBike;
     QString trailType;
+    QString ascent;
+    QString elevation;
 
     qry->prepare("SELECT * FROM hikes WHERE Name ='"+primaryKey+"';");
     qDebug() << primaryKey;
     if(qry->exec())
     {
-        qDebug("NOPE1");
         if(qry->first())
         {
-            qDebug("NOPE2");
             name = qry->value(0).toString();
             park = qry->value(1).toString();
             open = qry->value(2).toInt();
@@ -69,9 +69,11 @@ void editHikes::getHike()
             phone = qry->value(9).toString();
             walkOrBike = qry->value(10).toString();
             trailType = qry->value(11).toString();
+            ascent = qry->value(12).toString();
+            elevation = qry->value(13).toString();
 
             trail.setHike(name, park, open, close, distance, difficulty,
-                                       address, city, zipcode, phone, walkOrBike, trailType);
+                          address, city, zipcode, phone, walkOrBike, trailType,ascent,elevation);
         }
     }
     else
@@ -120,6 +122,8 @@ void editHikes::showHike()
     {
         ui->training->click();
     }
+    ui->ascent->setText(trail.getAsc());
+    ui->elevation->setText(trail.getElev());
 }
 void editHikes::ifBlank()
 {
@@ -188,35 +192,55 @@ void editHikes::ifBlank()
             ui->training->click();
         }
     }
+    if(trailEdit.getAsc() == "")
+    {
+        trailEdit.setAsc(trail.getAsc());
+    }
+    if(trailEdit.getElev() =="")
+    {
+        trailEdit.setElev(trail.getElev());
+    }
 
 }
-bool editHikes::checkFormat()
+bool editHikes::checkFormat() //NO PHONE OR ADDRESS CHECK
 {
     QString mesg = "INVALID";
     QRegExp checkAddress;
+    int decimal = 0;
     for(int i = 0; i < ui->distance->text().size(); i++)
     {
-        if(!isdigit(ui->distance->text().toStdString()[i]))
+        if(ui->distance->text().toStdString()[i] == '.')
         {
-            mesg = mesg + " Distance";
-            i = ui->distance->text().size();
+            decimal++;
         }
+        else
+        {
+            if(decimal > 1 || !isdigit(ui->distance->text().toStdString()[i]))
+            {
+                mesg = mesg + " Distance";
+                i = ui->distance->text().size();
+            }
+        }
+
+
     }
+    decimal = 0;
     for(int i = 0; i < ui->difficulty->text().size(); i++)
     {
-        if(!isdigit(ui->difficulty->text().toStdString()[i]))
+        if(ui->difficulty->text().toStdString()[i] == '.')
         {
-            mesg = mesg + " Difficulty";
-            i = ui->difficulty->text().size();
+            decimal++;
+        }
+        else
+        {
+            if(decimal > 1 || !isdigit(ui->difficulty->text().toStdString()[i]))
+            {
+                mesg = mesg + " Difficulty";
+                i = ui->difficulty->text().size();
+            }
         }
     }
-    //address
-    checkAddress.setPattern("");
-    if(checkAddress.exactMatch(ui->address->text()))
-    {
-        mesg = mesg + " Address";
-    }
-    qDebug("Run1");
+    decimal = 0;
     if(ui->zipcode->text().size() == 5)
     {
         for(int i = 0; i < ui->zipcode->text().size(); i++)
@@ -231,13 +255,6 @@ bool editHikes::checkFormat()
     else
     {
         mesg = mesg + " Zip Code";
-    }
-
-    //phone
-    checkAddress.setPattern("^[0-9]{10}$");
-    if(checkAddress.exactMatch(ui->phoneNum->text()))
-    {
-        mesg = mesg + " Phone";
     }
     if(mesg == "INVALID")
     {
@@ -307,7 +324,8 @@ void editHikes::setTrailEdit()
     {
         trailEdit.setType("");
     }
-
+    trailEdit.setAsc(ui->ascent->text());
+    trailEdit.setElev(ui->elevation->text());
 }
 void editHikes::on_pushButton_2_clicked()
 {

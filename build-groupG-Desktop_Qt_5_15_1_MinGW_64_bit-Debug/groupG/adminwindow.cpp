@@ -123,13 +123,18 @@ void adminWindow::on_edit_clicked()
                                         "City = '"+trailEdit.getCity()+"', "
                                         "[Zip Code] = '"+trailEdit.getZip()+"', "
                                         "PhoneNum = '"+trailEdit.getPhone()+"', "
-                                        "[Walking/Biking] = '"+trailEdit.getWB()+"' "
+                                        "[Walking/Biking] = '"+trailEdit.getWB()+"', "
                                         "Type = '"+trailEdit.getType()+"' "
                                         "WHERE Name = '"+primaryKey+"';");
 
-            qry->exec();
-
-
+            if(qry->exec())
+            {
+                qDebug("YES");
+            }
+            else
+            {
+                qDebug("NO");
+            }
             ui->error->setText("Edit SUCESSFUL! Please Refresh Table");
         }
         else

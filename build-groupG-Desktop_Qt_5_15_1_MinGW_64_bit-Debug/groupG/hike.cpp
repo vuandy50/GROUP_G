@@ -7,7 +7,7 @@ hike::hike()
 
 hike::hike(QString name, QString park, int open, int close,
      QString distance, QString difficulty, QString address, QString city, QString zipcode,
-     QString phone, QString walkOrBike, QString trailType)
+     QString phone, QString walkOrBike, QString trailType, QString ascent,QString elevation)
 {
     name_ = name;
     park_ = park;
@@ -21,14 +21,30 @@ hike::hike(QString name, QString park, int open, int close,
     phone_ = phone;
     walkOrBike_ = walkOrBike;
     trailType_ = trailType;
+    ascent_ = ascent;
+    elevation_ = elevation;
 }
 hike hike::operator = (hike const & obj)
 {
-    return obj;
+    name_ = obj.name_;
+    park_ = obj.park_;
+    open_ = obj.open_;
+    close_ = obj.close_;
+    distance_ = obj.distance_;
+    difficulty_ = obj.difficulty_;
+    address_ = obj.address_;
+    city_ = obj.city_;
+    zipcode_ = obj.zipcode_;
+    phone_ = obj.phone_;
+    walkOrBike_ = obj.walkOrBike_;
+    trailType_ = obj.trailType_;
+    ascent_ = obj.ascent_;
+    elevation_ = obj.elevation_;
+    return *this;
 }
 void hike::setHike(QString name, QString park, int open, int close,
              QString distance, QString difficulty, QString address, QString city, QString zipcode,
-             QString phone, QString walkOrBike, QString trailType)
+             QString phone, QString walkOrBike, QString trailType, QString ascent,QString elevation )
 {
     name_ = name;
     park_ = park;
@@ -42,6 +58,8 @@ void hike::setHike(QString name, QString park, int open, int close,
     phone_ = phone;
     walkOrBike_ = walkOrBike;
     trailType_ = trailType;
+    ascent_ = ascent;
+    elevation_ = elevation;
 }
 void hike::setName(QString n)
 {
@@ -81,8 +99,7 @@ void hike::setZip(QString z)
 }
 void hike::setPhone(QString p)
 {
-        phone_ = p;
-
+     phone_ = p;
 }
 void hike::setWB(QString w)
 {
@@ -91,4 +108,12 @@ void hike::setWB(QString w)
 void hike::setType(QString t)
 {
     trailType_ = t;
+}
+void hike::setAsc(QString a)
+{
+    ascent_ = a;
+}
+void hike::setElev(QString e)
+{
+    elevation_ = e;
 }
