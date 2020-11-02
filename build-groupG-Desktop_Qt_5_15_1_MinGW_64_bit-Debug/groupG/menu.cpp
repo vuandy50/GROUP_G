@@ -3,9 +3,11 @@
 
 menu::menu(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::menu), orderName(true), orderDistance(true), orderDifficulty(true)
+    ui(new Ui::menu), orderName(true), orderDistance(true), orderDifficulty(true), toggleSave(false)
 {
     ui->setupUi(this);
+    ui->refreshButton->hide();
+    ui->savedLabel->hide();
 
     populate();
 }
@@ -25,7 +27,6 @@ void menu::setAccount(account newItem) {
     newAccount = newItem;
     setting = new accountSettings();
     setting->setAccount(newAccount);
-
     single = new singleView();
 }
 
@@ -181,21 +182,75 @@ void menu::sort(bool &toSwap, char qual) {
         ++rowCount;
     }
 }
-/*
-void menu::renewAccount() {
-    QSqlQuery *qry = new QSqlQuery(db);
 
-    qry->first();
-    qry->prepare("SELECT * FROM accounts WHERE Email =:email");
+void menu::displaySaved(bool &toSwap, char qual) {
+    QSqlQuery *qry = new QSqlQuery(db);
+    QString queryName = "ORDER BY Name ASC";
+    if(toSwap) {
+        toSwap = false;
+        if(qual == '1') {
+            queryName = "ORDER BY Distance ASC";
+        } else if(qual == '2') {
+            queryName = "ORDER BY Difficulty ASC";
+        }
+    } else {
+        toSwap = true;
+        if(qual == '0') {
+            queryName = "ORDER BY Name DESC";
+        } else if(qual == '1') {
+            queryName = "ORDER BY Distance DESC";
+        } else if(qual == '2') {
+            queryName = "ORDER BY Difficulty DESC";
+        }
+    }
+    qry->prepare("SELECT hikes.Name, hikes.Park, hikes.Distance, hikes.Difficulty "
+                 "FROM hikes "
+                 "INNER JOIN saved_hikes "
+                 "ON hikes.Name = saved_hikes.Trailname "
+                 "AND saved_hikes.Useremail =:email "
+                 "LEFT OUTER JOIN accounts "
+                 "ON saved_hikes.Useremail = accounts.Email " + queryName);
+
     qry->bindValue(":email", newAccount.getEmail());
 
-    newAccount.setFname(qry->value(0).toString());
-    newAccount.setLname(qry->value(1).toString());
-    newAccount.setUsername(qry->value(4).toString());
-    newAccount.setPassword(qry->value(5).toString());
-    newAccount.setDob(qry->value(8).toInt(), qry->value(7).toInt(), qry->value(6).toInt());
+    if (qry->exec()) {}
+    else {
+        qDebug() << qry->lastError().text();
+    }
+
+    ui->table->setColumnCount(4);
+    QStringList labels;
+
+    labels << "Name" << "Park" << "Distance" << "Difficulty";
+    ui->table->setHorizontalHeaderLabels(labels);
+
+    int rowCount = 0;
+    while(qry->next()) {
+        ui->table->insertRow(rowCount);
+        QTableWidgetItem *name = new QTableWidgetItem;
+        QTableWidgetItem *park = new QTableWidgetItem;
+        QTableWidgetItem *distance = new QTableWidgetItem;
+        QTableWidgetItem *difficulty = new QTableWidgetItem;
+
+        name->setText(qry->value(0).toString());
+        park->setText(qry->value(1).toString());
+        distance->setText(QString::number(qry->value(2).toDouble(), 'f', 3));
+        difficulty->setText(QStringLiteral("%1").arg(qry->value(3).toInt()));
+
+        name->setFlags(name->flags() ^ Qt::ItemIsEditable);
+        park->setFlags(park->flags() ^ Qt::ItemIsEditable);
+        distance->setFlags(distance->flags() ^ Qt::ItemIsEditable);
+        difficulty->setFlags(difficulty->flags() ^ Qt::ItemIsEditable);
+
+        ui->table->setItem(rowCount, 0, name);
+        ui->table->setItem(rowCount, 1, park);
+        ui->table->setItem(rowCount, 2, distance);
+        ui->table->setItem(rowCount, 3, difficulty);
+
+        ++rowCount;
+    }
 }
-*/
+
 /*
  * 9/21/2020 - Michael Moon
  * The following:
@@ -205,44 +260,117 @@ void menu::renewAccount() {
  *
  * All reset row count, other qualifiers, and sort the list again.
 */
+
+/*
+ * 10/15/2020 - Michael Moon
+ * The following:
+ * on_buttonName_clicked
+ * on_buttonDistance_clicked
+ * on_buttonDifficulty_clicked
+ * on_savedHikesButton_clicked
+ *
+ * Were modified to take in the case if Display Saved Hikes occurs.
+*/
 void menu::on_buttonName_clicked()
 {
-    ui->table->setRowCount(0);
-    orderDistance = true;
-    orderDifficulty = true;
+    if(toggleSave) {
+        ui->table->setRowCount(0);
 
-    sort(orderName, '0');
+        orderDistance = true;
+        orderDifficulty = true;
+        displaySaved(orderName, '0');
+    } else {
+        ui->table->setRowCount(0);
+
+        orderDistance = true;
+        orderDifficulty = true;
+        sort(orderName, '0');
+    }
 }
 
 void menu::on_buttonDistance_clicked()
 {
-    ui->table->setRowCount(0);
-    orderName = true;
-    orderDifficulty = true;
+    if(toggleSave) {
+        ui->table->setRowCount(0);
+        orderName = true;
+        orderDifficulty = true;
 
-    sort(orderDistance, '1');
+        displaySaved(orderDistance, '1');
+    } else {
+        ui->table->setRowCount(0);
+        orderName = true;
+        orderDifficulty = true;
+
+        sort(orderDistance, '1');
+    }
 }
 
 void menu::on_buttonDifficulty_clicked()
 {
-    ui->table->setRowCount(0);
-    orderName = true;
-    orderDistance = true;
+    if(toggleSave) {
+        ui->table->setRowCount(0);
+        orderName = true;
+        orderDistance = true;
 
-    sort(orderDifficulty, '2');
+        displaySaved(orderDifficulty, '2');
+    } else {
+        ui->table->setRowCount(0);
+        orderName = true;
+        orderDistance = true;
+
+        sort(orderDifficulty, '2');
+    }
 }
 
 void menu::on_buttonAccount_clicked()
 {
     setting->show();
     setting->setWindowState(Qt::WindowState::WindowActive);
-    //renewAccount();
 }
 
 void menu::on_table_cellClicked(int row, int column)
 {
     QString currName = ui->table->item(row, 0)->text();
-    single->setName(currName);
+    single->setNameEmail(currName, newAccount.getEmail());
     single->show();
     single->setWindowState(Qt::WindowState::WindowActive);
+}
+
+void menu::on_savedHikesButton_clicked()
+{
+    toggleSave = (toggleSave ? false : true);
+    if(toggleSave) {
+        ui->savedHikesButton->setText("Go Back");
+        ui->table->setRowCount(0);
+        ui->savedLabel->show();
+
+        orderName = true;
+        orderDistance = true;
+        orderDifficulty = true;
+        displaySaved(orderName, '0');
+        ui->refreshButton->show();
+    } else {
+        ui->savedHikesButton->setText("Saved Hikes");
+        ui->table->setRowCount(0);
+        ui->savedLabel->hide();
+
+        orderName = true;
+        orderDistance = true;
+        orderDifficulty = true;
+        sort(orderName, '0');
+
+        ui->refreshButton->hide();
+    }
+}
+
+void menu::on_refreshButton_clicked()
+{
+    if(toggleSave) {
+        ui->table->setRowCount(0);
+
+        orderName = true;
+        orderDistance = true;
+        orderDifficulty = true;
+        displaySaved(orderName, '0');
+    }
 }

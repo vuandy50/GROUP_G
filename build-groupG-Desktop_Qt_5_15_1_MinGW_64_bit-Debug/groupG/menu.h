@@ -92,6 +92,10 @@ private slots:
 
     void on_table_cellClicked(int row, int column);
 
+    void on_savedHikesButton_clicked();
+
+    void on_refreshButton_clicked();
+
 private:
     Ui::menu *ui;
     QSqlDatabase db;
@@ -104,7 +108,7 @@ private:
     bool orderName;
     bool orderDistance;
     bool orderDifficulty;
-
+    bool toggleSave;
     // One time read in from database help.sqlite;hikes
     // Note, database has been opened by the previous processes by Andy.
     void populate();
@@ -116,6 +120,8 @@ private:
 
     // helper function; reads in from database; used after account settings.
     void renewAccount();
+
+    void displaySaved(bool&, char);
 };
 
 #endif // MENU_H

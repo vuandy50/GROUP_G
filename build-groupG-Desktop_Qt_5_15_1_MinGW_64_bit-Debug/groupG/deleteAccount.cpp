@@ -38,16 +38,24 @@ void deleteAccount::deleteFromDB() {
     qry->prepare("DELETE FROM accounts WHERE Email =:email");
     qry->bindValue(":email", currAccount.getEmail());
 
-    /*
+
     // If works, continue, else, see what went wrong
-    if (qry->exec()) {
-        qDebug("YES");
-    }
+    if (qry->exec()) {}
     else {
         qDebug() << qry->lastError().text();
         return;
     }
-    */
+
+    qry->prepare("DELETE FROM saved_hikes WHERE Useremail =:email");
+    qry->bindValue(":email", currAccount.getEmail());
+
+
+    // If works, continue, else, see what went wrong
+    if (qry->exec()) {}
+    else {
+        qDebug() << qry->lastError().text();
+        return;
+    }
 }
 
 void deleteAccount::on_deleteButton_clicked()
