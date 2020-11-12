@@ -151,3 +151,59 @@ void adminWindow::on_edit_clicked()
     }
 
 }
+
+void adminWindow::on_add_clicked()
+{
+    addHike = new addHikes;
+    addHike->exec();
+
+    if(addHike->is_Successful())
+    {
+        trailEdit = addHike->getHike();
+        QSqlQuery *qry = new QSqlQuery(db);
+        qry->prepare("INSERT INTO hikes ("
+                     "Name,"
+                     "Park,"
+                     "OpenTime,"
+                     "CloseTime,"
+                     "Distance,"
+                     "Difficulty,"
+                     "Address,"
+                     "City,"
+                     "Zipcode,"
+                     "PhoneNum,"
+                     "[Walking/Biking],"
+                     "Type,"
+                     "Ascent,"
+                     "Elevation)"
+                     "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+        qry->addBindValue(trailEdit.getName());
+        qry->addBindValue(trailEdit.getPark());
+        qry->addBindValue(trailEdit.getOpen().toString());
+        qry->addBindValue(trailEdit.getClose().toString());
+        qry->addBindValue(trailEdit.getDistance());
+        qry->addBindValue(trailEdit.getDiff());
+        qry->addBindValue(trailEdit.getAddress());
+        qry->addBindValue(trailEdit.getCity());
+        qry->addBindValue(trailEdit.getZip());
+        qry->addBindValue(trailEdit.getPhone());
+        qry->addBindValue(trailEdit.getWB());
+        qry->addBindValue(trailEdit.getType());
+        qry->addBindValue(trailEdit.getAsc());
+        qry->addBindValue(trailEdit.getElev());
+
+        if(qry->exec())
+        {
+            qDebug("YES");
+        }
+        else
+        {
+            qDebug("NO");
+        }
+        ui->error->setText("Add SUCESSFUL! Please Refresh Table");
+    }
+    else
+    {
+        ui->error->setText("Add UNSUCESSFUL!");
+    }
+}

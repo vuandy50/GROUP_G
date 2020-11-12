@@ -10,6 +10,7 @@
 #include "database.h"
 #include "deletehike.h"
 #include "edithikes.h"
+#include "addhikes.h"
 
 namespace Ui {
 class adminWindow;
@@ -38,6 +39,8 @@ private slots:
 
     void on_edit_clicked();
 
+    void on_add_clicked();
+
 private:
     Ui::adminWindow *ui;
     QString primaryKey;
@@ -45,6 +48,7 @@ private:
     hike trailEdit;
     deleteHike *delHike;
     editHikes *editHike;
+    addHikes *addHike;
 };
 
 #endif // ADMINWINDOW_H
