@@ -59,10 +59,11 @@ void singleView::displayAll() {
     ui->trail->setText(qry->value(11).toString());
     ui->wob->setText(qry->value(10).toString());
 
-    QPixmap pict;
+    QPixmap pict = QPixmap();
+
     ui->pic->setAlignment(Qt::AlignCenter);
     // qDebug() << QDir::currentPath();
-    if(!pict.load(QDir::currentPath() + "/resources/" + qry->value(14).toString())){
+    if(!pict.loadFromData(qry->value(14).toByteArray())){
         qDebug() << ("Whoops.");
     }
     pict = pict.scaled(ui->pic->size(),Qt::KeepAspectRatio);
