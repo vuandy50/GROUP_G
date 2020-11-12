@@ -39,7 +39,7 @@ void adminWindow::on_search_clicked()
                                            "Difficulty LIKE '%"+ui->hike->text()+"%' OR "
                                            "Address LIKE '%"+ui->hike->text()+"%' OR "
                                            "City LIKE '%"+ui->hike->text()+"%' OR "
-                                           "[Zip Code] LIKE '"+ui->hike->text()+"%' OR "
+                                           "Zipcode LIKE '"+ui->hike->text()+"%' OR "
                                            "PhoneNum LIKE '%"+ui->hike->text()+"%' OR "
                                            "[Walking/Biking] LIKE '%"+ui->hike->text()+"%' OR "
                                            "Type LIKE '%"+ui->hike->text()+"%';");
@@ -111,20 +111,25 @@ void adminWindow::on_edit_clicked()
         if(editHike->is_there_an_edit())
         {
             trailEdit = editHike->editTrail();
-
+            qDebug() << "+++++++++++++++++++++";
+            qDebug() << primaryKey;
+            qDebug() << trailEdit.getDistance();
+            qDebug() << "+++++++++++++++++++++";
             QSqlQuery *qry = new QSqlQuery(db);
             qry->prepare("UPDATE hikes SET Name = '"+trailEdit.getName()+"', "
                                         "Park = '"+trailEdit.getPark()+"', "
-                                        "OpenTime = '"+trailEdit.getOpen()+"', "
-                                        "CloseTime = '"+trailEdit.getClose()+"', "
-                                        "Distance = '"+trailEdit.getDistance()+"', "
-                                        "Difficulty = '"+trailEdit.getDiff()+"', "
+                                        "OpenTime = '"+trailEdit.getOpen().toString()+"', "
+                                        "CloseTime = '"+trailEdit.getClose().toString()+"', "
+                                        "Distance = '"+QString::number(trailEdit.getDistance())+"', "
+                                        "Difficulty = '"+QString::number(trailEdit.getDiff())+"', "
                                         "Address = '"+trailEdit.getAddress()+"', "
                                         "City = '"+trailEdit.getCity()+"', "
-                                        "[Zip Code] = '"+trailEdit.getZip()+"', "
+                                        "Zipcode = '"+QString::number(trailEdit.getZip())+"', "
                                         "PhoneNum = '"+trailEdit.getPhone()+"', "
                                         "[Walking/Biking] = '"+trailEdit.getWB()+"', "
-                                        "Type = '"+trailEdit.getType()+"' "
+                                        "Type = '"+trailEdit.getType()+"', "
+                                        "Ascent = '"+QString::number(trailEdit.getAsc())+"', "
+                                        "Elevation = '"+QString::number(trailEdit.getElev())+"' "
                                         "WHERE Name = '"+primaryKey+"';");
 
             if(qry->exec())

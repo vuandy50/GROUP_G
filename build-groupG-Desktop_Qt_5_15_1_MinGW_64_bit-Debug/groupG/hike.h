@@ -2,63 +2,65 @@
 #define HIKE_H
 
 #include <QString>
+#include <QDebug>
+#include <QTime>
 class hike
 {
 public:
     hike();
-    hike(QString name, QString park, int open, int close,
-         QString distance, QString difficulty, QString address, QString city, QString zipcode,
-         QString phone, QString walkOrBike, QString trailType,QString ascent,QString elevation );
+    hike(QString name, QString park, QTime open, QTime close,
+         double distance, double difficulty, QString address, QString city, int zipcode,
+         QString phone, QString walkOrBike, QString trailType,double ascent,double elevation );
     hike operator = (hike const & obj);
-    void setHike(QString name, QString park, int open, int close,
-                 QString distance, QString difficulty, QString address, QString city, QString zipcode,
-                 QString phone, QString walkOrBike, QString trailType,QString ascent,QString elevation );
+    void setHike(QString name, QString park, QTime open, QTime close,
+                 double distance, double difficulty, QString address, QString city, int zipcode,
+                 QString phone, QString walkOrBike, QString trailType, double ascent,double elevation );
 
     QString getName() {return name_;}
     QString getPark() {return park_;}
-    int getOpen() {return open_;}
-    int getClose() {return close_;}
-    QString getDistance() {return distance_;}
-    QString getDiff() {return difficulty_;}
+    QTime getOpen() {return open_;}
+    QTime getClose() {return close_;}
+    double getDistance() {return distance_;}
+    double getDiff() {return difficulty_;}
     QString getAddress() {return address_;}
     QString getCity() {return city_;}
-    QString getZip() {return zipcode_;}
+    int getZip() {return zipcode_;}
     QString getPhone() {return phone_;}
     QString getWB() {return walkOrBike_;}
     QString getType() {return trailType_;}
-    QString getAsc(){return ascent_;}
-    QString getElev(){return elevation_;}
+    double getAsc(){return ascent_;}
+    double getElev(){return elevation_;}
 
     void setName(QString n);
     void setPark(QString p);
-    void setOpen(int o);
-    void setClose(int c);
-    void setDistance(QString d);
-    void setDiff(QString d);
+    void setOpen(QTime o);
+    void setClose(QTime c);
+    void setDistance(double d);
+    void setDiff(double d);
     void setAddress(QString a);
     void setCity(QString c);
-    void setZip(QString z);
+    void setZip(int z);
     void setPhone(QString p);
     void setWB(QString w);
     void setType(QString t);
-    void setAsc(QString a);
-    void setElev(QString e);
+    void setAsc(double a);
+    void setElev(double e);
 
 private:
     QString name_;
     QString park_;
-    int open_;
-    int close_;
-    QString distance_;
-    QString difficulty_;
+    QTime open_;
+    QTime close_;
+    double distance_;
+    double difficulty_;
     QString address_;
     QString city_;
-    QString zipcode_;
+    int zipcode_;
     QString phone_;
     QString walkOrBike_;
     QString trailType_;
-    QString ascent_;
-    QString elevation_;
+    double ascent_;
+    double elevation_;
 };
 
 #endif // HIKE_H

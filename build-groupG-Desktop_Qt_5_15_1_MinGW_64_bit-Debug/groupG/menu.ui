@@ -383,7 +383,7 @@ selection-background-color:#282828
      <rect>
       <x>30</x>
       <y>310</y>
-      <width>70</width>
+      <width>81</width>
       <height>17</height>
      </rect>
     </property>
@@ -522,4 +522,3 @@ selection-background-color:#282828
  <resources/>
  <connections/>
 </ui>
-

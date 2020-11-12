@@ -20,14 +20,6 @@ bool editHikes::is_there_an_edit()
 {
     return check;
 }
-void editHikes::addToQuery(QString line)
-{
-    queryLine + line;
-}
-QString editHikes::getQuery()
-{
-    return queryLine;
-}
 void editHikes::setPK(QString PK)
 {
     primaryKey = PK;
@@ -38,18 +30,25 @@ void editHikes::getHike()
 
     QString name;
     QString park;
-    int open;
-    int close;
-    QString distance;
-    QString difficulty;
+
+    QTime open;
+    QStringList openTime;
+    QTime close;
+    QStringList closeTime;
+    int hour = 0;
+    int min = 0;
+    int sec = 0;
+
+    double distance;
+    int difficulty;
     QString address;
     QString city;
-    QString zipcode;
+    int zipcode;
     QString phone;
     QString walkOrBike;
     QString trailType;
-    QString ascent;
-    QString elevation;
+    int ascent;
+    int elevation;
 
     qry->prepare("SELECT * FROM hikes WHERE Name ='"+primaryKey+"';");
     qDebug() << primaryKey;
@@ -59,18 +58,35 @@ void editHikes::getHike()
         {
             name = qry->value(0).toString();
             park = qry->value(1).toString();
-            open = qry->value(2).toInt();
-            close = qry->value(3).toInt();
-            distance = qry->value(4).toString();
-            difficulty = qry->value(5).toString();
+
+            openTime = (qry->value(2).toString().split(QLatin1Char(':')));
+            hour = openTime.front().toInt();
+            openTime.pop_front();
+            min = openTime.front().toInt();
+            openTime.pop_front();
+            sec = openTime.front().toInt();
+            openTime.pop_front();
+            open.setHMS(hour,min,sec);
+
+            closeTime = (qry->value(3).toString().split(QLatin1Char(':')));
+            hour = closeTime.front().toInt();
+            closeTime.pop_front();
+            min = closeTime.front().toInt();
+            closeTime.pop_front();
+            sec = closeTime.front().toInt();
+            closeTime.pop_front();
+            close.setHMS(hour,min,sec);
+
+            distance = qry->value(4).toDouble();
+            difficulty = qry->value(5).toInt();
             address = qry->value(6).toString();
             city = qry->value(7).toString();
-            zipcode = qry->value(8).toString();
+            zipcode = qry->value(8).toInt();
             phone = qry->value(9).toString();
             walkOrBike = qry->value(10).toString();
             trailType = qry->value(11).toString();
-            ascent = qry->value(12).toString();
-            elevation = qry->value(13).toString();
+            ascent = qry->value(12).toInt();
+            elevation = qry->value(13).toInt();
 
             trail.setHike(name, park, open, close, distance, difficulty,
                           address, city, zipcode, phone, walkOrBike, trailType,ascent,elevation);
@@ -85,17 +101,13 @@ void editHikes::showHike()
 {
     ui->name->setText(trail.getName());
     ui->park->setText(trail.getPark());
-    QTime open;
-    open.setHMS(trail.getOpen(),0,0);
-    ui->openTime->setTime(open);
-    QTime close;
-    close.setHMS(trail.getClose(),0,0);
-    ui->closeTime->setTime(close);
-    ui->distance->setText(trail.getDistance());
-    ui->difficulty->setText(trail.getDiff());
+    ui->openTime->setTime(trail.getOpen());
+    ui->closeTime->setTime(trail.getClose());
+    ui->distance->setText(QString::number(trail.getDistance()));
+    ui->difficulty->setText(QString::number(trail.getDiff()));
     ui->address->setText(trail.getAddress());
     ui->city->setText(trail.getCity());
-    ui->zipcode->setText(trail.getZip());
+    ui->zipcode->setText(QString::number(trail.getZip()));
     ui->phoneNum->setText(trail.getPhone());
     if(trail.getWB() == "WALKING/BIKING")
     {
@@ -122,8 +134,8 @@ void editHikes::showHike()
     {
         ui->training->click();
     }
-    ui->ascent->setText(trail.getAsc());
-    ui->elevation->setText(trail.getElev());
+    ui->ascent->setText(QString::number(trail.getAsc()));
+    ui->elevation->setText(QString::number(trail.getElev()));
 }
 void editHikes::ifBlank()
 {
@@ -135,11 +147,11 @@ void editHikes::ifBlank()
     {
         trailEdit.setPark(trail.getPark());
     }
-    if(trailEdit.getDistance() == "")
+    if(QString::number(trailEdit.getDistance()) == "")
     {
         trailEdit.setDistance(trail.getDistance());
     }
-    if(trailEdit.getDiff() == "")
+    if(QString::number(trailEdit.getDiff()) == "")
     {
         trailEdit.setDiff(trail.getDiff());
     }
@@ -151,7 +163,7 @@ void editHikes::ifBlank()
     {
         trailEdit.setCity(trail.getCity());
     }
-    if(trailEdit.getZip() == "")
+    if(QString::number(trailEdit.getZip()) == "")
     {
         trailEdit.setZip(trail.getZip());
     }
@@ -192,11 +204,11 @@ void editHikes::ifBlank()
             ui->training->click();
         }
     }
-    if(trailEdit.getAsc() == "")
+    if(QString::number(trailEdit.getAsc()) == "")
     {
         trailEdit.setAsc(trail.getAsc());
     }
-    if(trailEdit.getElev() =="")
+    if(QString::number(trailEdit.getElev()) == "")
     {
         trailEdit.setElev(trail.getElev());
     }
@@ -240,7 +252,6 @@ bool editHikes::checkFormat() //NO PHONE OR ADDRESS CHECK
             }
         }
     }
-    decimal = 0;
     if(ui->zipcode->text().size() == 5)
     {
         for(int i = 0; i < ui->zipcode->text().size(); i++)
@@ -256,6 +267,38 @@ bool editHikes::checkFormat() //NO PHONE OR ADDRESS CHECK
     {
         mesg = mesg + " Zip Code";
     }
+    decimal = 0;
+    for(int i = 0; i < ui->ascent->text().size(); i++)
+    {
+        if(ui->ascent->text().toStdString()[i] == '.')
+        {
+            decimal++;
+        }
+        else
+        {
+            if(decimal > 1 || !isdigit(ui->ascent->text().toStdString()[i]))
+            {
+                mesg = mesg + " Ascent";
+                i = ui->ascent->text().size();
+            }
+        }
+    }
+    decimal = 0;
+    for(int i = 0; i < ui->elevation->text().size(); i++)
+    {
+        if(ui->elevation->text().toStdString()[i] == '.')
+        {
+            decimal++;
+        }
+        else
+        {
+            if(decimal > 1 || !isdigit(ui->elevation->text().toStdString()[i]))
+            {
+                mesg = mesg + " Elevation";
+                i = ui->elevation->text().size();
+            }
+        }
+    }
     if(mesg == "INVALID")
     {
         return true;
@@ -267,13 +310,13 @@ void editHikes::setTrailEdit()
 {
     trailEdit.setName(ui->name->text());
     trailEdit.setPark(ui->park->text());
-    trailEdit.setOpen(ui->openTime->text().toInt());
-    trailEdit.setClose(ui->closeTime->text().toInt());
-    trailEdit.setDistance(ui->distance->text());
-    trailEdit.setDiff(ui->difficulty->text());
+    trailEdit.setOpen(ui->openTime->time());
+    trailEdit.setClose(ui->closeTime->time());
+    trailEdit.setDistance(ui->distance->text().toDouble());
+    trailEdit.setDiff(ui->difficulty->text().toDouble());
     trailEdit.setAddress(ui->address->text());
     trailEdit.setCity(ui->city->text());
-    trailEdit.setZip(ui->zipcode->text());
+    trailEdit.setZip(ui->zipcode->text().toInt());
     trailEdit.setPhone(ui->phoneNum->text());
     if((ui->walking->isChecked() && ui->biking->isChecked())|| ui->both1->isChecked())
     {
@@ -324,8 +367,8 @@ void editHikes::setTrailEdit()
     {
         trailEdit.setType("");
     }
-    trailEdit.setAsc(ui->ascent->text());
-    trailEdit.setElev(ui->elevation->text());
+    trailEdit.setAsc(ui->ascent->text().toDouble());
+    trailEdit.setElev(ui->elevation->text().toDouble());
 }
 void editHikes::on_pushButton_2_clicked()
 {

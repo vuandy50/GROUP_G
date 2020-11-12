@@ -5,6 +5,7 @@
 #include <fstream>
 #include <QMainWindow>
 #include <QtGui>
+#include <QDebug>
 
 #include "database.h"
 #include "deletehike.h"

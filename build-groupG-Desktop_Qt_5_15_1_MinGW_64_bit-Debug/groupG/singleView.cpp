@@ -39,18 +39,18 @@ void singleView::displayAll() {
     // Print to vals.
     qry->first();
 
-    int open = qry->value(2).toInt();
-    QString openTime = (open < 12 ? " AM - " : " PM -" );
-    int close = qry->value(3).toInt();
-    QString closeTime = (close < 12 ? " AM" : " PM");
-    close = (close > 12 ? close - 12 : close);
+    QTime open = qry->value(2).toTime();
+    QString openTime = open.toString("h:m ap"); //hour:min am/pm
+    QTime close = qry->value(3).toTime();
+    QString closeTime = close.toString("h:m ap");
+
 
     ui->address->setText(qry->value(6).toString() + " " + qry->value(7).toString() + ", CA " + qry->value(8).toString());
-    ui->ascent->setText("Ascent: " + QString::number(qry->value(12).toInt()) + " ft");
-    ui->difficulty->setText("Difficulty: " + QString::number(qry->value(5).toInt()));
+    ui->ascent->setText("Ascent: " + QString::number(qry->value(12).toDouble()) + " ft");
+    ui->difficulty->setText("Difficulty: " + QString::number(qry->value(5).toDouble()));
     ui->distance->setText("Distance: " + QString::number(qry->value(4).toDouble(), 'f', 3) + " miles");
-    ui->elevation->setText("Elevation: " + QString::number(qry->value(13).toInt()) + " ft");
-    ui->hours->setText(QString::number(open) + openTime + QString::number(close) + closeTime);
+    ui->elevation->setText("Elevation: " + QString::number(qry->value(13).toDouble()) + " ft");
+    ui->hours->setText(openTime + closeTime);
     ui->name->setText(qry->value(0).toString());
     ui->park->setText(qry->value(1).toString());
     ui->phone->setText(qry->value(9).toString());

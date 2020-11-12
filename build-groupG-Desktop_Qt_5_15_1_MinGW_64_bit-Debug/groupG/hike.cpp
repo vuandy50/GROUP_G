@@ -5,14 +5,14 @@ hike::hike()
 
 }
 
-hike::hike(QString name, QString park, int open, int close,
-     QString distance, QString difficulty, QString address, QString city, QString zipcode,
-     QString phone, QString walkOrBike, QString trailType, QString ascent,QString elevation)
+hike::hike(QString name, QString park, QTime open, QTime close,
+     double distance, double difficulty, QString address, QString city, int zipcode,
+     QString phone, QString walkOrBike, QString trailType, double ascent,double elevation)
 {
     name_ = name;
     park_ = park;
-    open_ = open;
-    close_ = close;
+    open_.setHMS(open.hour(),open.minute(),open.second());
+    close_.setHMS(close.hour(),close.minute(),close.second());
     distance_ = distance;
     difficulty_ = difficulty;
     address_ = address;
@@ -28,8 +28,8 @@ hike hike::operator = (hike const & obj)
 {
     name_ = obj.name_;
     park_ = obj.park_;
-    open_ = obj.open_;
-    close_ = obj.close_;
+    open_.setHMS(obj.open_.hour(),obj.open_.minute(),obj.open_.second());
+    close_.setHMS( obj.close_.hour(), obj.close_.minute(), obj.close_.second());
     distance_ = obj.distance_;
     difficulty_ = obj.difficulty_;
     address_ = obj.address_;
@@ -40,16 +40,31 @@ hike hike::operator = (hike const & obj)
     trailType_ = obj.trailType_;
     ascent_ = obj.ascent_;
     elevation_ = obj.elevation_;
+
+    qDebug() << "T: " + name_ + " " + "E: " + obj.name_;
+    qDebug() << "T: " + park_ + " " + "E: " + obj.park_;
+    qDebug() << "T: " << open_ << " E: " << obj.open_;
+    qDebug() << "T: " << close_ << " E: " << obj.close_;
+    qDebug() << "T: " << distance_ << " E: " << obj.distance_;
+    qDebug() << "T: " << difficulty_ <<" E: " << obj.difficulty_;
+    qDebug() << "T: " << address_ <<" E: " << obj.address_;
+    qDebug() << "T: " + city_ + " " + "E: " + obj.city_;
+    qDebug() << "T: " << zipcode_ << " E: " << obj.zipcode_;
+    qDebug() << "T: " + phone_ + " " + "E: " + obj.phone_;
+    qDebug() << "T: " + walkOrBike_ + " " + "E: " + obj.walkOrBike_;
+    qDebug() << "T: " + trailType_ + " " + "E: " + obj.trailType_;
+    qDebug() << "T: " << ascent_ << " E: " << obj.ascent_;
+    qDebug() << "T: " << elevation_ << " E: " << obj.elevation_;
     return *this;
 }
-void hike::setHike(QString name, QString park, int open, int close,
-             QString distance, QString difficulty, QString address, QString city, QString zipcode,
-             QString phone, QString walkOrBike, QString trailType, QString ascent,QString elevation )
+void hike::setHike(QString name, QString park, QTime open, QTime close,
+             double distance, double difficulty, QString address, QString city, int zipcode,
+             QString phone, QString walkOrBike, QString trailType, double ascent,double elevation )
 {
     name_ = name;
     park_ = park;
-    open_ = open;
-    close_ = close;
+    open_.setHMS(open.hour(),open.minute(),open.second());
+    close_.setHMS(close.hour(),close.minute(),close.second());
     distance_ = distance;
     difficulty_ = difficulty;
     address_ = address;
@@ -69,19 +84,20 @@ void hike::setPark(QString p)
 {
     park_ = p;
 }
-void hike::setOpen(int o)
+void hike::setOpen(QTime o)
 {
-    open_ = o;
+    open_.setHMS(o.hour(),o.minute(),o.second());
+    ;
 }
-void hike::setClose(int c)
+void hike::setClose(QTime c)
 {
-    close_ = c;
+    close_.setHMS(c.hour(),c.minute(),c.second());
 }
-void hike::setDistance(QString d)
+void hike::setDistance(double d)
 {
     distance_ = d;
 }
-void hike::setDiff(QString d)
+void hike::setDiff(double d)
 {
     difficulty_ = d;
 }
@@ -93,7 +109,7 @@ void hike::setCity(QString c)
 {
     city_ = c;
 }
-void hike::setZip(QString z)
+void hike::setZip(int z)
 {
     zipcode_ = z;
 }
@@ -109,11 +125,11 @@ void hike::setType(QString t)
 {
     trailType_ = t;
 }
-void hike::setAsc(QString a)
+void hike::setAsc(double a)
 {
     ascent_ = a;
 }
-void hike::setElev(QString e)
+void hike::setElev(double e)
 {
     elevation_ = e;
 }

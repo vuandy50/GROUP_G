@@ -5,6 +5,7 @@
 #include <QVector>
 #include <database.h>
 #include <QSqlQuery>
+#include <QStringList>
 #include <hike.h>
 #include <QDebug>
 #include <QRegExp>
@@ -19,8 +20,6 @@ class editHikes : public QDialog
 public:
     explicit editHikes(QWidget *parent = nullptr, QString PK = "");
     ~editHikes();
-    void addToQuery(QString line);
-    QString getQuery();
     void setPK(QString PK);
     void getHike();
     void showHike();
@@ -28,6 +27,7 @@ public:
     bool is_there_an_edit();
     void ifBlank();
     void setTrailEdit();
+
 
     bool checkFormat();
 
@@ -38,7 +38,6 @@ private slots:
 
 private:
     Ui::editHikes *ui;
-    QString queryLine;
     QString primaryKey;
     hike trail;
     hike trailEdit;

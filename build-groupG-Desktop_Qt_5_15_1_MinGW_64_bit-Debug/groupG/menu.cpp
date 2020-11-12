@@ -7,7 +7,7 @@ menu::menu(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->refreshButton->hide();
-    ui->savedLabel->hide();
+    //ui->savedLabel->hide();
 
     populate();
 }
@@ -344,7 +344,7 @@ void menu::on_savedHikesButton_clicked()
     if(toggleSave) {
         ui->savedHikesButton->setText("Go Back");
         //ui->table->setRowCount(0);   //From last QTableWidget --> now QTableView
-        ui->savedLabel->show();
+        //ui->savedLabel->show();
 
         orderName = true;
         orderDistance = true;
@@ -354,7 +354,7 @@ void menu::on_savedHikesButton_clicked()
     } else {
         ui->savedHikesButton->setText("Saved Hikes");
         //ui->table->setRowCount(0);   //From last QTableWidget --> now QTableView
-        ui->savedLabel->hide();
+        //ui->savedLabel->hide();
 
         orderName = true;
         orderDistance = true;
