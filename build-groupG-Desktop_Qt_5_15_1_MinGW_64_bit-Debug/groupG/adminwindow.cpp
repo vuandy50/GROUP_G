@@ -79,11 +79,11 @@ void adminWindow::on_delete_2_clicked()
 
         if(delHike->getDelHike())
         {
-            /*
+
             QSqlQuery *qry = new QSqlQuery(db);
             qry->prepare("DELETE FROM hikes WHERE Name = '"+primaryKey+"';");
             qry->exec();
-            */
+
             ui->error->setText("Delete SUCESSFUL! Please Refresh Table");
         }
         else
@@ -111,10 +111,6 @@ void adminWindow::on_edit_clicked()
         if(editHike->is_there_an_edit())
         {
             trailEdit = editHike->editTrail();
-            qDebug() << "+++++++++++++++++++++";
-            qDebug() << primaryKey;
-            qDebug() << trailEdit.getDistance();
-            qDebug() << "+++++++++++++++++++++";
             QSqlQuery *qry = new QSqlQuery(db);
             qry->prepare("UPDATE hikes SET Name = '"+trailEdit.getName()+"', "
                                         "Park = '"+trailEdit.getPark()+"', "

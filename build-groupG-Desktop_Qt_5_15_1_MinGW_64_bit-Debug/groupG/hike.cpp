@@ -40,21 +40,6 @@ hike hike::operator = (hike const & obj)
     trailType_ = obj.trailType_;
     ascent_ = obj.ascent_;
     elevation_ = obj.elevation_;
-
-    qDebug() << "T: " + name_ + " " + "E: " + obj.name_;
-    qDebug() << "T: " + park_ + " " + "E: " + obj.park_;
-    qDebug() << "T: " << open_ << " E: " << obj.open_;
-    qDebug() << "T: " << close_ << " E: " << obj.close_;
-    qDebug() << "T: " << distance_ << " E: " << obj.distance_;
-    qDebug() << "T: " << difficulty_ <<" E: " << obj.difficulty_;
-    qDebug() << "T: " << address_ <<" E: " << obj.address_;
-    qDebug() << "T: " + city_ + " " + "E: " + obj.city_;
-    qDebug() << "T: " << zipcode_ << " E: " << obj.zipcode_;
-    qDebug() << "T: " + phone_ + " " + "E: " + obj.phone_;
-    qDebug() << "T: " + walkOrBike_ + " " + "E: " + obj.walkOrBike_;
-    qDebug() << "T: " + trailType_ + " " + "E: " + obj.trailType_;
-    qDebug() << "T: " << ascent_ << " E: " << obj.ascent_;
-    qDebug() << "T: " << elevation_ << " E: " << obj.elevation_;
     return *this;
 }
 void hike::setHike(QString name, QString park, QTime open, QTime close,
