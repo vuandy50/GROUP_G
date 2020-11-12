@@ -40,9 +40,9 @@ void singleView::displayAll() {
     qry->first();
 
     QTime open = qry->value(2).toTime();
-    QString openTime = open.toString("h:m ap"); //hour:min am/pm
+    QString openTime = open.toString("h:mm ap"); //hour:min am/pm
     QTime close = qry->value(3).toTime();
-    QString closeTime = close.toString("h:m ap");
+    QString closeTime = close.toString("h:mm ap");
 
 
     ui->address->setText(qry->value(6).toString() + " " + qry->value(7).toString() + ", CA " + qry->value(8).toString());
@@ -50,7 +50,7 @@ void singleView::displayAll() {
     ui->difficulty->setText("Difficulty: " + QString::number(qry->value(5).toDouble()));
     ui->distance->setText("Distance: " + QString::number(qry->value(4).toDouble(), 'f', 3) + " miles");
     ui->elevation->setText("Elevation: " + QString::number(qry->value(13).toDouble()) + " ft");
-    ui->hours->setText(openTime + closeTime);
+    ui->hours->setText(openTime + " - " + closeTime);
     ui->name->setText(qry->value(0).toString());
     ui->park->setText(qry->value(1).toString());
     ui->phone->setText(qry->value(9).toString());
