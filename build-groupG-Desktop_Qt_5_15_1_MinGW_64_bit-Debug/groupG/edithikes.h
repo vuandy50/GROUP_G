@@ -9,6 +9,7 @@
 #include <hike.h>
 #include <QDebug>
 #include <QRegExp>
+#include <viewpic.h>
 
 namespace Ui {
 class editHikes;
@@ -36,9 +37,14 @@ private slots:
 
     void on_edit_clicked();
 
+    void on_viewPic_clicked();
+
+    void on_changePic_clicked();
+
 private:
     Ui::editHikes *ui;
     QString primaryKey;
+    viewPic *pic;
     hike trail;
     hike trailEdit;
     bool check;

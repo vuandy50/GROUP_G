@@ -44,7 +44,6 @@ void singleView::displayAll() {
     QTime close = qry->value(3).toTime();
     QString closeTime = close.toString("h:mm ap");
 
-
     ui->address->setText(qry->value(6).toString() + " " + qry->value(7).toString() + ", CA " + qry->value(8).toString());
     ui->ascent->setText("Ascent: " + QString::number(qry->value(12).toDouble()) + " ft");
     ui->difficulty->setText("Difficulty: " + QString::number(qry->value(5).toDouble()));
@@ -55,14 +54,12 @@ void singleView::displayAll() {
     ui->park->setText(qry->value(1).toString());
     ui->phone->setText(qry->value(9).toString());
 
-
     ui->trail->setText(qry->value(11).toString());
     ui->wob->setText(qry->value(10).toString());
 
     QPixmap pict = QPixmap();
 
     ui->pic->setAlignment(Qt::AlignCenter);
-    // qDebug() << QDir::currentPath();
     if(!pict.loadFromData(qry->value(14).toByteArray())){
         qDebug() << ("Whoops.");
     }

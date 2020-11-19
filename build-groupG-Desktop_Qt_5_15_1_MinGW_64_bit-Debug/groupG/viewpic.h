@@ -15,8 +15,13 @@ public:
     explicit viewPic(QWidget *parent = nullptr);
     ~viewPic();
 
+private slots:
+    void on_close_clicked();
+    void setScreen();
+
 private:
     Ui::viewPic *ui;
+    QString primaryKey;
 };
 
 #endif // VIEWPIC_H

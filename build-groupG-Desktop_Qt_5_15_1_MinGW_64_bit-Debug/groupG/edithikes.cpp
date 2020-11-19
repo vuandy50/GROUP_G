@@ -49,6 +49,7 @@ void editHikes::getHike()
     QString trailType;
     int ascent;
     int elevation;
+    QByteArray pic;
 
     qry->prepare("SELECT * FROM hikes WHERE Name ='"+primaryKey+"';");
     qDebug() << primaryKey;
@@ -87,9 +88,10 @@ void editHikes::getHike()
             trailType = qry->value(11).toString();
             ascent = qry->value(12).toInt();
             elevation = qry->value(13).toInt();
+            pic = qry->value(14).toByteArray();
 
             trail.setHike(name, park, open, close, distance, difficulty,
-                          address, city, zipcode, phone, walkOrBike, trailType,ascent,elevation);
+                          address, city, zipcode, phone, walkOrBike, trailType,ascent,elevation, pic);
         }
     }
     else
@@ -385,4 +387,8 @@ void editHikes::on_edit_clicked()
     {
         close();
     }
+}
+void editHikes::on_changePic_clicked()
+{
+
 }

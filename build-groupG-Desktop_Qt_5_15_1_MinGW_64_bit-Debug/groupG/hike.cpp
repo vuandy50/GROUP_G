@@ -7,7 +7,7 @@ hike::hike()
 
 hike::hike(QString name, QString park, QTime open, QTime close,
      double distance, double difficulty, QString address, QString city, int zipcode,
-     QString phone, QString walkOrBike, QString trailType, double ascent,double elevation)
+     QString phone, QString walkOrBike, QString trailType, double ascent,double elevation,QByteArray pict)
 {
     name_ = name;
     park_ = park;
@@ -23,6 +23,7 @@ hike::hike(QString name, QString park, QTime open, QTime close,
     trailType_ = trailType;
     ascent_ = ascent;
     elevation_ = elevation;
+    pic = pict;
 }
 hike hike::operator = (hike const & obj)
 {
@@ -40,11 +41,12 @@ hike hike::operator = (hike const & obj)
     trailType_ = obj.trailType_;
     ascent_ = obj.ascent_;
     elevation_ = obj.elevation_;
+    pic = obj.pic;
     return *this;
 }
 void hike::setHike(QString name, QString park, QTime open, QTime close,
              double distance, double difficulty, QString address, QString city, int zipcode,
-             QString phone, QString walkOrBike, QString trailType, double ascent,double elevation )
+             QString phone, QString walkOrBike, QString trailType, double ascent,double elevation,QByteArray pict )
 {
     name_ = name;
     park_ = park;
@@ -60,6 +62,7 @@ void hike::setHike(QString name, QString park, QTime open, QTime close,
     trailType_ = trailType;
     ascent_ = ascent;
     elevation_ = elevation;
+    pic = pict;
 }
 void hike::setName(QString n)
 {
@@ -117,4 +120,8 @@ void hike::setAsc(double a)
 void hike::setElev(double e)
 {
     elevation_ = e;
+}
+void hike::setPic(QByteArray p)
+{
+    pic = p;
 }

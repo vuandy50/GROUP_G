@@ -12,3 +12,11 @@ viewPic::~viewPic()
 {
     delete ui;
 }
+void viewPic::setScreen()
+{
+
+}
+void viewPic::on_close_clicked()
+{
+    close();
+}

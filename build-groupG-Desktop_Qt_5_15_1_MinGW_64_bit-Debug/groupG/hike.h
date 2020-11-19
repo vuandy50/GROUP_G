@@ -4,17 +4,19 @@
 #include <QString>
 #include <QDebug>
 #include <QTime>
+#include <QByteArray>
+
 class hike
 {
 public:
     hike();
     hike(QString name, QString park, QTime open, QTime close,
          double distance, double difficulty, QString address, QString city, int zipcode,
-         QString phone, QString walkOrBike, QString trailType,double ascent,double elevation );
+         QString phone, QString walkOrBike, QString trailType,double ascent,double elevation,QByteArray pict );
     hike operator = (hike const & obj);
     void setHike(QString name, QString park, QTime open, QTime close,
                  double distance, double difficulty, QString address, QString city, int zipcode,
-                 QString phone, QString walkOrBike, QString trailType, double ascent,double elevation );
+                 QString phone, QString walkOrBike, QString trailType, double ascent,double elevation,QByteArray pict);
 
     QString getName() {return name_;}
     QString getPark() {return park_;}
@@ -30,6 +32,7 @@ public:
     QString getType() {return trailType_;}
     double getAsc(){return ascent_;}
     double getElev(){return elevation_;}
+    QByteArray getPic(){return pic;}
 
     void setName(QString n);
     void setPark(QString p);
@@ -45,6 +48,7 @@ public:
     void setType(QString t);
     void setAsc(double a);
     void setElev(double e);
+    void setPic(QByteArray p);
 
 private:
     QString name_;
@@ -61,6 +65,7 @@ private:
     QString trailType_;
     double ascent_;
     double elevation_;
+    QByteArray pic;
 };
 
 #endif // HIKE_H
