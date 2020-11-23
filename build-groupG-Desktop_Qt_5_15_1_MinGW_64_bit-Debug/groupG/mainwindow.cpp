@@ -10,7 +10,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     myDB.openDB();
     login = new loginDB();
-
+    mapper = new gmap();
 }
 
 MainWindow::~MainWindow()
@@ -42,8 +42,12 @@ void MainWindow::on_login_clicked()
                 close();                    // close login screen
                 menu = new class menu();    // create new menu
                 menu->setAccount(login->getVector()[i]);
+                menu->move(20, 120);
                 menu->show();               // show new menu
 
+                mapper->resize(1024, 840);
+                mapper->move(880, 60);
+                mapper->show();
                 // terminates early.
                 close();
             }

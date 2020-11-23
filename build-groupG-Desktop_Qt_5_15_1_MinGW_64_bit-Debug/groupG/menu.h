@@ -4,7 +4,8 @@
 #include <fstream>
 #include <QMainWindow>
 #include <QtGui>
-
+#include <QMessageBox>
+#include <QWebEngineView>
 #include "database.h"
 #include "account.h"
 #include "accountSettings.h"
