@@ -37,7 +37,7 @@ private slots:
 
     void on_edit_clicked();
 
-    void on_viewPic_clicked();
+    //void on_viewPic_clicked();
 
     void on_changePic_clicked();
 

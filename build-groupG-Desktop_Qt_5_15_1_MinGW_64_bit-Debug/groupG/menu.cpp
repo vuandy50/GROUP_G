@@ -383,6 +383,7 @@ void menu::on_table_clicked(const QModelIndex &index)
 {
     QString currName = ui->table->model()->data(index.siblingAtColumn(0),0).toString();
     single->setNameEmail(currName, newAccount.getEmail());
+    single->move(20, 120);
     single->show();
     single->setWindowState(Qt::WindowState::WindowActive);
 }
