@@ -398,10 +398,10 @@
   <widget class="QLabel" name="errorMesg">
    <property name="geometry">
     <rect>
-     <x>350</x>
-     <y>40</y>
-     <width>211</width>
-     <height>16</height>
+     <x>400</x>
+     <y>10</y>
+     <width>201</width>
+     <height>20</height>
     </rect>
    </property>
    <property name="text">
@@ -461,7 +461,7 @@
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>310</y>
+     <y>340</y>
      <width>271</width>
      <height>23</height>
     </rect>
@@ -481,6 +481,29 @@
    </property>
    <property name="text">
     <string>pic</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="url">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>310</y>
+     <width>251</width>
+     <height>20</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_14">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>310</y>
+     <width>21</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>URL</string>
    </property>
   </widget>
  </widget>

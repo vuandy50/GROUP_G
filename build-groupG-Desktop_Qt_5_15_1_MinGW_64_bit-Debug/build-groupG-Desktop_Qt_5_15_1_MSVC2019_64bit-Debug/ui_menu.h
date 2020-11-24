@@ -64,8 +64,6 @@ public:
     QCheckBox *Walking;
     QCheckBox *Biking;
     QLabel *label_6;
-    QLabel *pic;
-    QLabel *info;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -73,7 +71,7 @@ public:
     {
         if (menu->objectName().isEmpty())
             menu->setObjectName(QString::fromUtf8("menu"));
-        menu->resize(1774, 922);
+        menu->resize(817, 638);
         centralwidget = new QWidget(menu);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         label = new QLabel(centralwidget);
@@ -222,16 +220,10 @@ public:
         QFont font3;
         font3.setPointSize(15);
         label_6->setFont(font3);
-        pic = new QLabel(centralwidget);
-        pic->setObjectName(QString::fromUtf8("pic"));
-        pic->setGeometry(QRect(524, 630, 241, 231));
-        info = new QLabel(centralwidget);
-        info->setObjectName(QString::fromUtf8("info"));
-        info->setGeometry(QRect(50, 630, 441, 231));
         menu->setCentralWidget(centralwidget);
         menubar = new QMenuBar(menu);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 1774, 26));
+        menubar->setGeometry(QRect(0, 0, 817, 26));
         menu->setMenuBar(menubar);
         statusbar = new QStatusBar(menu);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -276,8 +268,6 @@ public:
         Walking->setText(QCoreApplication::translate("menu", "Walking", nullptr));
         Biking->setText(QCoreApplication::translate("menu", "Biking", nullptr));
         label_6->setText(QCoreApplication::translate("menu", "Filter", nullptr));
-        pic->setText(QCoreApplication::translate("menu", "pic", nullptr));
-        info->setText(QCoreApplication::translate("menu", "pic", nullptr));
     } // retranslateUi
 
 };

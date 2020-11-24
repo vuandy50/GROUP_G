@@ -110,6 +110,7 @@ void adminWindow::on_edit_clicked()
 
         if(editHike->is_there_an_edit())
         {
+            /*
             trailEdit = editHike->editTrail();
             QSqlQuery *qry = new QSqlQuery(db);
             qry->prepare("UPDATE hikes SET Name = '"+trailEdit.getName()+"', "
@@ -125,7 +126,8 @@ void adminWindow::on_edit_clicked()
                                         "[Walking/Biking] = '"+trailEdit.getWB()+"', "
                                         "Type = '"+trailEdit.getType()+"', "
                                         "Ascent = '"+QString::number(trailEdit.getAsc())+"', "
-                                        "Elevation = '"+QString::number(trailEdit.getElev())+"' "
+                                        "Elevation = '"+QString::number(trailEdit.getElev())+",' "
+                                        "Picture = '"+trailEdit.getPic()+",' "
                                         "WHERE Name = '"+primaryKey+"';");
 
             if(qry->exec())
@@ -137,6 +139,7 @@ void adminWindow::on_edit_clicked()
                 qDebug("NO");
             }
             ui->error->setText("Edit SUCESSFUL! Please Refresh Table");
+            */
         }
         else
         {
@@ -159,6 +162,7 @@ void adminWindow::on_add_clicked()
 
     if(addHike->is_Successful())
     {
+        /*
         trailEdit = addHike->getHike();
         QSqlQuery *qry = new QSqlQuery(db);
         qry->prepare("INSERT INTO hikes ("
@@ -175,8 +179,9 @@ void adminWindow::on_add_clicked()
                      "[Walking/Biking],"
                      "Type,"
                      "Ascent,"
-                     "Elevation)"
-                     "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                     "Elevation,"
+                     "Picture)"
+                     "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
         qry->addBindValue(trailEdit.getName());
         qry->addBindValue(trailEdit.getPark());
         qry->addBindValue(trailEdit.getOpen().toString());
@@ -191,6 +196,7 @@ void adminWindow::on_add_clicked()
         qry->addBindValue(trailEdit.getType());
         qry->addBindValue(trailEdit.getAsc());
         qry->addBindValue(trailEdit.getElev());
+        qry->addBindValue(trailEdit.getPic());
 
         if(qry->exec())
         {
@@ -201,6 +207,7 @@ void adminWindow::on_add_clicked()
             qDebug("NO");
         }
         ui->error->setText("Add SUCESSFUL! Please Refresh Table");
+        */
     }
     else
     {

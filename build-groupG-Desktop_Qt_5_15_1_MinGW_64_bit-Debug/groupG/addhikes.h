@@ -27,6 +27,8 @@ private slots:
     bool checkFormat();
     void on_pushButton_2_clicked();
 
+    void on_changePic_clicked();
+
 private:
     Ui::addHikes *ui;
     bool successful;

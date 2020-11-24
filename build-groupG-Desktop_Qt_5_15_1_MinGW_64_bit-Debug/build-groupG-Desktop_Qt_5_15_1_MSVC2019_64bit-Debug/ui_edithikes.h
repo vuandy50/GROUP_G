@@ -60,6 +60,8 @@ public:
     QLineEdit *elevation;
     QPushButton *changePic;
     QLabel *pic;
+    QLineEdit *url;
+    QLabel *label_14;
 
     void setupUi(QDialog *editHikes)
     {
@@ -170,7 +172,7 @@ public:
         label_11->setFont(font1);
         errorMesg = new QLabel(editHikes);
         errorMesg->setObjectName(QString::fromUtf8("errorMesg"));
-        errorMesg->setGeometry(QRect(350, 40, 211, 16));
+        errorMesg->setGeometry(QRect(400, 10, 201, 20));
         errorMesg->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
         ascent = new QLineEdit(editHikes);
         ascent->setObjectName(QString::fromUtf8("ascent"));
@@ -186,10 +188,16 @@ public:
         elevation->setGeometry(QRect(520, 310, 81, 20));
         changePic = new QPushButton(editHikes);
         changePic->setObjectName(QString::fromUtf8("changePic"));
-        changePic->setGeometry(QRect(30, 310, 271, 23));
+        changePic->setGeometry(QRect(30, 340, 271, 23));
         pic = new QLabel(editHikes);
         pic->setObjectName(QString::fromUtf8("pic"));
         pic->setGeometry(QRect(30, 90, 271, 211));
+        url = new QLineEdit(editHikes);
+        url->setObjectName(QString::fromUtf8("url"));
+        url->setGeometry(QRect(50, 310, 251, 20));
+        label_14 = new QLabel(editHikes);
+        label_14->setObjectName(QString::fromUtf8("label_14"));
+        label_14->setGeometry(QRect(30, 310, 21, 20));
 
         retranslateUi(editHikes);
 
@@ -224,6 +232,7 @@ public:
         label_13->setText(QCoreApplication::translate("editHikes", "Elevation", nullptr));
         changePic->setText(QCoreApplication::translate("editHikes", "Change", nullptr));
         pic->setText(QCoreApplication::translate("editHikes", "pic", nullptr));
+        label_14->setText(QCoreApplication::translate("editHikes", "URL", nullptr));
     } // retranslateUi
 
 };

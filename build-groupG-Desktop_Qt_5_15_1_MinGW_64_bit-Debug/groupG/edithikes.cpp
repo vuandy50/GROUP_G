@@ -138,6 +138,15 @@ void editHikes::showHike()
     }
     ui->ascent->setText(QString::number(trail.getAsc()));
     ui->elevation->setText(QString::number(trail.getElev()));
+
+    QPixmap pict = QPixmap();
+    ui->pic->setAlignment(Qt::AlignCenter);
+    if(!pict.loadFromData(trail.getPic())){
+        qDebug() << ("Whoops.");
+    }
+    pict = pict.scaled(ui->pic->size(),Qt::KeepAspectRatio);
+
+    ui->pic->setPixmap(pict);
 }
 void editHikes::ifBlank()
 {
@@ -214,7 +223,10 @@ void editHikes::ifBlank()
     {
         trailEdit.setElev(trail.getElev());
     }
-
+    if(trailEdit.getPic().isEmpty())
+    {
+        trailEdit.setPic(trail.getPic());
+    }
 }
 bool editHikes::checkFormat() //NO PHONE OR ADDRESS CHECK
 {
@@ -301,6 +313,10 @@ bool editHikes::checkFormat() //NO PHONE OR ADDRESS CHECK
             }
         }
     }
+    if(ui->url->text() != "" && !trailEdit.LoadPic(ui->url->text()))
+    {
+        mesg = mesg + " URL";
+    }
     if(mesg == "INVALID")
     {
         return true;
@@ -371,6 +387,7 @@ void editHikes::setTrailEdit()
     }
     trailEdit.setAsc(ui->ascent->text().toDouble());
     trailEdit.setElev(ui->elevation->text().toDouble());
+    trailEdit.LoadPic(ui->url->text());
 }
 void editHikes::on_pushButton_2_clicked()
 {
@@ -390,5 +407,20 @@ void editHikes::on_edit_clicked()
 }
 void editHikes::on_changePic_clicked()
 {
+    if(trailEdit.LoadPic(ui->url->text()))
+    {
+        QPixmap pict = QPixmap();
+        ui->pic->setAlignment(Qt::AlignCenter);
+        if(!pict.loadFromData(trailEdit.getPic())){
+            qDebug() << ("Whoops.");
+        }
+        pict = pict.scaled(ui->pic->size(),Qt::KeepAspectRatio);
 
+        ui->pic->setPixmap(pict);
+    }
+    else
+    {
+        ui->errorMesg->setText("FILENAME NOT FOUND");
+    }
 }
+

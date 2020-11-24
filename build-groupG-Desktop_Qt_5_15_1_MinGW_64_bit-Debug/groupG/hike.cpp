@@ -125,3 +125,24 @@ void hike::setPic(QByteArray p)
 {
     pic = p;
 }
+bool hike::LoadPic(QString path)
+{
+    QFileInfo picture(path);
+    if(picture.isFile())
+    {
+        qDebug("FOUND");
+        QPixmap img(path);
+        QByteArray bArray;
+        QBuffer buffer(&bArray);
+        buffer.open(QIODevice::WriteOnly);
+        img.save(&buffer, "PNG");
+        setPic(bArray);
+        return true;
+    }
+    else
+    {
+        qDebug("NOT FOUND");
+    }
+    return false;
+
+}

@@ -41,7 +41,7 @@ public:
     {
         if (singleView->objectName().isEmpty())
             singleView->setObjectName(QString::fromUtf8("singleView"));
-        singleView->resize(800, 600);
+        singleView->resize(817, 638);
         pic = new QLabel(singleView);
         pic->setObjectName(QString::fromUtf8("pic"));
         pic->setGeometry(QRect(360, 20, 411, 311));

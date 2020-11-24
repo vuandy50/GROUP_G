@@ -8,6 +8,7 @@ addHikes::addHikes(QWidget *parent) :
     ui->setupUi(this);
     ui->errorName->hide();
     ui->errorPark->hide();
+    ui->errorDiff->hide();
     ui->errorDis->hide();
     ui->errorAdd->hide();
     ui->errorCity->hide();
@@ -17,6 +18,13 @@ addHikes::addHikes(QWidget *parent) :
     ui->errorType->hide();
     ui->errorAsc->hide();
     ui->errorElev->hide();
+    ui->errorURL->hide();
+    QPixmap pict = QPixmap();
+    ui->pic->setAlignment(Qt::AlignCenter);
+    pict.fill();
+    pict = pict.scaled(ui->pic->size(),Qt::KeepAspectRatio);
+
+    ui->pic->setPixmap(pict);
 }
 
 addHikes::~addHikes()
@@ -130,6 +138,10 @@ bool addHikes::checkFormat()
             }
         }
     }
+    if(ui->url->text() != "" && !addhike.LoadPic(ui->url->text()))
+    {
+        mesg = mesg + " URL";
+    }
     if(mesg == "INVALID")
     {
         return true;
@@ -237,6 +249,14 @@ void addHikes::errorMessage()
     {
         ui->errorElev->hide();
     }
+    if(ui->url->text().isEmpty())
+    {
+        ui->errorURL->show();
+    }
+    else
+    {
+        ui->errorURL->hide();
+    }
 }
 bool addHikes::ifBlank()
 {
@@ -245,7 +265,7 @@ bool addHikes::ifBlank()
        (ui->distance->text().isEmpty()) || (ui->difficulty->text().isEmpty()) ||
        (ui->address->text().isEmpty()) || (ui->city->text().isEmpty()) ||
        (ui->zipcode->text().isEmpty()) || (ui->phoneNum->text().isEmpty()) ||
-       (ui->ascent->text().isEmpty())|| (ui->elevation->text().isEmpty()))
+       (ui->ascent->text().isEmpty())|| (ui->elevation->text().isEmpty()) || ui->url->text().isEmpty())
     {
         isBlank = true;
     }
@@ -342,6 +362,10 @@ void addHikes::setHike()
     }
     addhike.setAsc(ui->ascent->text().toDouble());
     addhike.setElev(ui->elevation->text().toDouble());
+    if(!addhike.LoadPic(ui->url->text()))
+    {
+        ui->errorMesg->setText("FILENAME NOT FOUND");
+    }
 }
 hike addHikes::getHike()
 {
@@ -351,4 +375,29 @@ void addHikes::on_pushButton_2_clicked()
 {
     successful = false;
     close();
+}
+
+void addHikes::on_changePic_clicked()
+{
+    if(addhike.LoadPic(ui->url->text()))
+    {
+        QPixmap pict = QPixmap();
+        ui->pic->setAlignment(Qt::AlignCenter);
+        if(!pict.loadFromData(addhike.getPic())){
+            qDebug() << ("Whoops.");
+        }
+        pict = pict.scaled(ui->pic->size(),Qt::KeepAspectRatio);
+
+        ui->pic->setPixmap(pict);
+    }
+    else
+    {
+        QPixmap pict = QPixmap();
+        ui->pic->setAlignment(Qt::AlignCenter);
+        pict.fill();
+        pict = pict.scaled(ui->pic->size(),Qt::KeepAspectRatio);
+
+        ui->pic->setPixmap(pict);
+        ui->errorMesg->setText("FILENAME NOT FOUND");
+    }
 }

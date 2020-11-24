@@ -5,6 +5,10 @@
 #include <QDebug>
 #include <QTime>
 #include <QByteArray>
+#include <QFileInfo>
+#include <QPixmap>
+#include <QBuffer>
+#include <QUrl>
 
 class hike
 {
@@ -49,6 +53,8 @@ public:
     void setAsc(double a);
     void setElev(double e);
     void setPic(QByteArray p);
+
+    bool LoadPic(QString path);
 
 private:
     QString name_;
