@@ -110,7 +110,7 @@ void adminWindow::on_edit_clicked()
 
         if(editHike->is_there_an_edit())
         {
-            /*
+
             trailEdit = editHike->editTrail();
             QSqlQuery *qry = new QSqlQuery(db);
             qry->prepare("UPDATE hikes SET Name = '"+trailEdit.getName()+"', "
@@ -126,20 +126,36 @@ void adminWindow::on_edit_clicked()
                                         "[Walking/Biking] = '"+trailEdit.getWB()+"', "
                                         "Type = '"+trailEdit.getType()+"', "
                                         "Ascent = '"+QString::number(trailEdit.getAsc())+"', "
-                                        "Elevation = '"+QString::number(trailEdit.getElev())+",' "
-                                        "Picture = '"+trailEdit.getPic()+",' "
+                                        "Elevation = '"+QString::number(trailEdit.getElev())+"' "
                                         "WHERE Name = '"+primaryKey+"';");
-
             if(qry->exec())
             {
                 qDebug("YES");
+                ui->error->setText("Edit SUCESSFUL! Please Refresh Table");
+
             }
             else
             {
                 qDebug("NO");
+                ui->error->setText("Edit UNSUCESSFUL!");
             }
-            ui->error->setText("Edit SUCESSFUL! Please Refresh Table");
-            */
+
+            qry = new QSqlQuery(db);
+            qry->prepare("UPDATE hikes SET Picture = x'"+trailEdit.getPic().toHex()+"'"
+                         "WHERE Name = '"+primaryKey+"';");
+            if(qry->exec())
+            {
+                qDebug("YES");
+                ui->error->setText("Edit SUCESSFUL! Please Refresh Table");
+
+            }
+            else
+            {
+                qDebug("NO");
+                ui->error->setText("Edit UNSUCESSFUL!");
+            }
+
+
         }
         else
         {
@@ -162,7 +178,6 @@ void adminWindow::on_add_clicked()
 
     if(addHike->is_Successful())
     {
-        /*
         trailEdit = addHike->getHike();
         QSqlQuery *qry = new QSqlQuery(db);
         qry->prepare("INSERT INTO hikes ("
@@ -207,7 +222,7 @@ void adminWindow::on_add_clicked()
             qDebug("NO");
         }
         ui->error->setText("Add SUCESSFUL! Please Refresh Table");
-        */
+
     }
     else
     {
