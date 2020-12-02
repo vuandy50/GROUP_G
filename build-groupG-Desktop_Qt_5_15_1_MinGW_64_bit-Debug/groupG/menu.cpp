@@ -387,3 +387,9 @@ void menu::on_table_clicked(const QModelIndex &index)
     single->show();
     single->setWindowState(Qt::WindowState::WindowActive);
 }
+
+void menu::on_pushButton_clicked()
+{
+    track = new tracker();
+    track->show();
+}

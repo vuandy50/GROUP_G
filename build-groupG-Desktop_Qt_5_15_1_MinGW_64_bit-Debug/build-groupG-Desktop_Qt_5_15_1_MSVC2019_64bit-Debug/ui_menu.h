@@ -64,6 +64,7 @@ public:
     QCheckBox *Walking;
     QCheckBox *Biking;
     QLabel *label_6;
+    QPushButton *pushButton;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -220,10 +221,13 @@ public:
         QFont font3;
         font3.setPointSize(15);
         label_6->setFont(font3);
+        pushButton = new QPushButton(centralwidget);
+        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        pushButton->setGeometry(QRect(20, 430, 221, 51));
         menu->setCentralWidget(centralwidget);
         menubar = new QMenuBar(menu);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 817, 26));
+        menubar->setGeometry(QRect(0, 0, 817, 21));
         menu->setMenuBar(menubar);
         statusbar = new QStatusBar(menu);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -268,6 +272,7 @@ public:
         Walking->setText(QCoreApplication::translate("menu", "Walking", nullptr));
         Biking->setText(QCoreApplication::translate("menu", "Biking", nullptr));
         label_6->setText(QCoreApplication::translate("menu", "Filter", nullptr));
+        pushButton->setText(QCoreApplication::translate("menu", "TRACKER", nullptr));
     } // retranslateUi
 
 };

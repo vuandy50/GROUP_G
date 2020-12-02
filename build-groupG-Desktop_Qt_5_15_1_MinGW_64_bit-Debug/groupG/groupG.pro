@@ -1,6 +1,9 @@
 QT       += core gui
 QT       += sql
 QT       += webenginewidgets
+QT       += location
+QT       += positioning
+QT       += quick
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++11
@@ -27,7 +30,8 @@ SOURCES += \
     mainwindow.cpp \
     menu.cpp \
     singleView.cpp \
-    sql.cpp
+    sql.cpp \
+    tracker.cpp
 
 HEADERS += \
     account.h \
@@ -46,7 +50,8 @@ HEADERS += \
     mainwindow.h \
     menu.h \
     singleView.h \
-    sql.h
+    sql.h \
+    tracker.h
 
 FORMS += \
     accountSettings.ui \
@@ -60,7 +65,8 @@ FORMS += \
     gmap.ui \
     mainwindow.ui \
     menu.ui \
-    singleview.ui
+    singleview.ui \
+    tracker.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

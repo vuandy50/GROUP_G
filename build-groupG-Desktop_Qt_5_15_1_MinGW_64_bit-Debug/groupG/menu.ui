@@ -506,6 +506,19 @@ selection-background-color:#282828
      <string>Filter</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>430</y>
+      <width>221</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>TRACKER</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -513,7 +526,7 @@ selection-background-color:#282828
      <x>0</x>
      <y>0</y>
      <width>817</width>
-     <height>26</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>

@@ -10,6 +10,7 @@
 #include "account.h"
 #include "accountSettings.h"
 #include "singleview.h"
+#include "tracker.h"
 namespace Ui {
 class menu;
 }
@@ -97,6 +98,8 @@ private slots:
 
     void on_table_clicked(const QModelIndex &index);
 
+    void on_pushButton_clicked();
+
 private:
     Ui::menu *ui;
     QSqlDatabase db;
@@ -105,6 +108,7 @@ private:
     accountSettings *setting;
     singleView *single;
     QVector<location> list_;
+    tracker *track;
 
     bool orderName;
     bool orderDistance;
