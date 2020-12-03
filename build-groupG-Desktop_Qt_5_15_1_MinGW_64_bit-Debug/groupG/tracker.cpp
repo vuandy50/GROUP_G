@@ -7,38 +7,35 @@ tracker::tracker(QWidget *parent) :
 {
     ui->setupUi(this);
 
-
     ui->stop->hide();
     ui->resume->hide();
     ui->returnTo->hide();
     time = new QTime(0,0,0);
     timer = new QTimer(this);
-    connect(timer,SIGNAL(timeout()),this,SLOT(updateTime()));
+    connect(timer,SIGNAL(timeout()),this,SLOT(update()));
     timer->start(1000);
 
-    QGeoPositionInfoSource *source = QGeoPositionInfoSource::createDefaultSource(0);
-    if (source)
-    {
-        connect(source,SIGNAL(positionUpdated()),this,SLOT(updatePosistion()));
-        source->startUpdates();
-    }
-
-
-
+    position = new positioning();
 }
 
 tracker::~tracker()
 {
     delete ui;
 }
-void tracker::updateTime()
+void tracker::update()
 {
     *time = time->addSecs(1);
     ui->timer->setText(time->toString("mm:ss"));
+
+    QGeoPath dist(position->getPath());
+    ui->distance->setText(QString::number(toMiles(dist.length(0,dist.size()-1)),'f',2));
+
+    double speed = toMiles(dist.length(0,dist.size()-1)) / (time->minute() + time->second()/60.0);
+    ui->speed->setText(QString::number(speed,'f',2));
 }
-void tracker::updatePosition()
+double tracker::toMiles(double meters)
 {
-    qDebug() << "YES";
+    return meters * 0.000621371;
 }
 void tracker::on_pause_clicked()
 {
@@ -46,6 +43,7 @@ void tracker::on_pause_clicked()
     ui->stop->show();
     ui->resume->show();
     timer->stop();
+    position->stop();
 }
 
 void tracker::on_resume_clicked()
@@ -54,6 +52,8 @@ void tracker::on_resume_clicked()
     ui->stop->hide();
     ui->resume->hide();
     timer->start(1000);
+    position->start();
+
 }
 
 void tracker::on_stop_clicked()
@@ -61,6 +61,8 @@ void tracker::on_stop_clicked()
     ui->stop->hide();
     ui->resume->hide();
     ui->returnTo->show();
+    timer->stop();
+    position->stop();
 }
 
 void tracker::on_returnTo_clicked()

@@ -3,7 +3,7 @@ QT       += sql
 QT       += webenginewidgets
 QT       += location
 QT       += positioning
-QT       += quick
+QT       += positioning core widgets
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++11
@@ -29,6 +29,7 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     menu.cpp \
+    positioning.cpp \
     singleView.cpp \
     sql.cpp \
     tracker.cpp
@@ -49,6 +50,7 @@ HEADERS += \
     logindb.h \
     mainwindow.h \
     menu.h \
+    positioning.h \
     singleView.h \
     sql.h \
     tracker.h
@@ -80,3 +82,5 @@ DISTFILES += \
     groupG.pro.user.7346f64 \
     help.sqlite \
     hikes.csv
+
+RESOURCES +=

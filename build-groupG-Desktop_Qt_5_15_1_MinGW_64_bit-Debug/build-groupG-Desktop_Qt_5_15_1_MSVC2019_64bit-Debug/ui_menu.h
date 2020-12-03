@@ -11,7 +11,6 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QCheckBox>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
@@ -19,6 +18,7 @@
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSlider>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTableView>
 #include <QtWidgets/QWidget>
@@ -41,30 +41,22 @@ public:
     QPushButton *savedHikesButton;
     QPushButton *refreshButton;
     QListView *listView;
-    QCheckBox *checkBox_1;
     QLabel *label_3;
-    QCheckBox *checkBox_2;
-    QCheckBox *checkBox_3;
-    QCheckBox *checkBox_4;
-    QCheckBox *checkBox_5;
-    QCheckBox *checkBox_6;
-    QCheckBox *checkBox_7;
-    QCheckBox *checkBox_8;
-    QCheckBox *checkBox_9;
-    QCheckBox *checkBox_10;
-    QLabel *label_4;
-    QCheckBox *checkBox;
-    QCheckBox *Teusday;
-    QCheckBox *Wedsnesday;
-    QCheckBox *Thursday;
-    QCheckBox *Friday;
-    QCheckBox *Saturday;
-    QCheckBox *checkBox_16;
-    QLabel *label_5;
-    QCheckBox *Walking;
-    QCheckBox *Biking;
     QLabel *label_6;
-    QPushButton *pushButton;
+    QLabel *label_4;
+    QLabel *label_7;
+    QLabel *label_8;
+    QLabel *label_9;
+    QLabel *label_10;
+    QLabel *label_11;
+    QSlider *Distance;
+    QSlider *Difficulty;
+    QLabel *label_12;
+    QLabel *label_5;
+    QLabel *label_14;
+    QLabel *label_22;
+    QLabel *label_23;
+    QPushButton *tracker;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -72,7 +64,7 @@ public:
     {
         if (menu->objectName().isEmpty())
             menu->setObjectName(QString::fromUtf8("menu"));
-        menu->resize(817, 638);
+        menu->resize(709, 576);
         centralwidget = new QWidget(menu);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         label = new QLabel(centralwidget);
@@ -88,7 +80,7 @@ public:
         label->setWordWrap(false);
         layoutWidget = new QWidget(centralwidget);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(340, 58, 441, 30));
+        layoutWidget->setGeometry(QRect(330, 30, 341, 30));
         horizontalLayout = new QHBoxLayout(layoutWidget);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
@@ -109,7 +101,7 @@ public:
 
         table = new QTableView(centralwidget);
         table->setObjectName(QString::fromUtf8("table"));
-        table->setGeometry(QRect(260, 90, 521, 471));
+        table->setGeometry(QRect(240, 60, 421, 441));
         table->setStyleSheet(QString::fromUtf8("QTableWidget {\n"
 "background-color:#000000\n"
 "alternate-background-color:#C0C0C0\n"
@@ -124,7 +116,7 @@ public:
         table->verticalHeader()->setCascadingSectionResizes(true);
         label_2 = new QLabel(centralwidget);
         label_2->setObjectName(QString::fromUtf8("label_2"));
-        label_2->setGeometry(QRect(260, 60, 101, 31));
+        label_2->setGeometry(QRect(250, 32, 101, 31));
         QFont font1;
         font1.setFamily(QString::fromUtf8("Segoe UI Semibold"));
         font1.setPointSize(12);
@@ -133,101 +125,87 @@ public:
         label_2->setFont(font1);
         buttonAccount = new QPushButton(centralwidget);
         buttonAccount->setObjectName(QString::fromUtf8("buttonAccount"));
-        buttonAccount->setGeometry(QRect(20, 530, 121, 28));
+        buttonAccount->setGeometry(QRect(10, 500, 121, 28));
         savedHikesButton = new QPushButton(centralwidget);
         savedHikesButton->setObjectName(QString::fromUtf8("savedHikesButton"));
-        savedHikesButton->setGeometry(QRect(20, 490, 121, 28));
+        savedHikesButton->setGeometry(QRect(10, 460, 121, 28));
         refreshButton = new QPushButton(centralwidget);
         refreshButton->setObjectName(QString::fromUtf8("refreshButton"));
-        refreshButton->setGeometry(QRect(150, 490, 93, 28));
+        refreshButton->setGeometry(QRect(140, 460, 93, 28));
         listView = new QListView(centralwidget);
         listView->setObjectName(QString::fromUtf8("listView"));
-        listView->setGeometry(QRect(20, 90, 221, 331));
-        checkBox_1 = new QCheckBox(centralwidget);
-        checkBox_1->setObjectName(QString::fromUtf8("checkBox_1"));
-        checkBox_1->setGeometry(QRect(40, 120, 70, 17));
+        listView->setGeometry(QRect(10, 100, 231, 161));
         label_3 = new QLabel(centralwidget);
         label_3->setObjectName(QString::fromUtf8("label_3"));
-        label_3->setGeometry(QRect(30, 100, 61, 16));
+        label_3->setGeometry(QRect(100, 110, 61, 16));
         QFont font2;
         font2.setBold(true);
         font2.setWeight(75);
         label_3->setFont(font2);
-        checkBox_2 = new QCheckBox(centralwidget);
-        checkBox_2->setObjectName(QString::fromUtf8("checkBox_2"));
-        checkBox_2->setGeometry(QRect(40, 140, 70, 17));
-        checkBox_3 = new QCheckBox(centralwidget);
-        checkBox_3->setObjectName(QString::fromUtf8("checkBox_3"));
-        checkBox_3->setGeometry(QRect(40, 160, 70, 17));
-        checkBox_4 = new QCheckBox(centralwidget);
-        checkBox_4->setObjectName(QString::fromUtf8("checkBox_4"));
-        checkBox_4->setGeometry(QRect(40, 180, 70, 17));
-        checkBox_5 = new QCheckBox(centralwidget);
-        checkBox_5->setObjectName(QString::fromUtf8("checkBox_5"));
-        checkBox_5->setGeometry(QRect(40, 200, 70, 17));
-        checkBox_6 = new QCheckBox(centralwidget);
-        checkBox_6->setObjectName(QString::fromUtf8("checkBox_6"));
-        checkBox_6->setGeometry(QRect(80, 120, 70, 17));
-        checkBox_7 = new QCheckBox(centralwidget);
-        checkBox_7->setObjectName(QString::fromUtf8("checkBox_7"));
-        checkBox_7->setGeometry(QRect(80, 140, 70, 17));
-        checkBox_8 = new QCheckBox(centralwidget);
-        checkBox_8->setObjectName(QString::fromUtf8("checkBox_8"));
-        checkBox_8->setGeometry(QRect(80, 160, 70, 17));
-        checkBox_9 = new QCheckBox(centralwidget);
-        checkBox_9->setObjectName(QString::fromUtf8("checkBox_9"));
-        checkBox_9->setGeometry(QRect(80, 180, 70, 17));
-        checkBox_10 = new QCheckBox(centralwidget);
-        checkBox_10->setObjectName(QString::fromUtf8("checkBox_10"));
-        checkBox_10->setGeometry(QRect(80, 200, 70, 17));
-        label_4 = new QLabel(centralwidget);
-        label_4->setObjectName(QString::fromUtf8("label_4"));
-        label_4->setGeometry(QRect(30, 240, 71, 16));
-        label_4->setFont(font2);
-        checkBox = new QCheckBox(centralwidget);
-        checkBox->setObjectName(QString::fromUtf8("checkBox"));
-        checkBox->setGeometry(QRect(30, 260, 70, 17));
-        Teusday = new QCheckBox(centralwidget);
-        Teusday->setObjectName(QString::fromUtf8("Teusday"));
-        Teusday->setGeometry(QRect(30, 280, 70, 17));
-        Wedsnesday = new QCheckBox(centralwidget);
-        Wedsnesday->setObjectName(QString::fromUtf8("Wedsnesday"));
-        Wedsnesday->setGeometry(QRect(30, 300, 81, 17));
-        Thursday = new QCheckBox(centralwidget);
-        Thursday->setObjectName(QString::fromUtf8("Thursday"));
-        Thursday->setGeometry(QRect(30, 320, 70, 17));
-        Friday = new QCheckBox(centralwidget);
-        Friday->setObjectName(QString::fromUtf8("Friday"));
-        Friday->setGeometry(QRect(110, 260, 70, 17));
-        Saturday = new QCheckBox(centralwidget);
-        Saturday->setObjectName(QString::fromUtf8("Saturday"));
-        Saturday->setGeometry(QRect(110, 280, 70, 17));
-        checkBox_16 = new QCheckBox(centralwidget);
-        checkBox_16->setObjectName(QString::fromUtf8("checkBox_16"));
-        checkBox_16->setGeometry(QRect(110, 300, 70, 17));
-        label_5 = new QLabel(centralwidget);
-        label_5->setObjectName(QString::fromUtf8("label_5"));
-        label_5->setGeometry(QRect(30, 343, 81, 20));
-        label_5->setFont(font2);
-        Walking = new QCheckBox(centralwidget);
-        Walking->setObjectName(QString::fromUtf8("Walking"));
-        Walking->setGeometry(QRect(30, 370, 70, 17));
-        Biking = new QCheckBox(centralwidget);
-        Biking->setObjectName(QString::fromUtf8("Biking"));
-        Biking->setGeometry(QRect(30, 390, 70, 17));
         label_6 = new QLabel(centralwidget);
         label_6->setObjectName(QString::fromUtf8("label_6"));
-        label_6->setGeometry(QRect(30, 70, 51, 16));
+        label_6->setGeometry(QRect(30, 80, 51, 16));
         QFont font3;
         font3.setPointSize(15);
         label_6->setFont(font3);
-        pushButton = new QPushButton(centralwidget);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        pushButton->setGeometry(QRect(20, 430, 221, 51));
+        label_4 = new QLabel(centralwidget);
+        label_4->setObjectName(QString::fromUtf8("label_4"));
+        label_4->setGeometry(QRect(80, 150, 21, 16));
+        label_7 = new QLabel(centralwidget);
+        label_7->setObjectName(QString::fromUtf8("label_7"));
+        label_7->setGeometry(QRect(110, 150, 16, 16));
+        label_8 = new QLabel(centralwidget);
+        label_8->setObjectName(QString::fromUtf8("label_8"));
+        label_8->setGeometry(QRect(140, 150, 16, 16));
+        label_9 = new QLabel(centralwidget);
+        label_9->setObjectName(QString::fromUtf8("label_9"));
+        label_9->setGeometry(QRect(170, 150, 16, 16));
+        label_10 = new QLabel(centralwidget);
+        label_10->setObjectName(QString::fromUtf8("label_10"));
+        label_10->setGeometry(QRect(200, 150, 16, 16));
+        label_11 = new QLabel(centralwidget);
+        label_11->setObjectName(QString::fromUtf8("label_11"));
+        label_11->setGeometry(QRect(100, 180, 61, 16));
+        label_11->setFont(font2);
+        Distance = new QSlider(centralwidget);
+        Distance->setObjectName(QString::fromUtf8("Distance"));
+        Distance->setGeometry(QRect(20, 200, 211, 22));
+        Distance->setSizeIncrement(QSize(0, 0));
+        Distance->setMaximum(15);
+        Distance->setPageStep(1);
+        Distance->setOrientation(Qt::Horizontal);
+        Distance->setTickPosition(QSlider::TicksBelow);
+        Distance->setTickInterval(1);
+        Difficulty = new QSlider(centralwidget);
+        Difficulty->setObjectName(QString::fromUtf8("Difficulty"));
+        Difficulty->setGeometry(QRect(50, 130, 160, 22));
+        Difficulty->setMaximum(5);
+        Difficulty->setPageStep(1);
+        Difficulty->setValue(0);
+        Difficulty->setOrientation(Qt::Horizontal);
+        Difficulty->setTickPosition(QSlider::TicksBelow);
+        label_12 = new QLabel(centralwidget);
+        label_12->setObjectName(QString::fromUtf8("label_12"));
+        label_12->setGeometry(QRect(50, 150, 21, 16));
+        label_5 = new QLabel(centralwidget);
+        label_5->setObjectName(QString::fromUtf8("label_5"));
+        label_5->setGeometry(QRect(20, 220, 16, 16));
+        label_14 = new QLabel(centralwidget);
+        label_14->setObjectName(QString::fromUtf8("label_14"));
+        label_14->setGeometry(QRect(90, 220, 16, 16));
+        label_22 = new QLabel(centralwidget);
+        label_22->setObjectName(QString::fromUtf8("label_22"));
+        label_22->setGeometry(QRect(220, 220, 16, 16));
+        label_23 = new QLabel(centralwidget);
+        label_23->setObjectName(QString::fromUtf8("label_23"));
+        label_23->setGeometry(QRect(150, 220, 47, 13));
+        tracker = new QPushButton(centralwidget);
+        tracker->setObjectName(QString::fromUtf8("tracker"));
+        tracker->setGeometry(QRect(10, 270, 221, 181));
         menu->setCentralWidget(centralwidget);
         menubar = new QMenuBar(menu);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 817, 21));
+        menubar->setGeometry(QRect(0, 0, 709, 21));
         menu->setMenuBar(menubar);
         statusbar = new QStatusBar(menu);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -249,30 +227,20 @@ public:
         buttonAccount->setText(QCoreApplication::translate("menu", "Account Settings", nullptr));
         savedHikesButton->setText(QCoreApplication::translate("menu", "Saved Hikes", nullptr));
         refreshButton->setText(QCoreApplication::translate("menu", "Refresh Table", nullptr));
-        checkBox_1->setText(QCoreApplication::translate("menu", "1", nullptr));
         label_3->setText(QCoreApplication::translate("menu", "Difficulty", nullptr));
-        checkBox_2->setText(QCoreApplication::translate("menu", "2", nullptr));
-        checkBox_3->setText(QCoreApplication::translate("menu", "3", nullptr));
-        checkBox_4->setText(QCoreApplication::translate("menu", "4", nullptr));
-        checkBox_5->setText(QCoreApplication::translate("menu", "5", nullptr));
-        checkBox_6->setText(QCoreApplication::translate("menu", "6", nullptr));
-        checkBox_7->setText(QCoreApplication::translate("menu", "7", nullptr));
-        checkBox_8->setText(QCoreApplication::translate("menu", "8", nullptr));
-        checkBox_9->setText(QCoreApplication::translate("menu", "9", nullptr));
-        checkBox_10->setText(QCoreApplication::translate("menu", "10", nullptr));
-        label_4->setText(QCoreApplication::translate("menu", "Days Open", nullptr));
-        checkBox->setText(QCoreApplication::translate("menu", "Monday", nullptr));
-        Teusday->setText(QCoreApplication::translate("menu", "Teusday", nullptr));
-        Wedsnesday->setText(QCoreApplication::translate("menu", "Wednesday", nullptr));
-        Thursday->setText(QCoreApplication::translate("menu", "Thursday", nullptr));
-        Friday->setText(QCoreApplication::translate("menu", "Friday", nullptr));
-        Saturday->setText(QCoreApplication::translate("menu", "Saturday", nullptr));
-        checkBox_16->setText(QCoreApplication::translate("menu", "Sunday", nullptr));
-        label_5->setText(QCoreApplication::translate("menu", "Type of Hike", nullptr));
-        Walking->setText(QCoreApplication::translate("menu", "Walking", nullptr));
-        Biking->setText(QCoreApplication::translate("menu", "Biking", nullptr));
         label_6->setText(QCoreApplication::translate("menu", "Filter", nullptr));
-        pushButton->setText(QCoreApplication::translate("menu", "TRACKER", nullptr));
+        label_4->setText(QCoreApplication::translate("menu", "1", nullptr));
+        label_7->setText(QCoreApplication::translate("menu", "2", nullptr));
+        label_8->setText(QCoreApplication::translate("menu", "3", nullptr));
+        label_9->setText(QCoreApplication::translate("menu", "4", nullptr));
+        label_10->setText(QCoreApplication::translate("menu", "5", nullptr));
+        label_11->setText(QCoreApplication::translate("menu", "Distance", nullptr));
+        label_12->setText(QCoreApplication::translate("menu", "0", nullptr));
+        label_5->setText(QCoreApplication::translate("menu", "0", nullptr));
+        label_14->setText(QCoreApplication::translate("menu", "5", nullptr));
+        label_22->setText(QCoreApplication::translate("menu", "15", nullptr));
+        label_23->setText(QCoreApplication::translate("menu", "10", nullptr));
+        tracker->setText(QCoreApplication::translate("menu", "TRACKER", nullptr));
     } // retranslateUi
 
 };

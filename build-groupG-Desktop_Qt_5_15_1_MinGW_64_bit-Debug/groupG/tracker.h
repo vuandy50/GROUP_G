@@ -2,13 +2,13 @@
 #define TRACKER_H
 
 #include <QDialog>
-#include <QGeoRoute>
-#include <QGeoCoordinate>
-#include <QGeoPositionInfoSource>
-#include <QGeoSatelliteInfoSource>
 #include <QTimer>
 #include <QTime>
 #include <QDebug>
+#include <QGeoPath>
+
+#include "positioning.h"
+
 
 namespace Ui {
 class tracker;
@@ -27,13 +27,15 @@ private slots:
     void on_resume_clicked();
     void on_stop_clicked();
     void on_returnTo_clicked();
-    void updateTime();
-    void updatePosition();
+    void update();
+    double toMiles(double meters);
 
 private:
     Ui::tracker *ui;
     QTimer *timer;
     QTime *time;
+    positioning *position;
+
 
 };
 

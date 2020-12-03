@@ -102,7 +102,7 @@ private slots:
 
     void on_Distance_sliderMoved(int position);
 
-    void on_pushButton_clicked();
+    void on_tracker_clicked();
 
 private:
     Ui::menu *ui;

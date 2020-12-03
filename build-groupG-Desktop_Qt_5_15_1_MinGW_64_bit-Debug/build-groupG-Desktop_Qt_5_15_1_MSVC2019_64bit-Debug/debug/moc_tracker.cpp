@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_tracker_t {
-    QByteArrayData data[8];
-    char stringdata0[106];
+    QByteArrayData data[9];
+    char stringdata0[102];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -38,13 +38,14 @@ QT_MOC_LITERAL(2, 25, 0), // ""
 QT_MOC_LITERAL(3, 26, 17), // "on_resume_clicked"
 QT_MOC_LITERAL(4, 44, 15), // "on_stop_clicked"
 QT_MOC_LITERAL(5, 60, 19), // "on_returnTo_clicked"
-QT_MOC_LITERAL(6, 80, 10), // "updateTime"
-QT_MOC_LITERAL(7, 91, 14) // "updatePosition"
+QT_MOC_LITERAL(6, 80, 6), // "update"
+QT_MOC_LITERAL(7, 87, 7), // "toMiles"
+QT_MOC_LITERAL(8, 95, 6) // "meters"
 
     },
     "tracker\0on_pause_clicked\0\0on_resume_clicked\0"
     "on_stop_clicked\0on_returnTo_clicked\0"
-    "updateTime\0updatePosition"
+    "update\0toMiles\0meters"
 };
 #undef QT_MOC_LITERAL
 
@@ -67,7 +68,7 @@ static const uint qt_meta_data_tracker[] = {
        4,    0,   46,    2, 0x08 /* Private */,
        5,    0,   47,    2, 0x08 /* Private */,
        6,    0,   48,    2, 0x08 /* Private */,
-       7,    0,   49,    2, 0x08 /* Private */,
+       7,    1,   49,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -75,7 +76,7 @@ static const uint qt_meta_data_tracker[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void,
+    QMetaType::Double, QMetaType::Double,    8,
 
        0        // eod
 };
@@ -90,12 +91,12 @@ void tracker::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, voi
         case 1: _t->on_resume_clicked(); break;
         case 2: _t->on_stop_clicked(); break;
         case 3: _t->on_returnTo_clicked(); break;
-        case 4: _t->updateTime(); break;
-        case 5: _t->updatePosition(); break;
+        case 4: _t->update(); break;
+        case 5: { double _r = _t->toMiles((*reinterpret_cast< double(*)>(_a[1])));
+            if (_a[0]) *reinterpret_cast< double*>(_a[0]) = std::move(_r); }  break;
         default: ;
         }
     }
-    Q_UNUSED(_a);
 }
 
 QT_INIT_METAOBJECT const QMetaObject tracker::staticMetaObject = { {

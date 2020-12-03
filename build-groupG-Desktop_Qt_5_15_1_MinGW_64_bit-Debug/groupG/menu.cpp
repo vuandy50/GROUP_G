@@ -387,14 +387,6 @@ void menu::on_table_clicked(const QModelIndex &index)
     single->show();
     single->setWindowState(Qt::WindowState::WindowActive);
 }
-
-void menu::on_pushButton_clicked()
-{
-    track = new tracker();
-    track->show();
-}
-
-
 void menu::on_Difficulty_sliderMoved(int position)
 {
     QSqlQuery *qry = new QSqlQuery(db);
@@ -520,3 +512,9 @@ void menu::on_Distance_sliderMoved(int position)
 }
 
 
+
+void menu::on_tracker_clicked()
+{
+    track = new tracker();
+    track->show();
+}

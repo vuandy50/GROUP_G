@@ -66,6 +66,7 @@ SOURCES       = ..\groupG\account.cpp \
 		..\groupG\main.cpp \
 		..\groupG\mainwindow.cpp \
 		..\groupG\menu.cpp \
+		..\groupG\positioning.cpp \
 		..\groupG\singleView.cpp \
 		..\groupG\sql.cpp \
 		..\groupG\tracker.cpp release\moc_accountSettings.cpp \
@@ -79,6 +80,7 @@ SOURCES       = ..\groupG\account.cpp \
 		release\moc_gmap.cpp \
 		release\moc_mainwindow.cpp \
 		release\moc_menu.cpp \
+		release\moc_positioning.cpp \
 		release\moc_singleView.cpp \
 		release\moc_tracker.cpp
 OBJECTS       = release\account.obj \
@@ -97,6 +99,7 @@ OBJECTS       = release\account.obj \
 		release\main.obj \
 		release\mainwindow.obj \
 		release\menu.obj \
+		release\positioning.obj \
 		release\singleView.obj \
 		release\sql.obj \
 		release\tracker.obj \
@@ -111,6 +114,7 @@ OBJECTS       = release\account.obj \
 		release\moc_gmap.obj \
 		release\moc_mainwindow.obj \
 		release\moc_menu.obj \
+		release\moc_positioning.obj \
 		release\moc_singleView.obj \
 		release\moc_tracker.obj
 
@@ -134,6 +138,7 @@ DIST          = account.csv \
 		..\groupG\logindb.h \
 		..\groupG\mainwindow.h \
 		..\groupG\menu.h \
+		..\groupG\positioning.h \
 		..\groupG\singleView.h \
 		..\groupG\sql.h \
 		..\groupG\tracker.h ..\groupG\account.cpp \
@@ -152,6 +157,7 @@ DIST          = account.csv \
 		..\groupG\main.cpp \
 		..\groupG\mainwindow.cpp \
 		..\groupG\menu.cpp \
+		..\groupG\positioning.cpp \
 		..\groupG\singleView.cpp \
 		..\groupG\sql.cpp \
 		..\groupG\tracker.cpp
@@ -231,7 +237,7 @@ all: Makefile.Release  release\groupG.exe
 
 release\groupG.exe: C:\Qt\5.15.1\msvc2019_64\lib\Qt5WebEngineWidgets.lib C:\Qt\5.15.1\msvc2019_64\lib\Qt5WebEngineCore.lib C:\Qt\5.15.1\msvc2019_64\lib\Qt5Location.lib C:\Qt\5.15.1\msvc2019_64\lib\Qt5PositioningQuick.lib C:\Qt\5.15.1\msvc2019_64\lib\Qt5Quick.lib C:\Qt\5.15.1\msvc2019_64\lib\Qt5PrintSupport.lib C:\Qt\5.15.1\msvc2019_64\lib\Qt5Widgets.lib C:\Qt\5.15.1\msvc2019_64\lib\Qt5Gui.lib C:\Qt\5.15.1\msvc2019_64\lib\Qt5Sql.lib C:\Qt\5.15.1\msvc2019_64\lib\Qt5QmlModels.lib C:\Qt\5.15.1\msvc2019_64\lib\Qt5WebChannel.lib C:\Qt\5.15.1\msvc2019_64\lib\Qt5Qml.lib C:\Qt\5.15.1\msvc2019_64\lib\Qt5Network.lib C:\Qt\5.15.1\msvc2019_64\lib\Qt5Positioning.lib C:\Qt\5.15.1\msvc2019_64\lib\Qt5Core.lib C:\Qt\5.15.1\msvc2019_64\lib\qtmain.lib ui_accountSettings.h ui_addaccount.h ui_addhikes.h ui_adminwindow.h ui_deleteAccount.h ui_deletehike.h ui_edithikes.h ui_forgot_uandp.h ui_gmap.h ui_mainwindow.h ui_menu.h ui_singleview.h ui_tracker.h $(OBJECTS) 
 	$(LINKER) $(LFLAGS) /MANIFEST:embed /OUT:$(DESTDIR_TARGET) @<<
-release\account.obj release\accountSettings.obj release\addaccount.obj release\addhikes.obj release\adminwindow.obj release\database.obj release\deleteAccount.obj release\deletehike.obj release\edithikes.obj release\forgot_uandp.obj release\gmap.obj release\hike.obj release\logindb.obj release\main.obj release\mainwindow.obj release\menu.obj release\singleView.obj release\sql.obj release\tracker.obj release\moc_accountSettings.obj release\moc_addaccount.obj release\moc_addhikes.obj release\moc_adminwindow.obj release\moc_deleteAccount.obj release\moc_deletehike.obj release\moc_edithikes.obj release\moc_forgot_uandp.obj release\moc_gmap.obj release\moc_mainwindow.obj release\moc_menu.obj release\moc_singleView.obj release\moc_tracker.obj
+release\account.obj release\accountSettings.obj release\addaccount.obj release\addhikes.obj release\adminwindow.obj release\database.obj release\deleteAccount.obj release\deletehike.obj release\edithikes.obj release\forgot_uandp.obj release\gmap.obj release\hike.obj release\logindb.obj release\main.obj release\mainwindow.obj release\menu.obj release\positioning.obj release\singleView.obj release\sql.obj release\tracker.obj release\moc_accountSettings.obj release\moc_addaccount.obj release\moc_addhikes.obj release\moc_adminwindow.obj release\moc_deleteAccount.obj release\moc_deletehike.obj release\moc_edithikes.obj release\moc_forgot_uandp.obj release\moc_gmap.obj release\moc_mainwindow.obj release\moc_menu.obj release\moc_positioning.obj release\moc_singleView.obj release\moc_tracker.obj
 $(LIBS)
 <<
 
@@ -241,10 +247,10 @@ qmake: FORCE
 qmake_all: FORCE
 
 dist:
-	$(ZIP) groupG.zip $(SOURCES) $(DIST) ..\groupG\groupG.pro C:\Qt\5.15.1\msvc2019_64\mkspecs\features\spec_pre.prf C:\Qt\5.15.1\msvc2019_64\mkspecs\common\angle.conf C:\Qt\5.15.1\msvc2019_64\mkspecs\common\windows-desktop.conf C:\Qt\5.15.1\msvc2019_64\mkspecs\features\win32\windows_vulkan_sdk.prf C:\Qt\5.15.1\msvc2019_64\mkspecs\common\windows-vulkan.conf C:\Qt\5.15.1\msvc2019_64\mkspecs\common\msvc-desktop.conf C:\Qt\5.15.1\msvc2019_64\mkspecs\qconfig.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_3danimation.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_3danimation_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_3dcore.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_3dcore_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_3dextras.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_3dextras_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_3dinput.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_3dinput_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_3dlogic.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_3dlogic_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_3dquick.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_3dquick_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_3dquickanimation.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_3dquickanimation_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_3dquickextras.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_3dquickextras_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_3dquickinput.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_3dquickinput_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_3dquickrender.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_3dquickrender_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_3dquickscene2d.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_3dquickscene2d_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_3drender.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_3drender_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_accessibility_support_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_axbase.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_axbase_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_axcontainer.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_axcontainer_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_axserver.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_axserver_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_bluetooth.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_bluetooth_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_bootstrap_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_concurrent.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_concurrent_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_core.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_core_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_dbus.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_dbus_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_designer.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_designer_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_designercomponents_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_devicediscovery_support_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_edid_support_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_egl_support_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_fb_support_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_fontdatabase_support_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_gamepad.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_gamepad_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_gui.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_gui_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_help.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_help_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_location.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_location_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_multimedia.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_multimedia_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_multimediawidgets.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_multimediawidgets_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_network.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_network_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_nfc.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_nfc_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_opengl.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_opengl_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_openglextensions.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_openglextensions_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_packetprotocol_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_platformcompositor_support_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_positioning.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_positioning_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_positioningquick.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_positioningquick_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_printsupport.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_printsupport_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_qml.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_qml_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_qmldebug_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_qmldevtools_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_qmlmodels.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_qmlmodels_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_qmltest.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_qmltest_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_qmlworkerscript.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_qmlworkerscript_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_quick.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_quick_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_quickcontrols2.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_quickcontrols2_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_quickparticles_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_quickshapes_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_quicktemplates2.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_quicktemplates2_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_quickwidgets.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_quickwidgets_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_remoteobjects.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_remoteobjects_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_repparser.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_repparser_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_scxml.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_scxml_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_sensors.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_sensors_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_serialbus.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_serialbus_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_serialport.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_serialport_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_sql.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_sql_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_svg.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_svg_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_testlib.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_testlib_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_texttospeech.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_texttospeech_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_theme_support_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_uiplugin.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_uitools.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_uitools_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_vulkan_support_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_webchannel.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_webchannel_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_webengine.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_webengine_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_webenginecore.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_webenginecore_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_webenginecoreheaders_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_webenginewidgets.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_webenginewidgets_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_websockets.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_websockets_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_webview.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_webview_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_widgets.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_widgets_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_windowsuiautomation_support_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_winextras.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_winextras_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_xml.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_xml_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_xmlpatterns.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_xmlpatterns_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_zlib_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\features\qt_functions.prf C:\Qt\5.15.1\msvc2019_64\mkspecs\features\qt_config.prf C:\Qt\5.15.1\msvc2019_64\mkspecs\win32-msvc\qmake.conf C:\Qt\5.15.1\msvc2019_64\mkspecs\features\spec_post.prf .qmake.stash C:\Qt\5.15.1\msvc2019_64\mkspecs\features\exclusive_builds.prf C:\Qt\5.15.1\msvc2019_64\mkspecs\common\msvc-version.conf C:\Qt\5.15.1\msvc2019_64\mkspecs\features\toolchain.prf C:\Qt\5.15.1\msvc2019_64\mkspecs\features\default_pre.prf C:\Qt\5.15.1\msvc2019_64\mkspecs\features\win32\default_pre.prf C:\Qt\5.15.1\msvc2019_64\mkspecs\features\resolve_config.prf C:\Qt\5.15.1\msvc2019_64\mkspecs\features\exclusive_builds_post.prf C:\Qt\5.15.1\msvc2019_64\mkspecs\features\default_post.prf C:\Qt\5.15.1\msvc2019_64\mkspecs\features\build_pass.prf C:\Qt\5.15.1\msvc2019_64\mkspecs\features\qml_debug.prf C:\Qt\5.15.1\msvc2019_64\mkspecs\features\precompile_header.prf C:\Qt\5.15.1\msvc2019_64\mkspecs\features\warn_on.prf C:\Qt\5.15.1\msvc2019_64\mkspecs\features\qt.prf C:\Qt\5.15.1\msvc2019_64\mkspecs\features\resources_functions.prf C:\Qt\5.15.1\msvc2019_64\mkspecs\features\resources.prf C:\Qt\5.15.1\msvc2019_64\mkspecs\features\moc.prf C:\Qt\5.15.1\msvc2019_64\mkspecs\features\win32\opengl.prf C:\Qt\5.15.1\msvc2019_64\mkspecs\features\uic.prf C:\Qt\5.15.1\msvc2019_64\mkspecs\features\qmake_use.prf C:\Qt\5.15.1\msvc2019_64\mkspecs\features\file_copies.prf C:\Qt\5.15.1\msvc2019_64\mkspecs\features\win32\windows.prf C:\Qt\5.15.1\msvc2019_64\mkspecs\features\testcase_targets.prf C:\Qt\5.15.1\msvc2019_64\mkspecs\features\exceptions.prf C:\Qt\5.15.1\msvc2019_64\mkspecs\features\yacc.prf C:\Qt\5.15.1\msvc2019_64\mkspecs\features\lex.prf ..\groupG\groupG.pro C:\Qt\5.15.1\msvc2019_64\lib\Qt5WebEngineWidgets.prl C:\Qt\5.15.1\msvc2019_64\lib\Qt5WebEngineCore.prl C:\Qt\5.15.1\msvc2019_64\lib\Qt5Location.prl C:\Qt\5.15.1\msvc2019_64\lib\Qt5PositioningQuick.prl C:\Qt\5.15.1\msvc2019_64\lib\Qt5Quick.prl C:\Qt\5.15.1\msvc2019_64\lib\Qt5PrintSupport.prl C:\Qt\5.15.1\msvc2019_64\lib\Qt5Widgets.prl C:\Qt\5.15.1\msvc2019_64\lib\Qt5Gui.prl C:\Qt\5.15.1\msvc2019_64\lib\Qt5Sql.prl C:\Qt\5.15.1\msvc2019_64\lib\Qt5QmlModels.prl C:\Qt\5.15.1\msvc2019_64\lib\Qt5WebChannel.prl C:\Qt\5.15.1\msvc2019_64\lib\Qt5Qml.prl C:\Qt\5.15.1\msvc2019_64\lib\Qt5Network.prl C:\Qt\5.15.1\msvc2019_64\lib\Qt5Positioning.prl C:\Qt\5.15.1\msvc2019_64\lib\Qt5Core.prl C:\Qt\5.15.1\msvc2019_64\lib\qtmain.prl    C:\Qt\5.15.1\msvc2019_64\mkspecs\features\data\dummy.cpp ..\groupG\account.h ..\groupG\accountSettings.h ..\groupG\addaccount.h ..\groupG\addhikes.h ..\groupG\adminwindow.h ..\groupG\database.h ..\groupG\deleteAccount.h ..\groupG\deletehike.h ..\groupG\edithikes.h ..\groupG\forgot_uandp.h ..\groupG\gmap.h ..\groupG\hike.h ..\groupG\logindb.h ..\groupG\mainwindow.h ..\groupG\menu.h ..\groupG\singleView.h ..\groupG\sql.h ..\groupG\tracker.h  ..\groupG\account.cpp ..\groupG\accountSettings.cpp ..\groupG\addaccount.cpp ..\groupG\addhikes.cpp ..\groupG\adminwindow.cpp ..\groupG\database.cpp ..\groupG\deleteAccount.cpp ..\groupG\deletehike.cpp ..\groupG\edithikes.cpp ..\groupG\forgot_uandp.cpp ..\groupG\gmap.cpp ..\groupG\hike.cpp ..\groupG\logindb.cpp ..\groupG\main.cpp ..\groupG\mainwindow.cpp ..\groupG\menu.cpp ..\groupG\singleView.cpp ..\groupG\sql.cpp ..\groupG\tracker.cpp ..\groupG\accountSettings.ui ..\groupG\addaccount.ui ..\groupG\addhikes.ui ..\groupG\adminwindow.ui ..\groupG\deleteAccount.ui ..\groupG\deletehike.ui ..\groupG\edithikes.ui ..\groupG\forgot_uandp.ui ..\groupG\gmap.ui ..\groupG\mainwindow.ui ..\groupG\menu.ui ..\groupG\singleview.ui ..\groupG\tracker.ui    
+	$(ZIP) groupG.zip $(SOURCES) $(DIST) ..\groupG\groupG.pro C:\Qt\5.15.1\msvc2019_64\mkspecs\features\spec_pre.prf C:\Qt\5.15.1\msvc2019_64\mkspecs\common\angle.conf C:\Qt\5.15.1\msvc2019_64\mkspecs\common\windows-desktop.conf C:\Qt\5.15.1\msvc2019_64\mkspecs\features\win32\windows_vulkan_sdk.prf C:\Qt\5.15.1\msvc2019_64\mkspecs\common\windows-vulkan.conf C:\Qt\5.15.1\msvc2019_64\mkspecs\common\msvc-desktop.conf C:\Qt\5.15.1\msvc2019_64\mkspecs\qconfig.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_3danimation.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_3danimation_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_3dcore.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_3dcore_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_3dextras.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_3dextras_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_3dinput.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_3dinput_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_3dlogic.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_3dlogic_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_3dquick.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_3dquick_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_3dquickanimation.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_3dquickanimation_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_3dquickextras.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_3dquickextras_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_3dquickinput.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_3dquickinput_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_3dquickrender.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_3dquickrender_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_3dquickscene2d.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_3dquickscene2d_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_3drender.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_3drender_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_accessibility_support_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_axbase.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_axbase_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_axcontainer.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_axcontainer_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_axserver.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_axserver_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_bluetooth.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_bluetooth_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_bootstrap_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_concurrent.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_concurrent_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_core.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_core_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_dbus.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_dbus_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_designer.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_designer_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_designercomponents_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_devicediscovery_support_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_edid_support_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_egl_support_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_fb_support_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_fontdatabase_support_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_gamepad.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_gamepad_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_gui.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_gui_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_help.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_help_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_location.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_location_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_multimedia.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_multimedia_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_multimediawidgets.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_multimediawidgets_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_network.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_network_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_nfc.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_nfc_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_opengl.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_opengl_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_openglextensions.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_openglextensions_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_packetprotocol_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_platformcompositor_support_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_positioning.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_positioning_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_positioningquick.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_positioningquick_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_printsupport.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_printsupport_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_qml.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_qml_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_qmldebug_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_qmldevtools_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_qmlmodels.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_qmlmodels_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_qmltest.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_qmltest_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_qmlworkerscript.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_qmlworkerscript_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_quick.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_quick_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_quickcontrols2.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_quickcontrols2_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_quickparticles_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_quickshapes_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_quicktemplates2.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_quicktemplates2_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_quickwidgets.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_quickwidgets_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_remoteobjects.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_remoteobjects_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_repparser.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_repparser_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_scxml.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_scxml_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_sensors.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_sensors_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_serialbus.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_serialbus_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_serialport.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_serialport_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_sql.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_sql_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_svg.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_svg_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_testlib.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_testlib_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_texttospeech.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_texttospeech_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_theme_support_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_uiplugin.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_uitools.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_uitools_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_vulkan_support_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_webchannel.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_webchannel_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_webengine.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_webengine_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_webenginecore.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_webenginecore_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_webenginecoreheaders_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_webenginewidgets.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_webenginewidgets_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_websockets.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_websockets_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_webview.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_webview_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_widgets.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_widgets_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_windowsuiautomation_support_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_winextras.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_winextras_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_xml.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_xml_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_xmlpatterns.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_xmlpatterns_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\modules\qt_lib_zlib_private.pri C:\Qt\5.15.1\msvc2019_64\mkspecs\features\qt_functions.prf C:\Qt\5.15.1\msvc2019_64\mkspecs\features\qt_config.prf C:\Qt\5.15.1\msvc2019_64\mkspecs\win32-msvc\qmake.conf C:\Qt\5.15.1\msvc2019_64\mkspecs\features\spec_post.prf .qmake.stash C:\Qt\5.15.1\msvc2019_64\mkspecs\features\exclusive_builds.prf C:\Qt\5.15.1\msvc2019_64\mkspecs\common\msvc-version.conf C:\Qt\5.15.1\msvc2019_64\mkspecs\features\toolchain.prf C:\Qt\5.15.1\msvc2019_64\mkspecs\features\default_pre.prf C:\Qt\5.15.1\msvc2019_64\mkspecs\features\win32\default_pre.prf C:\Qt\5.15.1\msvc2019_64\mkspecs\features\resolve_config.prf C:\Qt\5.15.1\msvc2019_64\mkspecs\features\exclusive_builds_post.prf C:\Qt\5.15.1\msvc2019_64\mkspecs\features\default_post.prf C:\Qt\5.15.1\msvc2019_64\mkspecs\features\build_pass.prf C:\Qt\5.15.1\msvc2019_64\mkspecs\features\qml_debug.prf C:\Qt\5.15.1\msvc2019_64\mkspecs\features\precompile_header.prf C:\Qt\5.15.1\msvc2019_64\mkspecs\features\warn_on.prf C:\Qt\5.15.1\msvc2019_64\mkspecs\features\qt.prf C:\Qt\5.15.1\msvc2019_64\mkspecs\features\resources_functions.prf C:\Qt\5.15.1\msvc2019_64\mkspecs\features\resources.prf C:\Qt\5.15.1\msvc2019_64\mkspecs\features\moc.prf C:\Qt\5.15.1\msvc2019_64\mkspecs\features\win32\opengl.prf C:\Qt\5.15.1\msvc2019_64\mkspecs\features\uic.prf C:\Qt\5.15.1\msvc2019_64\mkspecs\features\qmake_use.prf C:\Qt\5.15.1\msvc2019_64\mkspecs\features\file_copies.prf C:\Qt\5.15.1\msvc2019_64\mkspecs\features\win32\windows.prf C:\Qt\5.15.1\msvc2019_64\mkspecs\features\testcase_targets.prf C:\Qt\5.15.1\msvc2019_64\mkspecs\features\exceptions.prf C:\Qt\5.15.1\msvc2019_64\mkspecs\features\yacc.prf C:\Qt\5.15.1\msvc2019_64\mkspecs\features\lex.prf ..\groupG\groupG.pro C:\Qt\5.15.1\msvc2019_64\lib\Qt5WebEngineWidgets.prl C:\Qt\5.15.1\msvc2019_64\lib\Qt5WebEngineCore.prl C:\Qt\5.15.1\msvc2019_64\lib\Qt5Location.prl C:\Qt\5.15.1\msvc2019_64\lib\Qt5PositioningQuick.prl C:\Qt\5.15.1\msvc2019_64\lib\Qt5Quick.prl C:\Qt\5.15.1\msvc2019_64\lib\Qt5PrintSupport.prl C:\Qt\5.15.1\msvc2019_64\lib\Qt5Widgets.prl C:\Qt\5.15.1\msvc2019_64\lib\Qt5Gui.prl C:\Qt\5.15.1\msvc2019_64\lib\Qt5Sql.prl C:\Qt\5.15.1\msvc2019_64\lib\Qt5QmlModels.prl C:\Qt\5.15.1\msvc2019_64\lib\Qt5WebChannel.prl C:\Qt\5.15.1\msvc2019_64\lib\Qt5Qml.prl C:\Qt\5.15.1\msvc2019_64\lib\Qt5Network.prl C:\Qt\5.15.1\msvc2019_64\lib\Qt5Positioning.prl C:\Qt\5.15.1\msvc2019_64\lib\Qt5Core.prl C:\Qt\5.15.1\msvc2019_64\lib\qtmain.prl    C:\Qt\5.15.1\msvc2019_64\mkspecs\features\data\dummy.cpp ..\groupG\account.h ..\groupG\accountSettings.h ..\groupG\addaccount.h ..\groupG\addhikes.h ..\groupG\adminwindow.h ..\groupG\database.h ..\groupG\deleteAccount.h ..\groupG\deletehike.h ..\groupG\edithikes.h ..\groupG\forgot_uandp.h ..\groupG\gmap.h ..\groupG\hike.h ..\groupG\logindb.h ..\groupG\mainwindow.h ..\groupG\menu.h ..\groupG\positioning.h ..\groupG\singleView.h ..\groupG\sql.h ..\groupG\tracker.h  ..\groupG\account.cpp ..\groupG\accountSettings.cpp ..\groupG\addaccount.cpp ..\groupG\addhikes.cpp ..\groupG\adminwindow.cpp ..\groupG\database.cpp ..\groupG\deleteAccount.cpp ..\groupG\deletehike.cpp ..\groupG\edithikes.cpp ..\groupG\forgot_uandp.cpp ..\groupG\gmap.cpp ..\groupG\hike.cpp ..\groupG\logindb.cpp ..\groupG\main.cpp ..\groupG\mainwindow.cpp ..\groupG\menu.cpp ..\groupG\positioning.cpp ..\groupG\singleView.cpp ..\groupG\sql.cpp ..\groupG\tracker.cpp ..\groupG\accountSettings.ui ..\groupG\addaccount.ui ..\groupG\addhikes.ui ..\groupG\adminwindow.ui ..\groupG\deleteAccount.ui ..\groupG\deletehike.ui ..\groupG\edithikes.ui ..\groupG\forgot_uandp.ui ..\groupG\gmap.ui ..\groupG\mainwindow.ui ..\groupG\menu.ui ..\groupG\singleview.ui ..\groupG\tracker.ui    
 
 clean: compiler_clean 
-	-$(DEL_FILE) release\account.obj release\accountSettings.obj release\addaccount.obj release\addhikes.obj release\adminwindow.obj release\database.obj release\deleteAccount.obj release\deletehike.obj release\edithikes.obj release\forgot_uandp.obj release\gmap.obj release\hike.obj release\logindb.obj release\main.obj release\mainwindow.obj release\menu.obj release\singleView.obj release\sql.obj release\tracker.obj release\moc_accountSettings.obj release\moc_addaccount.obj release\moc_addhikes.obj release\moc_adminwindow.obj release\moc_deleteAccount.obj release\moc_deletehike.obj release\moc_edithikes.obj release\moc_forgot_uandp.obj release\moc_gmap.obj release\moc_mainwindow.obj release\moc_menu.obj release\moc_singleView.obj release\moc_tracker.obj
+	-$(DEL_FILE) release\account.obj release\accountSettings.obj release\addaccount.obj release\addhikes.obj release\adminwindow.obj release\database.obj release\deleteAccount.obj release\deletehike.obj release\edithikes.obj release\forgot_uandp.obj release\gmap.obj release\hike.obj release\logindb.obj release\main.obj release\mainwindow.obj release\menu.obj release\positioning.obj release\singleView.obj release\sql.obj release\tracker.obj release\moc_accountSettings.obj release\moc_addaccount.obj release\moc_addhikes.obj release\moc_adminwindow.obj release\moc_deleteAccount.obj release\moc_deletehike.obj release\moc_edithikes.obj release\moc_forgot_uandp.obj release\moc_gmap.obj release\moc_mainwindow.obj release\moc_menu.obj release\moc_positioning.obj release\moc_singleView.obj release\moc_tracker.obj
 
 distclean: clean 
 	-$(DEL_FILE) .qmake.stash
@@ -269,9 +275,9 @@ compiler_moc_predefs_clean:
 release\moc_predefs.h: C:\Qt\5.15.1\msvc2019_64\mkspecs\features\data\dummy.cpp
 	cl -BxC:\Qt\5.15.1\msvc2019_64\bin\qmake.exe -nologo -Zc:wchar_t -FS -Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -Zc:referenceBinding -Zc:__cplusplus -O2 -MD -W3 -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 -wd4577 -wd4467 -E C:\Qt\5.15.1\msvc2019_64\mkspecs\features\data\dummy.cpp 2>NUL >release\moc_predefs.h
 
-compiler_moc_header_make_all: release\moc_accountSettings.cpp release\moc_addaccount.cpp release\moc_addhikes.cpp release\moc_adminwindow.cpp release\moc_deleteAccount.cpp release\moc_deletehike.cpp release\moc_edithikes.cpp release\moc_forgot_uandp.cpp release\moc_gmap.cpp release\moc_mainwindow.cpp release\moc_menu.cpp release\moc_singleView.cpp release\moc_tracker.cpp
+compiler_moc_header_make_all: release\moc_accountSettings.cpp release\moc_addaccount.cpp release\moc_addhikes.cpp release\moc_adminwindow.cpp release\moc_deleteAccount.cpp release\moc_deletehike.cpp release\moc_edithikes.cpp release\moc_forgot_uandp.cpp release\moc_gmap.cpp release\moc_mainwindow.cpp release\moc_menu.cpp release\moc_positioning.cpp release\moc_singleView.cpp release\moc_tracker.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) release\moc_accountSettings.cpp release\moc_addaccount.cpp release\moc_addhikes.cpp release\moc_adminwindow.cpp release\moc_deleteAccount.cpp release\moc_deletehike.cpp release\moc_edithikes.cpp release\moc_forgot_uandp.cpp release\moc_gmap.cpp release\moc_mainwindow.cpp release\moc_menu.cpp release\moc_singleView.cpp release\moc_tracker.cpp
+	-$(DEL_FILE) release\moc_accountSettings.cpp release\moc_addaccount.cpp release\moc_addhikes.cpp release\moc_adminwindow.cpp release\moc_deleteAccount.cpp release\moc_deletehike.cpp release\moc_edithikes.cpp release\moc_forgot_uandp.cpp release\moc_gmap.cpp release\moc_mainwindow.cpp release\moc_menu.cpp release\moc_positioning.cpp release\moc_singleView.cpp release\moc_tracker.cpp
 release\moc_accountSettings.cpp: ..\groupG\accountSettings.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QDialog \
 		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qdialog.h \
@@ -2130,75 +2136,25 @@ release\moc_mainwindow.cpp: ..\groupG\mainwindow.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtSql\QSqlField \
 		C:\Qt\5.15.1\msvc2019_64\include\QtSql\qsqlfield.h \
 		..\groupG\tracker.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtLocation\QGeoRoute \
-		C:\Qt\5.15.1\msvc2019_64\include\QtLocation\qgeoroute.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QTimer \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QTime \
+		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\QGeoPath \
+		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeopath.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\QGeoShape \
+		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeoshape.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\QGeoCoordinate \
 		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeocoordinate.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qpositioningglobal.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtLocation\QGeoRouteRequest \
-		C:\Qt\5.15.1\msvc2019_64\include\QtLocation\qgeorouterequest.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QExplicitlySharedDataPointer \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QDateTime \
-		C:\Qt\5.15.1\msvc2019_64\include\QtLocation\qlocationglobal.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtLocation\qlocation.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeorectangle.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\QGeoShape \
-		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeoshape.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QHash \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QVariantList \
+		..\groupG\positioning.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\QGeoPositionInfoSource \
 		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeopositioninfosource.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\QGeoPositionInfo \
 		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeopositioninfo.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\QGeoSatelliteInfoSource \
-		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeosatelliteinfosource.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\QGeoSatelliteInfo \
-		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeosatelliteinfo.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QTimer \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QTime \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QDateTime \
 		ui_menu.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QApplication \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qapplication.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qdesktopwidget.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QHBoxLayout \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qboxlayout.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qlayout.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qlayoutitem.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qgridlayout.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QHeaderView \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qheaderview.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qabstractitemview.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qabstractscrollarea.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qframe.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qabstractitemdelegate.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qstyleoption.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qabstractspinbox.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qslider.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qabstractslider.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qstyle.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qtabbar.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qrubberband.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QLabel \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qlabel.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QListView \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qlistview.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QMenuBar \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qmenubar.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qmenu.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qaction.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qactiongroup.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QPushButton \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qpushbutton.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QStatusBar \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qstatusbar.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QTableView \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qtableview.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QWidget \
 		..\groupG\addaccount.h \
 		ui_addaccount.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QDateEdit \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qdatetimeedit.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QLineEdit \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qlineedit.h \
 		..\groupG\forgot_uandp.h \
 		..\groupG\adminwindow.h \
 		..\groupG\deletehike.h \
@@ -2210,6 +2166,7 @@ release\moc_mainwindow.cpp: ..\groupG\mainwindow.h \
 		..\groupG\viewpic.h \
 		..\groupG\addhikes.h \
 		..\groupG\gmap.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QWidget \
 		release\moc_predefs.h \
 		C:\Qt\5.15.1\msvc2019_64\bin\moc.exe
 	C:\Qt\5.15.1\msvc2019_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include C:/Users/vuand/OneDrive/Documents/build-groupG-Desktop_Qt_5_15_1_MinGW_64_bit-Debug/GROUP_G/build-groupG-Desktop_Qt_5_15_1_MinGW_64_bit-Debug/build-groupG-Desktop_Qt_5_15_1_MSVC2019_64bit-Debug/release/moc_predefs.h -IC:/Qt/5.15.1/msvc2019_64/mkspecs/win32-msvc -IC:/Users/vuand/OneDrive/Documents/build-groupG-Desktop_Qt_5_15_1_MinGW_64_bit-Debug/GROUP_G/build-groupG-Desktop_Qt_5_15_1_MinGW_64_bit-Debug/groupG -IC:/Qt/5.15.1/msvc2019_64/include -IC:/Qt/5.15.1/msvc2019_64/include/QtWebEngineWidgets -IC:/Qt/5.15.1/msvc2019_64/include/QtWebEngineCore -IC:/Qt/5.15.1/msvc2019_64/include/QtLocation -IC:/Qt/5.15.1/msvc2019_64/include/QtPositioningQuick -IC:/Qt/5.15.1/msvc2019_64/include/QtQuick -IC:/Qt/5.15.1/msvc2019_64/include/QtPrintSupport -IC:/Qt/5.15.1/msvc2019_64/include/QtWidgets -IC:/Qt/5.15.1/msvc2019_64/include/QtGui -IC:/Qt/5.15.1/msvc2019_64/include/QtANGLE -IC:/Qt/5.15.1/msvc2019_64/include/QtSql -IC:/Qt/5.15.1/msvc2019_64/include/QtQmlModels -IC:/Qt/5.15.1/msvc2019_64/include/QtWebChannel -IC:/Qt/5.15.1/msvc2019_64/include/QtQml -IC:/Qt/5.15.1/msvc2019_64/include/QtNetwork -IC:/Qt/5.15.1/msvc2019_64/include/QtPositioning -IC:/Qt/5.15.1/msvc2019_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt" ..\groupG\mainwindow.h -o release\moc_mainwindow.cpp
@@ -2622,34 +2579,109 @@ release\moc_menu.cpp: ..\groupG\menu.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtSql\QSqlField \
 		C:\Qt\5.15.1\msvc2019_64\include\QtSql\qsqlfield.h \
 		..\groupG\tracker.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtLocation\QGeoRoute \
-		C:\Qt\5.15.1\msvc2019_64\include\QtLocation\qgeoroute.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QTimer \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QTime \
+		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\QGeoPath \
+		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeopath.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\QGeoShape \
+		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeoshape.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\QGeoCoordinate \
 		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeocoordinate.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qpositioningglobal.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtLocation\QGeoRouteRequest \
-		C:\Qt\5.15.1\msvc2019_64\include\QtLocation\qgeorouterequest.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QExplicitlySharedDataPointer \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QDateTime \
-		C:\Qt\5.15.1\msvc2019_64\include\QtLocation\qlocationglobal.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtLocation\qlocation.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeorectangle.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\QGeoShape \
-		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeoshape.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QHash \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QVariantList \
+		..\groupG\positioning.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\QGeoPositionInfoSource \
 		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeopositioninfosource.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\QGeoPositionInfo \
 		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeopositioninfo.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\QGeoSatelliteInfoSource \
-		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeosatelliteinfosource.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\QGeoSatelliteInfo \
-		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeosatelliteinfo.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QTimer \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QTime \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QDateTime \
 		release\moc_predefs.h \
 		C:\Qt\5.15.1\msvc2019_64\bin\moc.exe
 	C:\Qt\5.15.1\msvc2019_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include C:/Users/vuand/OneDrive/Documents/build-groupG-Desktop_Qt_5_15_1_MinGW_64_bit-Debug/GROUP_G/build-groupG-Desktop_Qt_5_15_1_MinGW_64_bit-Debug/build-groupG-Desktop_Qt_5_15_1_MSVC2019_64bit-Debug/release/moc_predefs.h -IC:/Qt/5.15.1/msvc2019_64/mkspecs/win32-msvc -IC:/Users/vuand/OneDrive/Documents/build-groupG-Desktop_Qt_5_15_1_MinGW_64_bit-Debug/GROUP_G/build-groupG-Desktop_Qt_5_15_1_MinGW_64_bit-Debug/groupG -IC:/Qt/5.15.1/msvc2019_64/include -IC:/Qt/5.15.1/msvc2019_64/include/QtWebEngineWidgets -IC:/Qt/5.15.1/msvc2019_64/include/QtWebEngineCore -IC:/Qt/5.15.1/msvc2019_64/include/QtLocation -IC:/Qt/5.15.1/msvc2019_64/include/QtPositioningQuick -IC:/Qt/5.15.1/msvc2019_64/include/QtQuick -IC:/Qt/5.15.1/msvc2019_64/include/QtPrintSupport -IC:/Qt/5.15.1/msvc2019_64/include/QtWidgets -IC:/Qt/5.15.1/msvc2019_64/include/QtGui -IC:/Qt/5.15.1/msvc2019_64/include/QtANGLE -IC:/Qt/5.15.1/msvc2019_64/include/QtSql -IC:/Qt/5.15.1/msvc2019_64/include/QtQmlModels -IC:/Qt/5.15.1/msvc2019_64/include/QtWebChannel -IC:/Qt/5.15.1/msvc2019_64/include/QtQml -IC:/Qt/5.15.1/msvc2019_64/include/QtNetwork -IC:/Qt/5.15.1/msvc2019_64/include/QtPositioning -IC:/Qt/5.15.1/msvc2019_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt" ..\groupG\menu.h -o release\moc_menu.cpp
+
+release\moc_positioning.cpp: ..\groupG\positioning.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\QGeoCoordinate \
+		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeocoordinate.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QMetaType \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qmetatype.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qglobal.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qconfig-bootstrapped.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qconfig.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qtcore-config.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qsystemdetection.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qprocessordetection.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qcompilerdetection.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qtypeinfo.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qsysinfo.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qlogging.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qflags.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qatomic.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qbasicatomic.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qatomic_bootstrap.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qgenericatomic.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qatomic_cxx11.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qatomic_msvc.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qglobalstatic.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qmutex.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qnumeric.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qversiontagging.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qbytearray.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qrefcount.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qnamespace.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qarraydata.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qvarlengtharray.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qcontainerfwd.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qalgorithms.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qcontainertools_impl.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qhashfunctions.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qstring.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qchar.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qstringliteral.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qstringalgorithms.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qstringview.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qstringbuilder.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qpair.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qobjectdefs.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qobjectdefs_impl.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QString \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QSharedDataPointer \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qshareddata.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qhash.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qiterator.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qlist.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qvector.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qpoint.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qbytearraylist.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qstringlist.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qregexp.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qstringmatcher.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qpositioningglobal.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\QGeoPositionInfoSource \
+		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeopositioninfosource.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\QGeoPositionInfo \
+		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeopositioninfo.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QDateTime \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qdatetime.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QObject \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qobject.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qcoreevent.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qscopedpointer.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qobject_impl.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QList \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QDebug \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qdebug.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qmap.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qtextstream.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qiodevice.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qlocale.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qvariant.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qset.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qcontiguouscache.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qsharedpointer.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qsharedpointer_impl.h \
+		release\moc_predefs.h \
+		C:\Qt\5.15.1\msvc2019_64\bin\moc.exe
+	C:\Qt\5.15.1\msvc2019_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include C:/Users/vuand/OneDrive/Documents/build-groupG-Desktop_Qt_5_15_1_MinGW_64_bit-Debug/GROUP_G/build-groupG-Desktop_Qt_5_15_1_MinGW_64_bit-Debug/build-groupG-Desktop_Qt_5_15_1_MSVC2019_64bit-Debug/release/moc_predefs.h -IC:/Qt/5.15.1/msvc2019_64/mkspecs/win32-msvc -IC:/Users/vuand/OneDrive/Documents/build-groupG-Desktop_Qt_5_15_1_MinGW_64_bit-Debug/GROUP_G/build-groupG-Desktop_Qt_5_15_1_MinGW_64_bit-Debug/groupG -IC:/Qt/5.15.1/msvc2019_64/include -IC:/Qt/5.15.1/msvc2019_64/include/QtWebEngineWidgets -IC:/Qt/5.15.1/msvc2019_64/include/QtWebEngineCore -IC:/Qt/5.15.1/msvc2019_64/include/QtLocation -IC:/Qt/5.15.1/msvc2019_64/include/QtPositioningQuick -IC:/Qt/5.15.1/msvc2019_64/include/QtQuick -IC:/Qt/5.15.1/msvc2019_64/include/QtPrintSupport -IC:/Qt/5.15.1/msvc2019_64/include/QtWidgets -IC:/Qt/5.15.1/msvc2019_64/include/QtGui -IC:/Qt/5.15.1/msvc2019_64/include/QtANGLE -IC:/Qt/5.15.1/msvc2019_64/include/QtSql -IC:/Qt/5.15.1/msvc2019_64/include/QtQmlModels -IC:/Qt/5.15.1/msvc2019_64/include/QtWebChannel -IC:/Qt/5.15.1/msvc2019_64/include/QtQml -IC:/Qt/5.15.1/msvc2019_64/include/QtNetwork -IC:/Qt/5.15.1/msvc2019_64/include/QtPositioning -IC:/Qt/5.15.1/msvc2019_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt" ..\groupG\positioning.h -o release\moc_positioning.cpp
 
 release\moc_singleView.cpp: ..\groupG\singleView.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QDialog \
@@ -2902,40 +2934,31 @@ release\moc_tracker.cpp: ..\groupG\tracker.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qfiledevice.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qvector2d.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qtouchdevice.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtLocation\QGeoRoute \
-		C:\Qt\5.15.1\msvc2019_64\include\QtLocation\qgeoroute.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\QGeoCoordinate \
-		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeocoordinate.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QMetaType \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QString \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QSharedDataPointer \
-		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qpositioningglobal.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtLocation\QGeoRouteRequest \
-		C:\Qt\5.15.1\msvc2019_64\include\QtLocation\qgeorouterequest.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QList \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QExplicitlySharedDataPointer \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QDateTime \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qdatetime.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtLocation\qlocationglobal.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtLocation\qlocation.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeorectangle.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\QGeoShape \
-		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeoshape.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QHash \
-		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\QGeoPositionInfoSource \
-		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeopositioninfosource.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\QGeoPositionInfo \
-		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeopositioninfo.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QObject \
-		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\QGeoSatelliteInfoSource \
-		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeosatelliteinfosource.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\QGeoSatelliteInfo \
-		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeosatelliteinfo.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QTimer \
 		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qtimer.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qbasictimer.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QTime \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qdatetime.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QDebug \
+		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\QGeoPath \
+		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeopath.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\QGeoShape \
+		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeoshape.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QSharedDataPointer \
+		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\QGeoCoordinate \
+		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeocoordinate.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QMetaType \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QString \
+		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qpositioningglobal.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QVariantList \
+		..\groupG\positioning.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\QGeoPositionInfoSource \
+		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeopositioninfosource.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\QGeoPositionInfo \
+		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeopositioninfo.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QDateTime \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QObject \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QList \
 		release\moc_predefs.h \
 		C:\Qt\5.15.1\msvc2019_64\bin\moc.exe
 	C:\Qt\5.15.1\msvc2019_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include C:/Users/vuand/OneDrive/Documents/build-groupG-Desktop_Qt_5_15_1_MinGW_64_bit-Debug/GROUP_G/build-groupG-Desktop_Qt_5_15_1_MinGW_64_bit-Debug/build-groupG-Desktop_Qt_5_15_1_MSVC2019_64bit-Debug/release/moc_predefs.h -IC:/Qt/5.15.1/msvc2019_64/mkspecs/win32-msvc -IC:/Users/vuand/OneDrive/Documents/build-groupG-Desktop_Qt_5_15_1_MinGW_64_bit-Debug/GROUP_G/build-groupG-Desktop_Qt_5_15_1_MinGW_64_bit-Debug/groupG -IC:/Qt/5.15.1/msvc2019_64/include -IC:/Qt/5.15.1/msvc2019_64/include/QtWebEngineWidgets -IC:/Qt/5.15.1/msvc2019_64/include/QtWebEngineCore -IC:/Qt/5.15.1/msvc2019_64/include/QtLocation -IC:/Qt/5.15.1/msvc2019_64/include/QtPositioningQuick -IC:/Qt/5.15.1/msvc2019_64/include/QtQuick -IC:/Qt/5.15.1/msvc2019_64/include/QtPrintSupport -IC:/Qt/5.15.1/msvc2019_64/include/QtWidgets -IC:/Qt/5.15.1/msvc2019_64/include/QtGui -IC:/Qt/5.15.1/msvc2019_64/include/QtANGLE -IC:/Qt/5.15.1/msvc2019_64/include/QtSql -IC:/Qt/5.15.1/msvc2019_64/include/QtQmlModels -IC:/Qt/5.15.1/msvc2019_64/include/QtWebChannel -IC:/Qt/5.15.1/msvc2019_64/include/QtQml -IC:/Qt/5.15.1/msvc2019_64/include/QtNetwork -IC:/Qt/5.15.1/msvc2019_64/include/QtPositioning -IC:/Qt/5.15.1/msvc2019_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt" ..\groupG\tracker.h -o release\moc_tracker.cpp
@@ -3194,34 +3217,7 @@ release\accountSettings.obj: ..\groupG\accountSettings.cpp ..\groupG\accountSett
 		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qdatetime.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QRegExp \
 		..\groupG\deleteAccount.h \
-		ui_accountSettings.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QVariant \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QApplication \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qapplication.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qcoreapplication.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qeventloop.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qdesktopwidget.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qguiapplication.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qinputmethod.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QDateEdit \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qdatetimeedit.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qcalendar.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qabstractspinbox.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qvalidator.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qregularexpression.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QLabel \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qlabel.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qframe.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QLineEdit \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qlineedit.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qtextcursor.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qtextformat.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qpen.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qtextoption.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QPushButton \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qpushbutton.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qabstractbutton.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qicon.h
+		ui_accountSettings.h
 
 release\addaccount.obj: ..\groupG\addaccount.cpp ..\groupG\addaccount.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QDialog \
@@ -3355,34 +3351,7 @@ release\addaccount.obj: ..\groupG\addaccount.cpp ..\groupG\addaccount.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QDate \
 		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qdatetime.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QRegExp \
-		ui_addaccount.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QVariant \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QApplication \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qapplication.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qcoreapplication.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qeventloop.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qdesktopwidget.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qguiapplication.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qinputmethod.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QDateEdit \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qdatetimeedit.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qcalendar.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qabstractspinbox.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qvalidator.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qregularexpression.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QLabel \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qlabel.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qframe.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QLineEdit \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qlineedit.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qtextcursor.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qtextformat.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qpen.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qtextoption.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QPushButton \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qpushbutton.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qabstractbutton.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qicon.h
+		ui_addaccount.h
 
 release\addhikes.obj: ..\groupG\addhikes.cpp ..\groupG\addhikes.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QDialog \
@@ -3501,36 +3470,7 @@ release\addhikes.obj: ..\groupG\addhikes.cpp ..\groupG\addhikes.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QBuffer \
 		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qbuffer.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QUrl \
-		ui_addhikes.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QVariant \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QApplication \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qapplication.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qcoreapplication.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qeventloop.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qdesktopwidget.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qguiapplication.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qinputmethod.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QCheckBox \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qcheckbox.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qabstractbutton.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qicon.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QLabel \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qlabel.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qframe.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QLineEdit \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qlineedit.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qtextcursor.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qtextformat.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qpen.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qtextoption.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QPushButton \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qpushbutton.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QTimeEdit \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qdatetimeedit.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qcalendar.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qabstractspinbox.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qvalidator.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qregularexpression.h
+		ui_addhikes.h
 
 release\adminwindow.obj: ..\groupG\adminwindow.cpp ..\groupG\adminwindow.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QMainWindow \
@@ -3907,36 +3847,7 @@ release\adminwindow.obj: ..\groupG\adminwindow.cpp ..\groupG\adminwindow.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QRegExp \
 		..\groupG\viewpic.h \
 		..\groupG\addhikes.h \
-		ui_adminwindow.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QVariant \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QApplication \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qapplication.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qdesktopwidget.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QHeaderView \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qheaderview.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qabstractitemview.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qabstractscrollarea.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qframe.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qabstractitemdelegate.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qstyleoption.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qabstractspinbox.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qslider.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qabstractslider.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qstyle.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qtabbar.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qrubberband.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QLabel \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qlabel.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QLineEdit \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qlineedit.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QPushButton \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qpushbutton.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qabstractbutton.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QStatusBar \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qstatusbar.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QTableView \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qtableview.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QWidget
+		ui_adminwindow.h
 
 release\database.obj: ..\groupG\database.cpp ..\groupG\database.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QObject \
@@ -4196,28 +4107,7 @@ release\deleteAccount.obj: ..\groupG\deleteAccount.cpp ..\groupG\deleteAccount.h
 		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QDate \
 		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qdatetime.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QRegExp \
-		ui_deleteAccount.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QVariant \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QApplication \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qapplication.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qcoreapplication.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qeventloop.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qdesktopwidget.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qguiapplication.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qinputmethod.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QLabel \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qlabel.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qframe.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QLineEdit \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qlineedit.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qtextcursor.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qtextformat.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qpen.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qtextoption.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QPushButton \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qpushbutton.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qabstractbutton.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qicon.h
+		ui_deleteAccount.h
 
 release\deletehike.obj: ..\groupG\deletehike.cpp ..\groupG\deletehike.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QDialog \
@@ -4324,28 +4214,7 @@ release\deletehike.obj: ..\groupG\deletehike.cpp ..\groupG\deletehike.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qfiledevice.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qvector2d.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qtouchdevice.h \
-		ui_deletehike.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QVariant \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QApplication \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qapplication.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qcoreapplication.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qeventloop.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qdesktopwidget.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qguiapplication.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qinputmethod.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QLabel \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qlabel.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qframe.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QLineEdit \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qlineedit.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qtextcursor.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qtextformat.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qpen.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qtextoption.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QPushButton \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qpushbutton.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qabstractbutton.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qicon.h
+		ui_deletehike.h
 
 release\edithikes.obj: ..\groupG\edithikes.cpp ..\groupG\edithikes.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QDialog \
@@ -4487,36 +4356,7 @@ release\edithikes.obj: ..\groupG\edithikes.cpp ..\groupG\edithikes.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QUrl \
 		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QRegExp \
 		..\groupG\viewpic.h \
-		ui_edithikes.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QVariant \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QApplication \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qapplication.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qcoreapplication.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qeventloop.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qdesktopwidget.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qguiapplication.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qinputmethod.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QCheckBox \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qcheckbox.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qabstractbutton.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qicon.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QLabel \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qlabel.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qframe.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QLineEdit \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qlineedit.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qtextcursor.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qtextformat.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qpen.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qtextoption.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QPushButton \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qpushbutton.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QTimeEdit \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qdatetimeedit.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qcalendar.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qabstractspinbox.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qvalidator.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qregularexpression.h
+		ui_edithikes.h
 
 release\forgot_uandp.obj: ..\groupG\forgot_uandp.cpp ..\groupG\forgot_uandp.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QDialog \
@@ -4650,28 +4490,7 @@ release\forgot_uandp.obj: ..\groupG\forgot_uandp.cpp ..\groupG\forgot_uandp.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QDate \
 		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qdatetime.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QRegExp \
-		ui_forgot_uandp.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QVariant \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QApplication \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qapplication.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qcoreapplication.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qeventloop.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qdesktopwidget.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qguiapplication.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qinputmethod.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QLabel \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qlabel.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qframe.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QLineEdit \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qlineedit.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qtextcursor.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qtextformat.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qpen.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qtextoption.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QPushButton \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qpushbutton.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qabstractbutton.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qicon.h
+		ui_forgot_uandp.h
 
 release\gmap.obj: ..\groupG\gmap.cpp ..\groupG\gmap.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QMainWindow \
@@ -4821,20 +4640,6 @@ release\gmap.obj: ..\groupG\gmap.cpp ..\groupG\gmap.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qpagelayout.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qpagesize.h \
 		ui_gmap.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QApplication \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qapplication.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qcoreapplication.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qeventloop.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qdesktopwidget.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qguiapplication.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qinputmethod.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QMenuBar \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qmenubar.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qmenu.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qaction.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qactiongroup.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QStatusBar \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qstatusbar.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QMessageBox \
 		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qmessagebox.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qdialog.h
@@ -5480,75 +5285,25 @@ release\main.obj: ..\groupG\main.cpp ..\groupG\mainwindow.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtSql\QSqlField \
 		C:\Qt\5.15.1\msvc2019_64\include\QtSql\qsqlfield.h \
 		..\groupG\tracker.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtLocation\QGeoRoute \
-		C:\Qt\5.15.1\msvc2019_64\include\QtLocation\qgeoroute.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QTimer \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QTime \
+		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\QGeoPath \
+		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeopath.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\QGeoShape \
+		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeoshape.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\QGeoCoordinate \
 		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeocoordinate.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qpositioningglobal.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtLocation\QGeoRouteRequest \
-		C:\Qt\5.15.1\msvc2019_64\include\QtLocation\qgeorouterequest.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QExplicitlySharedDataPointer \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QDateTime \
-		C:\Qt\5.15.1\msvc2019_64\include\QtLocation\qlocationglobal.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtLocation\qlocation.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeorectangle.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\QGeoShape \
-		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeoshape.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QHash \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QVariantList \
+		..\groupG\positioning.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\QGeoPositionInfoSource \
 		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeopositioninfosource.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\QGeoPositionInfo \
 		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeopositioninfo.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\QGeoSatelliteInfoSource \
-		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeosatelliteinfosource.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\QGeoSatelliteInfo \
-		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeosatelliteinfo.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QTimer \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QTime \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QDateTime \
 		ui_menu.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QApplication \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qapplication.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qdesktopwidget.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QHBoxLayout \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qboxlayout.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qlayout.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qlayoutitem.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qgridlayout.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QHeaderView \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qheaderview.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qabstractitemview.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qabstractscrollarea.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qframe.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qabstractitemdelegate.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qstyleoption.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qabstractspinbox.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qslider.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qabstractslider.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qstyle.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qtabbar.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qrubberband.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QLabel \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qlabel.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QListView \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qlistview.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QMenuBar \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qmenubar.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qmenu.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qaction.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qactiongroup.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QPushButton \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qpushbutton.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QStatusBar \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qstatusbar.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QTableView \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qtableview.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QWidget \
 		..\groupG\addaccount.h \
 		ui_addaccount.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QDateEdit \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qdatetimeedit.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QLineEdit \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qlineedit.h \
 		..\groupG\forgot_uandp.h \
 		..\groupG\adminwindow.h \
 		..\groupG\deletehike.h \
@@ -5559,7 +5314,11 @@ release\main.obj: ..\groupG\main.cpp ..\groupG\mainwindow.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QBuffer \
 		..\groupG\viewpic.h \
 		..\groupG\addhikes.h \
-		..\groupG\gmap.h
+		..\groupG\gmap.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QWidget \
+		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QApplication \
+		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qapplication.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qdesktopwidget.h
 
 release\mainwindow.obj: ..\groupG\mainwindow.cpp ..\groupG\mainwindow.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QMainWindow \
@@ -5970,75 +5729,25 @@ release\mainwindow.obj: ..\groupG\mainwindow.cpp ..\groupG\mainwindow.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtSql\QSqlField \
 		C:\Qt\5.15.1\msvc2019_64\include\QtSql\qsqlfield.h \
 		..\groupG\tracker.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtLocation\QGeoRoute \
-		C:\Qt\5.15.1\msvc2019_64\include\QtLocation\qgeoroute.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QTimer \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QTime \
+		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\QGeoPath \
+		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeopath.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\QGeoShape \
+		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeoshape.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\QGeoCoordinate \
 		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeocoordinate.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qpositioningglobal.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtLocation\QGeoRouteRequest \
-		C:\Qt\5.15.1\msvc2019_64\include\QtLocation\qgeorouterequest.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QExplicitlySharedDataPointer \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QDateTime \
-		C:\Qt\5.15.1\msvc2019_64\include\QtLocation\qlocationglobal.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtLocation\qlocation.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeorectangle.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\QGeoShape \
-		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeoshape.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QHash \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QVariantList \
+		..\groupG\positioning.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\QGeoPositionInfoSource \
 		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeopositioninfosource.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\QGeoPositionInfo \
 		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeopositioninfo.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\QGeoSatelliteInfoSource \
-		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeosatelliteinfosource.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\QGeoSatelliteInfo \
-		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeosatelliteinfo.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QTimer \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QTime \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QDateTime \
 		ui_menu.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QApplication \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qapplication.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qdesktopwidget.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QHBoxLayout \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qboxlayout.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qlayout.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qlayoutitem.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qgridlayout.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QHeaderView \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qheaderview.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qabstractitemview.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qabstractscrollarea.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qframe.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qabstractitemdelegate.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qstyleoption.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qabstractspinbox.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qslider.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qabstractslider.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qstyle.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qtabbar.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qrubberband.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QLabel \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qlabel.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QListView \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qlistview.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QMenuBar \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qmenubar.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qmenu.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qaction.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qactiongroup.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QPushButton \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qpushbutton.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QStatusBar \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qstatusbar.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QTableView \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qtableview.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QWidget \
 		..\groupG\addaccount.h \
 		ui_addaccount.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QDateEdit \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qdatetimeedit.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QLineEdit \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qlineedit.h \
 		..\groupG\forgot_uandp.h \
 		..\groupG\adminwindow.h \
 		..\groupG\deletehike.h \
@@ -6050,6 +5759,7 @@ release\mainwindow.obj: ..\groupG\mainwindow.cpp ..\groupG\mainwindow.h \
 		..\groupG\viewpic.h \
 		..\groupG\addhikes.h \
 		..\groupG\gmap.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QWidget \
 		ui_mainwindow.h
 
 release\menu.obj: ..\groupG\menu.cpp ..\groupG\menu.h \
@@ -6460,69 +6170,104 @@ release\menu.obj: ..\groupG\menu.cpp ..\groupG\menu.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtSql\QSqlField \
 		C:\Qt\5.15.1\msvc2019_64\include\QtSql\qsqlfield.h \
 		..\groupG\tracker.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtLocation\QGeoRoute \
-		C:\Qt\5.15.1\msvc2019_64\include\QtLocation\qgeoroute.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QTimer \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QTime \
+		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\QGeoPath \
+		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeopath.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\QGeoShape \
+		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeoshape.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\QGeoCoordinate \
 		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeocoordinate.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qpositioningglobal.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtLocation\QGeoRouteRequest \
-		C:\Qt\5.15.1\msvc2019_64\include\QtLocation\qgeorouterequest.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QExplicitlySharedDataPointer \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QDateTime \
-		C:\Qt\5.15.1\msvc2019_64\include\QtLocation\qlocationglobal.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtLocation\qlocation.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeorectangle.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\QGeoShape \
-		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeoshape.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QHash \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QVariantList \
+		..\groupG\positioning.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\QGeoPositionInfoSource \
 		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeopositioninfosource.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\QGeoPositionInfo \
 		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeopositioninfo.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\QGeoSatelliteInfoSource \
-		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeosatelliteinfosource.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\QGeoSatelliteInfo \
-		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeosatelliteinfo.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QTimer \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QTime \
-		ui_menu.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QApplication \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qapplication.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qdesktopwidget.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QHBoxLayout \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qboxlayout.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qlayout.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qlayoutitem.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qgridlayout.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QHeaderView \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qheaderview.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qabstractitemview.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qabstractscrollarea.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qframe.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qabstractitemdelegate.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qstyleoption.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qabstractspinbox.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qslider.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qabstractslider.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qstyle.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qtabbar.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qrubberband.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QLabel \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qlabel.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QListView \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qlistview.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QMenuBar \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qmenubar.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qmenu.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qaction.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qactiongroup.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QPushButton \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qpushbutton.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QStatusBar \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qstatusbar.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QTableView \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qtableview.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QWidget
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QDateTime \
+		ui_menu.h
+
+release\positioning.obj: ..\groupG\positioning.cpp ..\groupG\positioning.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\QGeoCoordinate \
+		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeocoordinate.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QMetaType \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qmetatype.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qglobal.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qconfig-bootstrapped.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qconfig.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qtcore-config.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qsystemdetection.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qprocessordetection.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qcompilerdetection.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qtypeinfo.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qsysinfo.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qlogging.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qflags.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qatomic.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qbasicatomic.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qatomic_bootstrap.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qgenericatomic.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qatomic_cxx11.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qatomic_msvc.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qglobalstatic.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qmutex.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qnumeric.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qversiontagging.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qbytearray.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qrefcount.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qnamespace.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qarraydata.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qvarlengtharray.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qcontainerfwd.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qalgorithms.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qcontainertools_impl.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qhashfunctions.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qstring.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qchar.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qstringliteral.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qstringalgorithms.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qstringview.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qstringbuilder.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qpair.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qobjectdefs.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qobjectdefs_impl.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QString \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QSharedDataPointer \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qshareddata.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qhash.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qiterator.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qlist.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qvector.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qpoint.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qbytearraylist.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qstringlist.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qregexp.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qstringmatcher.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qpositioningglobal.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\QGeoPositionInfoSource \
+		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeopositioninfosource.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\QGeoPositionInfo \
+		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeopositioninfo.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QDateTime \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qdatetime.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QObject \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qobject.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qcoreevent.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qscopedpointer.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qobject_impl.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QList \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QDebug \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qdebug.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qmap.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qtextstream.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qiodevice.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qlocale.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qvariant.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qset.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qcontiguouscache.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qsharedpointer.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qsharedpointer_impl.h
 
 release\singleView.obj: ..\groupG\singleView.cpp ..\groupG\singleView.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QDialog \
@@ -6666,20 +6411,7 @@ release\singleView.obj: ..\groupG\singleView.cpp ..\groupG\singleView.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QDate \
 		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qdatetime.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QRegExp \
-		ui_singleview.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QVariant \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QApplication \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qapplication.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qcoreapplication.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qeventloop.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qdesktopwidget.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qguiapplication.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qinputmethod.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QLabel \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qlabel.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qframe.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QPushButton \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qpushbutton.h
+		ui_singleview.h
 
 release\sql.obj: ..\groupG\sql.cpp ..\groupG\sql.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QDebug \
@@ -6859,56 +6591,32 @@ release\tracker.obj: ..\groupG\tracker.cpp ..\groupG\tracker.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qfiledevice.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qvector2d.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qtouchdevice.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtLocation\QGeoRoute \
-		C:\Qt\5.15.1\msvc2019_64\include\QtLocation\qgeoroute.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\QGeoCoordinate \
-		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeocoordinate.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QMetaType \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QString \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QSharedDataPointer \
-		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qpositioningglobal.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtLocation\QGeoRouteRequest \
-		C:\Qt\5.15.1\msvc2019_64\include\QtLocation\qgeorouterequest.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QList \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QExplicitlySharedDataPointer \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QDateTime \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qdatetime.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtLocation\qlocationglobal.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtLocation\qlocation.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeorectangle.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\QGeoShape \
-		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeoshape.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QHash \
-		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\QGeoPositionInfoSource \
-		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeopositioninfosource.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\QGeoPositionInfo \
-		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeopositioninfo.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QObject \
-		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\QGeoSatelliteInfoSource \
-		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeosatelliteinfosource.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\QGeoSatelliteInfo \
-		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeosatelliteinfo.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QTimer \
 		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qtimer.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qbasictimer.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QTime \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qdatetime.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QDebug \
-		ui_tracker.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QVariant \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QApplication \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qapplication.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qcoreapplication.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qeventloop.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qdesktopwidget.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qguiapplication.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qinputmethod.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QLabel \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qlabel.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qframe.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QPushButton \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qpushbutton.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qabstractbutton.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qicon.h
+		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\QGeoPath \
+		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeopath.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\QGeoShape \
+		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeoshape.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QSharedDataPointer \
+		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\QGeoCoordinate \
+		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeocoordinate.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QMetaType \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QString \
+		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qpositioningglobal.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QVariantList \
+		..\groupG\positioning.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\QGeoPositionInfoSource \
+		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeopositioninfosource.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\QGeoPositionInfo \
+		C:\Qt\5.15.1\msvc2019_64\include\QtPositioning\qgeopositioninfo.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QDateTime \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QObject \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QList \
+		ui_tracker.h
 
 release\moc_accountSettings.obj: release\moc_accountSettings.cpp 
 
@@ -6931,6 +6639,8 @@ release\moc_gmap.obj: release\moc_gmap.cpp
 release\moc_mainwindow.obj: release\moc_mainwindow.cpp 
 
 release\moc_menu.obj: release\moc_menu.cpp 
+
+release\moc_positioning.obj: release\moc_positioning.cpp 
 
 release\moc_singleView.obj: release\moc_singleView.cpp 
 
