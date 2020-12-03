@@ -97,6 +97,10 @@ private slots:
     void on_refreshButton_clicked();
 
     void on_table_clicked(const QModelIndex &index);
+    
+     void on_Difficulty_sliderMoved(int position);
+
+    void on_Distance_sliderMoved(int position);
 
     void on_pushButton_clicked();
 
