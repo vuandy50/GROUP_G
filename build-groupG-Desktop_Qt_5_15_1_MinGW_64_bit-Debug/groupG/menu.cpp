@@ -393,3 +393,130 @@ void menu::on_pushButton_clicked()
     track = new tracker();
     track->show();
 }
+
+
+void menu::on_Difficulty_sliderMoved(int position)
+{
+    QSqlQuery *qry = new QSqlQuery(db);
+    QSqlQueryModel *modal = new QSqlQueryModel();
+
+    if (position  == 1)
+    {
+    qry->prepare("SELECT Name, Park, Distance, Difficulty FROM hikes WHERE Difficulty = 1");
+    qry->exec();
+    modal->setQuery(*qry);
+    ui->table->setModel(modal);
+    }
+   else if(position == 2)
+    {
+        qry->prepare("SELECT Name, Park, Distance, Difficulty FROM hikes WHERE Difficulty = 2");
+        qry->exec();
+        modal->setQuery(*qry);
+        ui->table->setModel(modal);
+    }
+    else if(position == 3)
+     {
+         qry->prepare("SELECT Name, Park, Distance, Difficulty FROM hikes WHERE Difficulty = 3");
+         qry->exec();
+         modal->setQuery(*qry);
+         ui->table->setModel(modal);
+     }
+    else if(position == 4)
+     {
+         qry->prepare("SELECT Name, Park, Distance, Difficulty FROM hikes WHERE Difficulty = 4");
+         qry->exec();
+         modal->setQuery(*qry);
+         ui->table->setModel(modal);
+     }
+    else if(position == 5)
+     {
+         qry->prepare("SELECT Name, Park, Distance, Difficulty FROM hikes WHERE Difficulty = 5");
+         qry->exec();
+         modal->setQuery(*qry);
+         ui->table->setModel(modal);
+     }
+    else {
+        qry->prepare("SELECT Name, Park, Distance, Difficulty FROM hikes WHERE Difficulty = 0");
+        qry->exec();
+        modal->setQuery(*qry);
+        ui->table->setModel(modal);
+    }
+}
+
+void menu::on_Distance_sliderMoved(int position)
+{   QSqlQuery *qry = new QSqlQuery(db);
+    QSqlQueryModel *modal = new QSqlQueryModel();
+
+    if(position == 1)
+    {
+        qry->prepare("SELECT Name, Park, Distance, Difficulty FROM hikes WHERE Distance = 1");
+        qry->exec();
+        modal->setQuery(*qry);
+        ui->table->setModel(modal);
+    }
+    else if(position == 2)
+    {
+        qry->prepare("SELECT Name, Park, Distance, Difficulty FROM hikes WHERE Distance = 2");
+        qry->exec();
+        modal->setQuery(*qry);
+        ui->table->setModel(modal);
+    }
+    else if(position == 3)
+    {
+        qry->prepare("SELECT Name, Park, Distance, Difficulty FROM hikes WHERE Distance = 3");
+        qry->exec();
+        modal->setQuery(*qry);
+        ui->table->setModel(modal);
+    }
+    else if(position == 4)
+    {
+        qry->prepare("SELECT Name, Park, Distance, Difficulty FROM hikes WHERE Distance = 4");
+        qry->exec();
+        modal->setQuery(*qry);
+        ui->table->setModel(modal);
+    }
+    else if(position == 5)
+    {
+        qry->prepare("SELECT Name, Park, Distance, Difficulty FROM hikes WHERE Distance = 5");
+        qry->exec();
+        modal->setQuery(*qry);
+        ui->table->setModel(modal);
+    }
+    else if(position == 6)
+    {
+        qry->prepare("SELECT Name, Park, Distance, Difficulty FROM hikes WHERE Distance = 6");
+        qry->exec();
+        modal->setQuery(*qry);
+        ui->table->setModel(modal);
+    }
+    else if(position == 7)
+    {
+        qry->prepare("SELECT Name, Park, Distance, Difficulty FROM hikes WHERE Distance = 7");
+        qry->exec();
+        modal->setQuery(*qry);
+        ui->table->setModel(modal);
+    }
+    else if(position == 8)
+    {
+        qry->prepare("SELECT Name, Park, Distance, Difficulty FROM hikes WHERE Distance = 8");
+        qry->exec();
+        modal->setQuery(*qry);
+        ui->table->setModel(modal);
+    }
+    else if(position == 9)
+    {
+        qry->prepare("SELECT Name, Park, Distance, Difficulty FROM hikes WHERE Distance = 9");
+        qry->exec();
+        modal->setQuery(*qry);
+        ui->table->setModel(modal);
+    }
+    else if(position == 10)
+    {
+        qry->prepare("SELECT Name, Park, Distance, Difficulty FROM hikes WHERE Distance = 10");
+        qry->exec();
+        modal->setQuery(*qry);
+        ui->table->setModel(modal);
+    }
+}
+
+
